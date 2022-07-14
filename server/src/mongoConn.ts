@@ -1,9 +1,14 @@
 import MongoClient from 'mongoose'
+require('dotenv').config()
 
 const mongoConn = () => {
-	const url = 'mongodb+srv://csandoval:<password>@mflix.cjrmd.mongodb.net/test'
+	const url =
+		'mongodb+srv://<username>:<password>@mflix.cjrmd.mongodb.net/test'
 	MongoClient.connect(url, {
-		auth: { username: 'csandoval', password: 'chiclayo1018' },
+		auth: {
+			username: process.env.DB_USERNAME,
+			password: process.env.DB_PASSWORD,
+		},
 	})
 
 	const db = MongoClient.connection
