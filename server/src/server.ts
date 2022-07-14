@@ -8,6 +8,7 @@ const main = async () => {
 
 	const port = process.env.PORT
 	app.listen(port, () => console.log('server started in port:', port))
+	console.log()
 }
 
 main().catch((err) => {

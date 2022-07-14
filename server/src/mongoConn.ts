@@ -2,18 +2,12 @@ import MongoClient from 'mongoose'
 require('dotenv').config()
 
 const mongoConn = () => {
-	const url =
-		'mongodb+srv://<username>:<password>@mflix.cjrmd.mongodb.net/test'
-	MongoClient.connect(url, {
-		auth: {
-			username: process.env.DB_USERNAME,
-			password: process.env.DB_PASSWORD,
-		},
-	})
+	const uri = process.env.ATLAS_URI as string
+	MongoClient.connect(uri)
 
 	const db = MongoClient.connection
 	db.once('open', () => {
-		console.log('Database conneced:', url)
+		console.log('Database conneced ✅ ')
 	})
 	db.on('error', (err) => {
 		console.error('connection error', err)
