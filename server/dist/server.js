@@ -20,6 +20,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     (0, mongoConn_1.default)();
     const port = process.env.PORT;
     app.listen(port, () => console.log('server started in port:', port));
+    console.log();
 });
 main().catch((err) => {
     console.log(err);

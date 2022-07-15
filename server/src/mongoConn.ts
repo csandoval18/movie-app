@@ -1,4 +1,5 @@
 import MongoClient from 'mongoose'
+import cors from 'cors'
 require('dotenv').config()
 
 const mongoConn = () => {
