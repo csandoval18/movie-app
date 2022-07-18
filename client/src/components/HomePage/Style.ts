@@ -4,6 +4,6 @@ import tw from 'twin.macro'
 export const HomePageContainer = styled.div`
 	${tw`
     h-screen
-    bg-gray-900
+    bg-gradient-to-b from-gray-700 via-gray-900 to-black
   `}
 `

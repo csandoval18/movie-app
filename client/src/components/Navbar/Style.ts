@@ -5,7 +5,7 @@ export const Container = styled.div`
 	align-items: center;
 	/* font-family: 'Titillium Web', sans-serif; */
 	${tw`
-    bg-blue-300
+  bg-gradient-to-l from-pink-300 via-purple-300 to-indigo-400
     h-20
     flex
     justify-between

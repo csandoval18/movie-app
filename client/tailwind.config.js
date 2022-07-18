@@ -10,8 +10,8 @@ module.exports = {
 				inter: 'Inter',
 			},
 			colors: {
-				primary: '#202225',
-				secondary: '#5865f2',
+				primary: '#546bff',
+				secondary: '#11131c',
 			},
 		},
 	},
