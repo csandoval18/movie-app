@@ -1,14 +1,26 @@
 import Navbar from '../Navbar/Navbar'
-import { HomePageContainer } from './Style'
+import {
+	FirstHeadDiv,
+	FirstHeading,
+	HomePageContainer,
+	SecondHeadDiv,
+	SecondHeading,
+} from './HomePage.elements'
 
 const HomePage = () => {
 	return (
 		<HomePageContainer>
 			<Navbar />
-			<div>
-				The Best Collection of movies, TV shows, and much more.
-			</div>
-			<p>Watch your favorite content anywhere. Cancel anytime.</p>
+			<FirstHeadDiv>
+				<FirstHeading>
+					The Best Collection of movies, TV shows, and much more.
+				</FirstHeading>
+			</FirstHeadDiv>
+			<SecondHeadDiv>
+				<SecondHeading>
+					<p>Watch your favorite content anywhere. Cancel anytime.</p>
+				</SecondHeading>
+			</SecondHeadDiv>
 			<p>Ready to enjoy the shows? Get Started</p>
 		</HomePageContainer>
 	)

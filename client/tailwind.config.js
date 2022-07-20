@@ -1,25 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	mode: 'jit',
-	purge: [
-		'./src/**/*.{ts, tsx, js, jsx',
-		'./public/index.html',
-		'./src/components/**/*.{ts,tsx}',
-	],
+	// purge: [
+	// 	'./src/**/*.{ts, tsx, js, jsx',
+	// 	'./public/index.html',
+	// 	'./src/components/**/*.{ts,tsx}',
+	// ],
 	content: [
-		'./src/**/*.{html,js,tsx, ts}',
-		'./public/index.html',
+		'./src/*.{html,js,tsx, ts}',
+		// './public/index.html',
 		'./src/components/**/*.{ts,tsx}',
 	],
 	theme: {
 		extend: {
 			fontFamily: {
-				tillium: 'Titillium Web',
+				tillium: "'Titillium Web', sans-serif",
 				inter: 'Inter',
 			},
 			colors: {
-				primary: '#80a3e4',
-				secondary: 'from-pink-300',
+				primary: '#838DF8',
+				secondary: '#F8A9D5',
 				dark: '#1a212e',
 			},
 		},

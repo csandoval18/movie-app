@@ -1,10 +1,10 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import { Container, NavbarOptions } from './Style'
+import { NavbarContainer, NavbarOptions } from './Navbar.elements'
 
 const Navbar: React.FC = () => {
 	return (
-		<Container>
+		<NavbarContainer>
 			<div>logo</div>
 			<NavbarOptions>
 				<li>
@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
 				<li>login</li>
 				<li>logout</li>
 			</NavbarOptions>
-		</Container>
+		</NavbarContainer>
 	)
 }
 
