@@ -13,7 +13,7 @@ const HomePage = () => {
 			<Navbar />
 			<FirstHeadDiv>
 				<FirstHeading>
-					The Best Collection of movies, TV shows, and much more.
+					THE BEST COLLECTION OF MOVIES, TV SHOWS, AND MUCH MORE.
 				</FirstHeading>
 			</FirstHeadDiv>
 			<SecondHeadDiv>

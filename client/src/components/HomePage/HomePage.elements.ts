@@ -4,9 +4,9 @@ import tw from 'twin.macro'
 export const HomePageContainer = styled.div`
 	${tw`
     h-screen
-    // bg-gradient-to-b from-gray-700 via-gray-900 to-black
-    // bg-gradient-to-l from-pink-300 via-purple-300 to-indigo-400
-    bg-gradient-to-b from-indigo-400 to-dark 
+    bg-gradient-to-b from-gray-700 via-gray-900 to-black
+    // bg-gradient-to-t from-pink-300 via-indigo-400 to-dark
+    // bg-gradient-to-b from-indigo-400 to-dark 
   `}
 `
 
@@ -16,8 +16,8 @@ export const FirstHeadDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	opacity: 30%;
-	background-color: white;
+	/* background-color: rgba(255, 0, 0, 0.5); */
+	background-color: #8dbceb;
 	z-index: 0;
 
 	${tw`
@@ -26,12 +26,12 @@ export const FirstHeadDiv = styled.div`
 `
 
 export const FirstHeading = styled.h1`
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: BasementGrotesque;
 	font-weight: 600;
 	text-align: center;
 	letter-spacing: 2px;
 	color: black;
-	font-size: 38px;
+	font-size: 32px;
 	padding: 0 16rem;
 	z-index: 2;
 `
@@ -63,5 +63,5 @@ export const SecondHeading = styled.div`
 	font-size: 22px;
 	border-radius: 12px;
 	width: 80%;
-	box-shadow: 3px 10px 25px -8px black;
+	/* box-shadow: 3px 10px 25px -8px black; */
 `

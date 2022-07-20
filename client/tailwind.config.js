@@ -14,13 +14,19 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				tillium: "'Titillium Web', sans-serif",
-				inter: 'Inter',
+				// tillium: "'Titillium Web', sans-serif",
+				// inter: 'Inter',
 			},
 			colors: {
-				primary: '#838DF8',
-				secondary: '#F8A9D5',
-				dark: '#1a212e',
+				primary: '#edcd6f',
+				secondary: '#e89eef',
+				accent: '#f7b7ec',
+				neutral: '#28273F',
+				'base-100': '#383B56',
+				info: '#459EF2',
+				success: '#12683A',
+				warning: '#AA6D13',
+				error: '#EE5370',
 			},
 		},
 	},

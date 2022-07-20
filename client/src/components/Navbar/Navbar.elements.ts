@@ -17,7 +17,6 @@ export const NavbarContainer = styled.div`
 	${tw`
     // bg-gradient-to-l from-pink-300 via-purple-300 to-indigo-400
     bg-gradient-to-l from-gray-700 via-gray-900 to-black
-    font-tillium
     color[white]
     
     // tracking-wide
