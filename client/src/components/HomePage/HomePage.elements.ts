@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import tw from 'twin.macro'
 
 export const HomePageContainer = styled.div`
+	height: 100vh;
 	${tw`
-    h-screen
     bg-gradient-to-b from-gray-700 via-gray-900 to-black
     // bg-gradient-to-t from-pink-300 via-indigo-400 to-dark
     // bg-gradient-to-b from-indigo-400 to-dark 
@@ -16,9 +16,7 @@ export const FirstHeadDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background-color: rgba(255, 0, 0, 0.5); */
-	background-color: #8dbceb;
-	z-index: 0;
+	background-color: rgba(120, 180, 230);
 
 	${tw`
     // bg-indigo-400
@@ -33,7 +31,6 @@ export const FirstHeading = styled.h1`
 	color: black;
 	font-size: 32px;
 	padding: 0 16rem;
-	z-index: 2;
 `
 
 export const SecondHeadDiv = styled.div`

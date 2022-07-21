@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoConn from './mongoConn'
-const authRoute = require('./routes/auth')
+import authRoute from './routes/auth'
 require('dotenv').config()
 
 const main = async () => {

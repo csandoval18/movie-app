@@ -5,4 +5,4 @@ router.post('/register', (req: Request, res: Response) => {
 	res.send('Register!')
 })
 
-module.exports = router
+export default router

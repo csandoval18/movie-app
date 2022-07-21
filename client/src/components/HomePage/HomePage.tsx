@@ -1,3 +1,4 @@
+import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 import {
 	FirstHeadDiv,
@@ -9,9 +10,9 @@ import {
 
 const HomePage = () => {
 	return (
-		<HomePageContainer>
+		<HomePageContainer className='homepage-container'>
 			<Navbar />
-			<FirstHeadDiv>
+			{/* <FirstHeadDiv>
 				<FirstHeading>
 					THE BEST COLLECTION OF MOVIES, TV SHOWS, AND MUCH MORE.
 				</FirstHeading>
@@ -21,7 +22,8 @@ const HomePage = () => {
 					<p>Watch your favorite content anywhere. Cancel anytime.</p>
 				</SecondHeading>
 			</SecondHeadDiv>
-			<p>Ready to enjoy the shows? Get Started</p>
+			<p>Ready to enjoy the shows? Get Started</p> */}
+			<Footer />
 		</HomePageContainer>
 	)
 }

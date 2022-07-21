@@ -1,54 +1,49 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import { NavbarContainer, NavbarOptions } from './Navbar.elements'
+import { DropDown, NavbarContainer } from './Navbar.elements'
 
 const Navbar: React.FC = () => {
 	return (
-		<div className='navbar bg-base-100'>
-			<div className='flex-1'>
-				<a className='btn btn-ghost normal-case text-xl'>daisyUI</a>
+		<NavbarContainer className='navbar-container'>
+			<div className='bg-blue-700 text-primary-content'>
+				<a className='btn btn-ghost normal-case text-xl' href='/'>
+					daisyUI
+				</a>
 			</div>
-			<div className='flex-none gap-2'>
-				<div className='form-control'>
-					<input
-						type='text'
-						placeholder='Search'
-						className='input input-bordered'
-					/>
-				</div>
+			<SearchBar />
+			<div className='flex-none gap-2 bg-green-500 text-primary-content'>
 				<div className='dropdown dropdown-end'>
-					<label className='btn btn-ghost btn-circle avatar'>
+					<label
+						tabIndex={0}
+						className='btn btn-ghost btn-circle avatar'
+					>
 						<div className='w-10 rounded-full'>
-							<img src='https://placeimg.com/80/80/people' />
+							<img
+								src='https://placeimg.com/80/80/people'
+								alt='user profile avatar'
+							/>
 						</div>
 					</label>
-					<ul className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52'>
+					<DropDown
+						tabIndex={0}
+						className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52'
+					>
 						<li>
-							<a className='justify-between'>
+							<a className='justify-between' href='/'>
 								Profile
-								<span className='badge'>New</span>
+								{/* <span className='badge'>New</span> */}
 							</a>
 						</li>
 						<li>
-							<a>Settings</a>
+							<a href='/'>Settings</a>
 						</li>
 						<li>
-							<a>Logout</a>
+							<a href='/'>Logout</a>
 						</li>
-					</ul>
+					</DropDown>
 				</div>
 			</div>
-		</div>
-		// <NavbarContainer>
-		// 	<div>logo</div>
-		// 	<NavbarOptions>
-		// 		<li>
-		// 			<SearchBar />
-		// 		</li>
-		// 		<li>login</li>
-		// 		<li>logout</li>
-		// 	</NavbarOptions>
-		// </NavbarContainer>
+		</NavbarContainer>
 	)
 }
 
