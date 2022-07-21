@@ -1,16 +1,22 @@
 import React from 'react'
+import {
+	SearchBarContainer,
+	SearchBarInput,
+} from './SearchBar.elements'
 
 const SearchBar = () => {
 	return (
-		<div>
-			<form action=''>
-				<input
-					type='text'
-					placeholder='search movies'
-					className='input input-bordered w-[600px] max-w-xs'
-				/>
-			</form>
-		</div>
+		<SearchBarContainer className='searchbar-container'>
+			<div className='form-control'>
+				<form action=''>
+					<SearchBarInput
+						type='text'
+						placeholder='Search movies'
+						className='input input-bordered max-w-none w-[500px]'
+					/>
+				</form>
+			</div>
+		</SearchBarContainer>
 	)
 }
 
