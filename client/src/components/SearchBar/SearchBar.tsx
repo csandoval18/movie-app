@@ -11,8 +11,8 @@ const SearchBar = () => {
 				<form action=''>
 					<SearchBarInput
 						type='text'
-						placeholder='search movies'
-						className='input input-bordered max-w-none w-[500px] max-w-xs'
+						placeholder='Search movies'
+						className='input input-bordered max-w-none w-[500px]'
 					/>
 				</form>
 			</div>

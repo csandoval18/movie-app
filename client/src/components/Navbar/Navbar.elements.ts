@@ -16,12 +16,16 @@ export const NavbarContainer = styled.nav`
 	z-index: 1;
 
 	${tw`
-    bg-gradient-to-l from-gray-700 via-gray-900 to-black
+    // bg-gradient-to-l from-gray-700 via-gray-900 to-black
   `};
 `
 
 export const DropDown = styled.ul`
-	a:hover {
-		background-color: red;
-	}
+	${tw`
+  `}
+`
+export const DropDownAnchor = styled.a`
+	${tw`
+    hover:bg-primary
+  `}
 `

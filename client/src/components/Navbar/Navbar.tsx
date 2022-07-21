@@ -1,17 +1,21 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import { DropDown, NavbarContainer } from './Navbar.elements'
+import {
+	DropDown,
+	DropDownAnchor,
+	NavbarContainer,
+} from './Navbar.elements'
 
 const Navbar: React.FC = () => {
 	return (
-		<NavbarContainer className='navbar-container'>
-			<div className='bg-blue-700 text-primary-content'>
+		<NavbarContainer className='navbar-container bg-base-100'>
+			<div className=' text-primary-content'>
 				<a className='btn btn-ghost normal-case text-xl' href='/'>
-					daisyUI
+					CAS
 				</a>
 			</div>
 			<SearchBar />
-			<div className='flex-none gap-2 bg-green-500 text-primary-content'>
+			<div className='flex-none gap-2 text-primary-content'>
 				<div className='dropdown dropdown-end'>
 					<label
 						tabIndex={0}
@@ -28,17 +32,17 @@ const Navbar: React.FC = () => {
 						tabIndex={0}
 						className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52'
 					>
-						<li>
-							<a className='justify-between' href='/'>
+						<li className='group-hover:bg-primary'>
+							<DropDownAnchor className='justify-between' href='/'>
 								Profile
 								{/* <span className='badge'>New</span> */}
-							</a>
+							</DropDownAnchor>
 						</li>
 						<li>
-							<a href='/'>Settings</a>
+							<DropDownAnchor href='/'>Settings</DropDownAnchor>
 						</li>
 						<li>
-							<a href='/'>Logout</a>
+							<DropDownAnchor href='/'>Logout</DropDownAnchor>
 						</li>
 					</DropDown>
 				</div>

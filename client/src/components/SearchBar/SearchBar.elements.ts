@@ -4,5 +4,5 @@ import tw from 'twin.macro'
 export const SearchBarContainer = styled.div``
 
 export const SearchBarInput = styled.input`
-	border-radius: 1.5rem;
+	border-radius: 1rem;
 `

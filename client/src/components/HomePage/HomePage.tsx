@@ -6,23 +6,27 @@ import {
 	HomePageContainer,
 	SecondHeadDiv,
 	SecondHeading,
+	Wrapper,
 } from './HomePage.elements'
 
 const HomePage = () => {
 	return (
 		<HomePageContainer className='homepage-container'>
 			<Navbar />
-			{/* <FirstHeadDiv>
-				<FirstHeading>
-					THE BEST COLLECTION OF MOVIES, TV SHOWS, AND MUCH MORE.
-				</FirstHeading>
+			<FirstHeadDiv>
+				<Wrapper>
+					<FirstHeading>
+						THE BEST COLLECTION OF MOVIES, TV SHOWS, AND MUCH MORE.
+					</FirstHeading>
+				</Wrapper>
 			</FirstHeadDiv>
+
 			<SecondHeadDiv>
 				<SecondHeading>
 					<p>Watch your favorite content anywhere. Cancel anytime.</p>
 				</SecondHeading>
 			</SecondHeadDiv>
-			<p>Ready to enjoy the shows? Get Started</p> */}
+			<p>Ready to enjoy the shows? Get Started</p>
 			<Footer />
 		</HomePageContainer>
 	)
