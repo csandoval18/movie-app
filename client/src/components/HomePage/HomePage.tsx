@@ -11,16 +11,15 @@ import {
 
 const HomePage = () => {
 	return (
-		<HomePageContainer className='homepage-container'>
+		<HomePageContainer className='homepage-container bg-gradient-to-b from-gray-700 via-gray-900 to-black'>
 			<Navbar />
 			<FirstHeadDiv>
 				<Wrapper>
-					<FirstHeading>
+					<FirstHeading className='text-primary-content'>
 						THE BEST COLLECTION OF MOVIES, TV SHOWS, AND MUCH MORE.
 					</FirstHeading>
 				</Wrapper>
 			</FirstHeadDiv>
-
 			<SecondHeadDiv>
 				<SecondHeading>
 					<p>Watch your favorite content anywhere. Cancel anytime.</p>
