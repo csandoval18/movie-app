@@ -19,6 +19,7 @@ require('dotenv').config();
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const app = (0, express_1.default)();
     (0, mongoConn_1.default)();
+    app.use(express_1.default.json());
     app.use('/api/user', auth_1.default);
     const port = process.env.PORT;
     app.listen(port, () => console.log('server started in port:', port));

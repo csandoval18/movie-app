@@ -7,7 +7,9 @@ const main = async () => {
 	const app = express()
 	mongoConn()
 
-	//auth middleware
+	//Middleware body parser
+	app.use(express.json())
+	//Route Middleware
 	app.use('/api/user', authRoute)
 
 	const port = process.env.PORT

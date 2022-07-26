@@ -11,24 +11,28 @@ import {
 
 const HomePage = () => {
 	return (
-		<HomePageContainer className='homepage-container bg-gradient-to-b from-gray-700 via-gray-900 to-black'>
+		<HomePageContainer className='homepage-container bg-base-100'>
 			<Navbar />
-			<FirstHeadDiv>
-				<Wrapper>
-					<FirstHeading className='text-primary-content'>
-						THE BEST COLLECTION OF MOVIES, TV SHOWS, AND MUCH MORE.
-					</FirstHeading>
-				</Wrapper>
-			</FirstHeadDiv>
-			<SecondHeadDiv>
-				<SecondHeading>
-					<p>Watch your favorite content anywhere. Cancel anytime.</p>
-				</SecondHeading>
-			</SecondHeadDiv>
-			<p>Ready to enjoy the shows? Get Started</p>
 			<Footer />
 		</HomePageContainer>
 	)
 }
 
 export default HomePage
+
+// <FirstHeadDiv>
+// 	<Wrapper>
+// 		<FirstHeading>
+// 			The best collection of movies, TV shows and more.
+// 		</FirstHeading>
+// 	</Wrapper>
+// </FirstHeadDiv>
+// <SecondHeadDiv>
+// 	<SecondHeading>
+// 		<p>Watch your favorite content anywhere. Cancel anytime.</p>
+// 	</SecondHeading>
+// </SecondHeadDiv>
+// <div>
+// 	<p>Ready to enjoy our shows?</p>
+// 	<button className='btn '>Get Started</button>
+// </div>
