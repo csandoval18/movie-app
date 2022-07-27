@@ -1,15 +1,11 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import {
-	DropDown,
-	DropDownAnchor,
-	NavbarContainer,
-} from './Navbar.elements'
+import { DropDown, DropDownAnchor, NavbarContainer } from './Navbar.elements'
 
 const Navbar: React.FC = () => {
 	return (
 		<NavbarContainer className='navbar-container bg-base-100'>
-			<div className=' text-primary-content'>
+			<div>
 				<a className='btn btn-ghost normal-case text-xl' href='/'>
 					CAS
 				</a>
@@ -17,10 +13,7 @@ const Navbar: React.FC = () => {
 			<SearchBar />
 			<div className='flex-none gap-2 text-primary-content'>
 				<div className='dropdown dropdown-end'>
-					<label
-						tabIndex={0}
-						className='btn btn-ghost btn-circle avatar'
-					>
+					<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
 						<div className='w-10 rounded-full'>
 							<img
 								src='https://placeimg.com/80/80/people'

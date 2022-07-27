@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import tw from 'twin.macro'
 // import heroImage from '../../assets/images/HomePage/img1.jpg'
 import moviesimg from '../../assets/images/HomePage/movies.webp'
 
+// bg-gradient-to-b from-gray-700 via-gray-900 to-black'
 export const HomePageContainer = styled.div`
 	height: 100vh;
 `
@@ -22,7 +22,8 @@ export const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	/* background-color: rgba(128, 163, 228, 0.5); */
-	background-color: rgba(148, 170, 255, 0.3);
+	/* background-color: rgba(148, 170, 255, 0.3); */
+	background-color: rgba(10, 18, 20, 0.3);
 `
 
 export const FirstHeading = styled.h1`
@@ -31,10 +32,12 @@ export const FirstHeading = styled.h1`
 	text-align: center;
 	line-height: 4.5rem;
 	letter-spacing: 3px;
-	font-size: 45px;
+	font-size: 30px;
+	transform: scaleY(1.7);
 	padding: 0 8rem;
-	background-color: rgba(4, 12, 30, 0.7);
+	/* background-color: rgba(4, 12, 30, 0.7); */
 	padding: 4.5rem 8rem;
+	color: white;
 `
 
 export const SecondHeadDiv = styled.div`

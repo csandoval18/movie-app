@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import tw from 'twin.macro'
 
 export const NavbarContainer = styled.nav`
 	height: 5rem;
@@ -14,18 +13,7 @@ export const NavbarContainer = styled.nav`
 	position: sticky;
 	top: 0;
 	z-index: 1;
-
-	${tw`
-    // bg-gradient-to-l from-gray-700 via-gray-900 to-black
-  `};
 `
 
-export const DropDown = styled.ul`
-	${tw`
-  `}
-`
-export const DropDownAnchor = styled.a`
-	${tw`
-    hover:bg-primary
-  `}
-`
+export const DropDown = styled.ul``
+export const DropDownAnchor = styled.a``

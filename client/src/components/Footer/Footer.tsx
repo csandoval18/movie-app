@@ -3,7 +3,7 @@ import { FooterContainer } from './Footer.elements'
 
 const Footer = () => {
 	return (
-		<FooterContainer className='footer p-10 bg-base text-neutral-content bg-base-100'>
+		<FooterContainer className='footer p-10 bg-base text-neutral-'>
 			<div>
 				<span className='footer-title'>Services</span>
 				<a className='link link-hover'>Branding</a>
