@@ -1,18 +1,13 @@
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
-import {
-	FirstHeadDiv,
-	FirstHeading,
-	HomePageContainer,
-	SecondHeadDiv,
-	SecondHeading,
-	Wrapper,
-} from './HomePage.elements'
+import TrendingMovies from '../TrendingMovies/TrendingMovies'
+import { HomePageContainer } from './HomePage.elements'
 
 const HomePage = () => {
 	return (
 		<HomePageContainer className='homepage-container bg-base-100'>
 			<Navbar />
+			<TrendingMovies />
 			<Footer />
 		</HomePageContainer>
 	)
