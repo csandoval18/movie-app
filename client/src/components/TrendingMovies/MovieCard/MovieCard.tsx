@@ -1,11 +1,16 @@
 import React from 'react'
 import { MovieCardContainer } from './MovieCard.elements'
 
-const MovieCard = () => {
+interface MovieCardProps {
+	movie: any
+}
+
+const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
 	return (
 		<MovieCardContainer>
-			<p>title</p>
-			<p>date</p>
+			<p>{movie.Title}</p>
+			<img src={movie.Poster} alt='' />
+			<p>{movie.Year}</p>
 		</MovieCardContainer>
 	)
 }
