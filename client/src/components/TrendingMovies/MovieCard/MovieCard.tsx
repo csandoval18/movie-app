@@ -1,16 +1,17 @@
 import React from 'react'
+import { MovieData } from '../../../types'
 import { MovieCardContainer } from './MovieCard.elements'
 
 interface MovieCardProps {
-	movie: any
+	data: MovieData
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	return (
 		<MovieCardContainer>
-			<p>{movie.Title}</p>
-			<img src={movie.Poster} alt='' />
-			<p>{movie.Year}</p>
+			<p>{data.Title}</p>
+			<img src={data.Poster} alt='' />
+			<p>{data.Year}</p>
 		</MovieCardContainer>
 	)
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { device } from '../../styles/deviceSizes'
 
-export const TrendingMoviesContainer = styled.div`
+export const MoviesListContainer = styled.div`
 	display: grid;
 	padding: 1rem 2rem;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
