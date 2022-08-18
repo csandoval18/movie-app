@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import {
+	selectMovieSearchInput,
+	setSearchVal,
+} from '../../features/searchMovie/searchMovieSlice'
 import { MovieData } from '../../types'
 import { SearchBarContainer, SearchBarInput } from './SearchBar.elements'
 
 const SearchBar = () => {
 	// const [movies, setMovies] = useState<MovieData[]>([])
+	const searchMovieInput = useAppSelector(selectMovieSearchInput)
+	const dispatch = useAppDispatch()
 	const [searchInput, setSearchInput] = useState<String>()
+
+	console.log('searchMovieInput:', searchMovieInput)
 
 	// const searchMovieRequest = async () => {
 	// 	const url = `http://www.omdbapi.com/?s=${searchInput}&apikey=9eaecb1`
@@ -26,6 +35,7 @@ const SearchBar = () => {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault()
+						dispatch(setSearchVal())
 						// searchMovieRequest()
 					}}
 				>

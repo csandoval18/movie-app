@@ -20,5 +20,6 @@ export const searchMovieSlice = createSlice({
 })
 
 export const { setSearchVal } = searchMovieSlice.actions
-export const selectCount = (state: RootState) => state.counter.value
+export const selectMovieSearchInput = (state: RootState) =>
+	state.searchMovie.searchVal
 export default searchMovieSlice.reducer
