@@ -14,6 +14,7 @@ const User = require('../model/User');
 const Joi = require('@hapi/joi');
 const schema = Joi.object({
     name: Joi.string().min(6).required(),
+    username: Joi.string().min(6).required(),
     email: Joi.string().min(6).required().email(),
     password: Joi.string().min(6).required(),
 });
@@ -23,17 +24,17 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
         return res.status(400).send(error.details[0].message);
     const user = new User({
         name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
     });
     try {
         const savedUser = yield user.save();
-        res.send(savedUser);
+        return res.send(savedUser);
     }
     catch (err) {
-        res.status(400).send(err);
+        return res.status(400).send(err);
     }
-    return res.status(400).send('There is error with validation servers');
 }));
 exports.default = router;
 //# sourceMappingURL=auth.js.map
