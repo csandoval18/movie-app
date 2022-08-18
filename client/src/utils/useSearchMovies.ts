@@ -12,7 +12,6 @@ export const useSearchMovies = (pageNumber = 1): MovieData[] => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('data:', data)
 				setMovies(data.Search)
 			})
 	}, [url])

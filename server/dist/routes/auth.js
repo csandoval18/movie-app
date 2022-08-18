@@ -11,17 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
 const User = require('../model/User');
-const Joi = require('@hapi/joi');
-const schema = Joi.object({
-    name: Joi.string().min(6).required(),
-    username: Joi.string().min(6).required(),
-    email: Joi.string().min(6).required().email(),
-    password: Joi.string().min(6).required(),
-});
+const validation_1 = require("../utils/validation");
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { error } = schema.validate(req.body);
+    const { error } = (0, validation_1.registerValidation)(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
+    const usernameExists = yield User.findOne({ email: req.body.email });
+    console.log('username:', usernameExists);
+    if (usernameExists)
+        return res.status(400).send('Username already taken');
+    const emailExists = yield User.findOne({ email: req.body.email });
+    if (emailExists)
+        return res.status(400).send('Email is already linked to an account');
     const user = new User({
         name: req.body.name,
         username: req.body.username,

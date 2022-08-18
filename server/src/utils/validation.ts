@@ -1,10 +1,10 @@
-import { UserParameters } from 'src/types'
+import { UserFields } from 'src/types'
 
 // Validation
 const Joi = require('@hapi/joi')
 
 // Register Validation
-const registerValidation = (data: UserParameters) => {
+export const registerValidation = (body: UserFields) => {
 	const schema = Joi.object({
 		name: Joi.string().min(6).required(),
 		username: Joi.string().min(6).required(),
@@ -12,17 +12,15 @@ const registerValidation = (data: UserParameters) => {
 		password: Joi.string().min(6).required(),
 	})
 
-	Joi.validate(data, schema)
+	return schema.validate(body)
 }
 
-const loginValidation = (data: UserParameters) => {
+export const loginValidation = (data: UserFields) => {
 	const schema = Joi.object({
 		username: Joi.string().min(6).required(),
 		email: Joi.string().min(6).required().email(),
 		password: Joi.string().min(6).required(),
 	})
 
-	Joi.validate(data, schema)
+	schema.validate(data, schema)
 }
-
-module.exports.registerValidation = registerValidation

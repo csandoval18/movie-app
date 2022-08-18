@@ -1,5 +1,11 @@
-const mongoose = require('mongoose');
-const usersSchema = new mongoose.Schema({
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.usersSchema = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
+exports.usersSchema = new mongoose_1.default.Schema({
     name: {
         type: String,
         required: true,
@@ -29,5 +35,5 @@ const usersSchema = new mongoose.Schema({
         default: Date.now,
     },
 });
-module.exports = mongoose.model('Users', usersSchema);
+module.exports = mongoose_1.default.model('Users', exports.usersSchema);
 //# sourceMappingURL=User.js.map

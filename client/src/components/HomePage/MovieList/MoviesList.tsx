@@ -12,25 +12,28 @@ import {
 	PaginationBtns,
 } from './MoviesList.elements'
 
-const TrendingMovies: React.FC = () => {
-	const [pageNumber, setPageNumber] = useState<number>(1)
+const MovieList: React.FC = () => {
+	const [currPageNum, setCurrPageNum] = useState<number>(1)
 	const searchMovieInput = useAppSelector(selectMovieSearchInput)
+	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
 
-	let movies = useSearchMovies(pageNumber)
+	let movies = useSearchMovies(currPageNum)
 	movies = useSortByYear(movies)
 
-	// const switchPages = (direction: string): any => {
-	// 	switch (direction) {
-	// 		case 'left':
-	// 		case 'right':
-	// 			setPageNumber(pageNumber + 1)
-	// 	}
-	// }
+	const increasePagPages = () => {
+		console.log('called increase pag pages')
+		setPagPageNums(pagPageNums.map((curr) => curr + 4))
+	}
 
-	useEffect(() => {
-		console.log('searchMovieInput:', searchMovieInput)
-	}, [searchMovieInput])
+	const decreasePagPages = () => {
+		setPagPageNums(pagPageNums.map((curr) => curr - 4))
+	}
+	console.log('currPage:', currPageNum)
 
+	// useEffect(() => {
+	// 	console.log('searchMovieInput:', searchMovieInput)
+	// }, [searchMovieInput])
+	// console.log('movies:', movies)
 	return (
 		<MoviesListContainer>
 			<Header>Search Result</Header>
@@ -39,26 +42,53 @@ const TrendingMovies: React.FC = () => {
 					<MovieCard key={movie.imdbID} data={movie}></MovieCard>
 				))}
 			</MovieResults>
-			{movies ? (
+			{movies.length !== 0 ? (
 				<PaginationBtns>
 					<div className='btn-group'>
 						<button
 							className='btn'
 							onClick={() => {
-								if (pageNumber === 1) return
-								setPageNumber(pageNumber - 1)
+								if (currPageNum === 1) return
+								if (currPageNum === pagPageNums[0]) decreasePagPages()
+								setCurrPageNum(currPageNum - 1)
 							}}
 						>
 							«
 						</button>
-						<button className='btn btn-active'>1</button>
-						<button className='btn'>2</button>
-						<button className='btn'>3</button>
-						<button className='btn'>4</button>
+						<button
+							className={
+								currPageNum === pagPageNums[0] ? 'btn btn-active' : 'btn'
+							}
+						>
+							{pagPageNums[0]}
+						</button>
+						<button
+							className={
+								currPageNum === pagPageNums[1] ? 'btn btn-active' : 'btn'
+							}
+						>
+							{pagPageNums[1]}
+						</button>
+						<button
+							className={
+								currPageNum === pagPageNums[2] ? 'btn btn-active' : 'btn'
+							}
+						>
+							{pagPageNums[2]}
+						</button>
+						<button
+							className={
+								currPageNum === pagPageNums[3] ? 'btn btn-active' : 'btn'
+							}
+						>
+							{pagPageNums[3]}
+						</button>
 						<button
 							className='btn'
 							onClick={() => {
-								setPageNumber(pageNumber + 1)
+								if (currPageNum === pagPageNums[pagPageNums.length - 1])
+									increasePagPages()
+								setCurrPageNum(currPageNum + 1)
 							}}
 						>
 							»
@@ -72,4 +102,4 @@ const TrendingMovies: React.FC = () => {
 	)
 }
 
-export default TrendingMovies
+export default MovieList

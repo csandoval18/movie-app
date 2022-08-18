@@ -1,4 +1,4 @@
-export interface UserParameters {
+export interface UserFields {
 	name: string
 	username: string
 	email: string
