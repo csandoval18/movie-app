@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 const router = require('express').Router()
 const User = require('../model/User')
 
-//Validatio
+// Validation
 const Joi = require('@hapi/joi')
 
 const schema = Joi.object({
@@ -13,7 +13,7 @@ const schema = Joi.object({
 })
 
 router.post('/register', async (req: Request, res: Response) => {
-	//Validate data entered by user
+	// Validate data entered by user
 	const { error } = schema.validate(req.body)
 	if (error) return res.status(400).send(error.details[0].message)
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { MovieData } from '../../../types'
 import { MovieCardContainer } from './MovieCard.elements'
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
+import { MovieData } from '../../../../types'
 
 interface MovieCardProps {
 	data: MovieData
@@ -9,6 +9,7 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const [isFavorite, setIsFavorite] = useState(false)
+
 	return (
 		<MovieCardContainer>
 			<div className='card card-compact w-96 bg-base-100 shadow-xl'>
@@ -17,7 +18,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 				</figure>
 				<span className='card-body'>
 					<h2 className='card-title'>{data.Title}</h2>
-					<p>{data.Type}</p>
+					<p>{data.Type[0].toUpperCase() + data.Type.substring(1)}</p>
 					<p>{data.Year}</p>
 					<div className='card-actions justify-end'>
 						<button className='btn btn-primary'>Details</button>

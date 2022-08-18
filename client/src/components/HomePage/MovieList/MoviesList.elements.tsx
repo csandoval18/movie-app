@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { device } from '../../styles/deviceSizes'
+import { device } from '../../../styles/deviceSizes'
 
 export const MoviesListContainer = styled.div`
 	display: grid;

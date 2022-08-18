@@ -4,7 +4,7 @@ import moviesimg from '../../assets/images/HomePage/movies.webp'
 
 // bg-gradient-to-b from-gray-700 via-gray-900 to-black'
 export const HomePageContainer = styled.div`
-	height: 100vh;
+	/* height: 100vh; */
 `
 
 export const FirstHeadDiv = styled.div`
