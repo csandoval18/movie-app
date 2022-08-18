@@ -30,22 +30,22 @@ module.exports = {
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
-		// themes: [
-		// 	'dark',
-		// 	{
-		// 		mytheme: {
-		// 			primary: '#93c5fd',
-		// 			secondary: '#6ee7b7',
-		// 			accent: '#d1d5db',
-		// 			neutral: '#f3f4f6',
-		// 			'base-100': '#111827',
-		// 			info: '#84A6F0',
-		// 			success: '#86efac',
-		// 			warning: '#fcd34d',
-		// 			error: '#F07775',
-		// 		},
-		// 	},
-		// ],
+		themes: [
+			'light',
+			{
+				mytheme: {
+					primary: '#93c5fd',
+					secondary: '#6ee7b7',
+					accent: '#d1d5db',
+					neutral: '#f3f4f6',
+					'base-100': '#111827',
+					info: '#84A6F0',
+					success: '#86efac',
+					warning: '#fcd34d',
+					error: '#F07775',
+				},
+			},
+		],
 
 		styled: true,
 		// base: true,

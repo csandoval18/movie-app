@@ -11,7 +11,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const [isFavorite, setIsFavorite] = useState(false)
 	return (
 		<MovieCardContainer>
-			<div className='card w-96 glass'>
+			<div className='card card-compact w-96 bg-base-100 shadow-xl'>
 				<figure>
 					<img src={data.Poster} alt='poster picture' />
 				</figure>

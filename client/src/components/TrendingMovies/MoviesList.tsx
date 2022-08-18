@@ -5,10 +5,12 @@ import { MovieData } from '../../types'
 import MovieCard from './MovieCard/MovieCard'
 import { Header, MoviesListContainer } from './MoviesList.elements'
 import { useSearchMovies } from '../../utils/useSearchMovies'
+import { useSortByYear } from '../../utils/useSortByYear'
 
 const TrendingMovies: React.FC = () => {
 	const searchMovieInput = useAppSelector(selectMovieSearchInput)
 	let movies = useSearchMovies()
+	movies = useSortByYear(movies)
 
 	useEffect(() => {
 		console.log('searchMovieInput:', searchMovieInput)

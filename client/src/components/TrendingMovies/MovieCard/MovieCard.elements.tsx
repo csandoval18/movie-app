@@ -4,7 +4,7 @@ export const MovieCardContainer = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	height: 39rem;
+	height: 44rem;
 	width: 400px;
 	border-radius: 12px;
 

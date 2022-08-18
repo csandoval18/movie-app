@@ -11,7 +11,11 @@ export const MoviesListContainer = styled.div`
 		height: 56px;
 	}
 
-	#hello {
+	figure > img {
+		width: 100%;
+		height: 30rem;
+		border-top-left-radius: 14px;
+		border-top-right-radius: 14px;
 	}
 
 	@media ${device.laptop} {
