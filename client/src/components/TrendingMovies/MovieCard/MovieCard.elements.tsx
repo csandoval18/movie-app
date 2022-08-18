@@ -4,10 +4,14 @@ export const MovieCardContainer = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	height: 36rem;
-	width: 18rem;
+	height: 39rem;
+	width: 400px;
 	border-radius: 12px;
-	background-color: red;
+
+	.card {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
 
 	img {
 		height: 24rem;

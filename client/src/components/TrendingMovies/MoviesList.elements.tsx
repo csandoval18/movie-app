@@ -7,6 +7,13 @@ export const MoviesListContainer = styled.div`
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	gap: 1rem;
 
+	.card-title {
+		height: 56px;
+	}
+
+	#hello {
+	}
+
 	@media ${device.laptop} {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
