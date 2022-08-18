@@ -1,30 +1,31 @@
 import React from 'react'
+import { Header } from '../../styles/GlobalStyles.elements'
 import { LoginContainer } from './Login.elements'
 
 const Login = () => {
 	return (
 		<LoginContainer>
-			<div className='card w-96 bg-base-100 shadow-xl'>
+			<div className='card  bg-base-100 shadow-xl'>
 				<div className='card-body'>
-					<h1 className='card-title'>Login</h1>
-					<form action=''>
+					<Header className='card-title'>Login</Header>
+					<form onSubmit={() => {}}>
 						<label htmlFor='username'>Username</label>
 						<input
 							name='username'
 							type='text'
-							placeholder='Type here'
-							className='input input-bordered input-primary w-full max-w-xs'
+							placeholder='username'
+							className='input input-bordered input-primary w-full max-w'
 						/>
 						<label htmlFor='password'>Password</label>
 						<input
 							name='password'
 							type='text'
-							placeholder='Type here'
-							className='input input-bordered input-primary w-full max-w-xs'
+							placeholder='password'
+							className='input input-bordered input-primary w-full max-w'
 						/>
-						<div className='card-actions justify-end'>
+						<span className='card-actions justify-end'>
 							<button className='btn btn-primary'>Login</button>
-						</div>
+						</span>
 					</form>
 				</div>
 			</div>
