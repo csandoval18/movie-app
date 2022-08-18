@@ -6,21 +6,21 @@ import { Header, MoviesListContainer } from './MoviesList.elements'
 const TrendingMovies: React.FC = () => {
 	const [movies, setMovies] = useState<MovieData[]>([])
 
-	const getMovieRequest = async () => {
-		const url = 'http://www.omdbapi.com/?s=star+wars&apikey=9eaecb1'
-		await fetch(url)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log('data:', data)
-				setMovies(data.Search)
-			})
-	}
+	// const getMovieRequest = async () => {
+	// 	const url = 'http://www.omdbapi.com/?s=star+wars&apikey=9eaecb1'
+	// 	await fetch(url)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log('data:', data)
+	// 			setMovies(data.Search)
+	// 		})
+	// }
 
 	// Will fetch when page loads
-	useEffect(() => {
-		getMovieRequest()
-	}, [])
-	console.log('movies:', movies)
+	// useEffect(() => {
+	// 	getMovieRequest()
+	// }, [])
+	// console.log('movies:', movies)
 
 	return (
 		<>

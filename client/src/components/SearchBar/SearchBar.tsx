@@ -3,27 +3,30 @@ import { MovieData } from '../../types'
 import { SearchBarContainer, SearchBarInput } from './SearchBar.elements'
 
 const SearchBar = () => {
-	const [movies, setMovies] = useState<MovieData[]>([])
+	// const [movies, setMovies] = useState<MovieData[]>([])
 	const [searchInput, setSearchInput] = useState<String>()
 
-	const searchMovieRequest = async () => {
-		const url = `http://www.omdbapi.com/?s=${searchInput}&apikey=9eaecb1`
-		await fetch(url)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log('data:', data)
-				setMovies(data.Search)
-			})
-	}
+	// const searchMovieRequest = async () => {
+	// 	const url = `http://www.omdbapi.com/?s=${searchInput}&apikey=9eaecb1`
+	// 	await fetch(url)
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log('data:', data)
+	// 			setMovies(data.Search)
+	// 		})
+	// }
 
-	console.log('movies:', movies)
+	// useEffect(() => {
+	// 	console.log('movies:', movies)
+	// }, [movies])
+
 	return (
 		<SearchBarContainer className='searchbar-container'>
 			<div className='form-control'>
 				<form
 					onSubmit={(e) => {
 						e.preventDefault()
-						searchMovieRequest()
+						// searchMovieRequest()
 					}}
 				>
 					<SearchBarInput
