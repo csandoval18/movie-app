@@ -10,11 +10,11 @@ const initialState: SearchMovieState = {
 }
 
 export const searchMovieSlice = createSlice({
-	name: 'searchMovieVal',
+	name: 'SET_MOVIE_SEARCH_INPUT',
 	initialState,
 	reducers: {
-		setSearchVal: (state) => {
-			state.searchVal = state.searchVal
+		setSearchVal: (state, action) => {
+			state.searchVal = action.payload
 		},
 	},
 })

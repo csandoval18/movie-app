@@ -13,21 +13,9 @@ const SearchBar = () => {
 	const dispatch = useAppDispatch()
 	const [searchInput, setSearchInput] = useState<String>()
 
-	console.log('searchMovieInput:', searchMovieInput)
-
-	// const searchMovieRequest = async () => {
-	// 	const url = `http://www.omdbapi.com/?s=${searchInput}&apikey=9eaecb1`
-	// 	await fetch(url)
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			console.log('data:', data)
-	// 			setMovies(data.Search)
-	// 		})
-	// }
-
-	// useEffect(() => {
-	// 	console.log('movies:', movies)
-	// }, [movies])
+	useEffect(() => {
+		console.log('searchMovieInput:', searchMovieInput)
+	}, [searchMovieInput])
 
 	return (
 		<SearchBarContainer className='searchbar-container'>
@@ -35,7 +23,7 @@ const SearchBar = () => {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault()
-						dispatch(setSearchVal())
+						dispatch(setSearchVal(searchInput))
 						// searchMovieRequest()
 					}}
 				>
