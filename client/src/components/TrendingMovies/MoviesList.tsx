@@ -4,24 +4,14 @@ import { selectMovieSearchInput } from '../../features/searchMovie/searchMovieSl
 import { MovieData } from '../../types'
 import MovieCard from './MovieCard/MovieCard'
 import { Header, MoviesListContainer } from './MoviesList.elements'
+import { useSearchMovies } from '../../utils/useSearchMovies'
 
 const TrendingMovies: React.FC = () => {
-	const [movies, setMovies] = useState<MovieData[]>([])
 	const searchMovieInput = useAppSelector(selectMovieSearchInput)
+	let movies = useSearchMovies()
 
-	const getMovieRequest = async () => {
-		const url = `http://www.omdbapi.com/?s=${searchMovieInput}&apikey=9eaecb1`
-		await fetch(url)
-			.then((res) => res.json())
-			.then((data) => {
-				console.log('data:', data)
-				setMovies(data.Search)
-			})
-	}
-
-	// Will fetch when page loads
 	useEffect(() => {
-		getMovieRequest()
+		console.log('searchMovieInput:', searchMovieInput)
 	}, [searchMovieInput])
 
 	return (
@@ -29,7 +19,7 @@ const TrendingMovies: React.FC = () => {
 			<img src='' alt='' />
 			<Header>Movies</Header>
 			<MoviesListContainer>
-				{movies.map((movie) => (
+				{movies?.map((movie) => (
 					<MovieCard key={movie.imdbID} data={movie}></MovieCard>
 				))}
 			</MoviesListContainer>

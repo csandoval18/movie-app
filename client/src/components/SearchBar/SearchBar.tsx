@@ -4,18 +4,11 @@ import {
 	selectMovieSearchInput,
 	setSearchVal,
 } from '../../features/searchMovie/searchMovieSlice'
-import { MovieData } from '../../types'
 import { SearchBarContainer, SearchBarInput } from './SearchBar.elements'
 
 const SearchBar = () => {
-	// const [movies, setMovies] = useState<MovieData[]>([])
-	const searchMovieInput = useAppSelector(selectMovieSearchInput)
 	const dispatch = useAppDispatch()
 	const [searchInput, setSearchInput] = useState<String>()
-
-	useEffect(() => {
-		console.log('searchMovieInput:', searchMovieInput)
-	}, [searchMovieInput])
 
 	return (
 		<SearchBarContainer className='searchbar-container'>
