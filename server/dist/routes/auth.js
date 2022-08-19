@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
 const User = require('../model/User');
 const validation_1 = require("../utils/validation");
+const argon2 = require('argon2');
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { error } = (0, validation_1.registerValidation)(req.body);
     if (error)
@@ -23,11 +24,12 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
     const emailExists = yield User.findOne({ email: req.body.email });
     if (emailExists)
         return res.status(400).send('Email is already linked to an account');
+    const hashpw = yield argon2.hash(req.body.password);
     const user = new User({
         name: req.body.name,
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: hashpw,
     });
     try {
         const savedUser = yield user.save();

@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 const router = require('express').Router()
 const User = require('../model/User')
 import { registerValidation } from '../utils/validation'
+const argon2 = require('argon2')
 
 router.post('/register', async (req: Request, res: Response) => {
 	// Validate data entered by user
@@ -18,12 +19,15 @@ router.post('/register', async (req: Request, res: Response) => {
 	if (emailExists)
 		return res.status(400).send('Email is already linked to an account')
 
+	// Hash passwords
+	const hashpw = await argon2.hash(req.body.password)
+
 	// Create a new user
 	const user = new User({
 		name: req.body.name,
 		username: req.body.username,
 		email: req.body.email,
-		password: req.body.password,
+		password: hashpw,
 	})
 
 	try {
