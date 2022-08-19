@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../../../styles/deviceSizes'
 
 export const MovieCardContainer = styled.div`
 	display: flex;
@@ -9,25 +10,37 @@ export const MovieCardContainer = styled.div`
 	border-radius: 12px;
 
 	.card {
+		width: 100%;
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 	}
 
-	img {
-		height: 24rem;
-		width: 17rem;
+	figure {
+		height: 30rem;
+		width: 100%;
 	}
-`
-export const Title = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 5rem;
-	width: 100%;
-	border-top-left-radius: 12px;
-	border-top-right-radius: 12px;
-	color: aliceblue;
-	padding: 20px 20px;
-	background-color: black;
+
+	@media ${device.laptopL} {
+		height: 100%;
+
+		.card {
+			height: 30rem;
+		}
+
+		figure {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: 20rem;
+			background-color: black;
+			border-top-left-radius: 18px;
+			border-top-right-radius: 18px;
+
+			img {
+				border-radius: 12px;
+				height: 250px;
+				width: 100%;
+			}
+		}
+	}
 `

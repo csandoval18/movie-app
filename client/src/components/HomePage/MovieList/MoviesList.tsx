@@ -36,7 +36,7 @@ const MovieList: React.FC = () => {
 	// console.log('movies:', movies)
 	return (
 		<MoviesListContainer>
-			<Header>Search Result</Header>
+			<Header>Search Results</Header>
 			<MovieResults className='movie-results'>
 				{movies?.map((movie) => (
 					<MovieCard key={movie.imdbID} data={movie}></MovieCard>
@@ -86,6 +86,7 @@ const MovieList: React.FC = () => {
 						<button
 							className='btn'
 							onClick={() => {
+								if (movies.length !== 10) return
 								if (currPageNum === pagPageNums[pagPageNums.length - 1])
 									increasePagPages()
 								setCurrPageNum(currPageNum + 1)
