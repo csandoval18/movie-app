@@ -25,6 +25,7 @@ export const MovieCardContainer = styled.div`
 
 		.card {
 			height: 30rem;
+			width: 22rem;
 		}
 
 		figure {
@@ -32,14 +33,14 @@ export const MovieCardContainer = styled.div`
 			justify-content: center;
 			width: 100%;
 			height: 20rem;
-			background-color: black;
+			background-color: #202020;
 			border-top-left-radius: 18px;
 			border-top-right-radius: 18px;
 
 			img {
 				border-radius: 12px;
-				height: 250px;
-				width: 100%;
+				height: 240px;
+				width: 18rem;
 			}
 		}
 	}

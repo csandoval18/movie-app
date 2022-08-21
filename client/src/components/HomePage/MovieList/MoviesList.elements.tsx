@@ -2,7 +2,16 @@ import styled from 'styled-components'
 import { device } from '../../../styles/deviceSizes'
 
 export const MoviesListContainer = styled.div`
-	padding: 2rem 2rem;
+	.header {
+		margin-left: 3rem;
+		padding: 2rem 0;
+	}
+
+	@media ${device.laptopL} {
+		.header {
+			margin-left: 7rem;
+		}
+	}
 `
 
 export const MovieResults = styled.div`

@@ -35,8 +35,8 @@ const MovieList: React.FC = () => {
 	// }, [searchMovieInput])
 	// console.log('movies:', movies)
 	return (
-		<MoviesListContainer>
-			<Header>Search Results</Header>
+		<MoviesListContainer className='movielist-container'>
+			<Header className='header'>Search Results</Header>
 			<MovieResults className='movie-results'>
 				{movies?.map((movie) => (
 					<MovieCard key={movie.imdbID} data={movie}></MovieCard>
