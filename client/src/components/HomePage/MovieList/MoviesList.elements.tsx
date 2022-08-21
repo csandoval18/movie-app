@@ -31,11 +31,7 @@ export const MovieResults = styled.div`
 		border-top-right-radius: 14px;
 	}
 
-	@media ${device.laptop} {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	@media ${device.laptopL} {
+	@media only screen and (${device.desktopM}) {
 		grid-template-columns: 1fr 1fr;
 	}
 `

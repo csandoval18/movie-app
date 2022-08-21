@@ -2,7 +2,6 @@ import React, { MouseEventHandler, useEffect, useState } from 'react'
 import { useAppSelector } from '../../../app/hooks'
 import { selectMovieSearchInput } from '../../../features/searchMovie/searchMovieSlice'
 import { Header } from '../../../styles/GlobalStyles.elements'
-import { MovieData } from '../../../types'
 import { useSearchMovies } from '../../../utils/useSearchMovies'
 import { useSortByYear } from '../../../utils/useSortByYear'
 import MovieCard from './MovieCard/MovieCard'
@@ -28,7 +27,7 @@ const MovieList: React.FC = () => {
 	const decreasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr) => curr - 4))
 	}
-	console.log('currPage:', currPageNum)
+	// console.log('currPage:', currPageNum)
 
 	// useEffect(() => {
 	// 	console.log('searchMovieInput:', searchMovieInput)

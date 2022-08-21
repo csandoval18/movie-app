@@ -1,6 +1,8 @@
-import { MovieData } from '../types'
+import { MoviesSearchData } from '../types'
 
-export const useSortByYear = (movies: MovieData[]): MovieData[] => {
+export const useSortByYear = (
+	movies: MoviesSearchData[],
+): MoviesSearchData[] => {
 	if (!movies) return []
 
 	movies.sort(function (a, b) {

@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
 	const navigate = useNavigate()
 	const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
 	return (
-		<NavbarContainer className='navbar-container bg-base-100'>
+		<NavbarContainer className='navbar-container base-100'>
 			<div>
 				<Link className='btn btn-ghost normal-case text-xl' to='/'>
 					CAS

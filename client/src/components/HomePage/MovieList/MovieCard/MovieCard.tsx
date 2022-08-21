@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { MovieCardContainer } from './MovieCard.elements'
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
-import { MovieSearchData } from '../../../../types'
+import { MoviesSearchData } from '../../../../types'
 
 interface MovieCardProps {
-	data: MovieSearchData
+	data: MoviesSearchData
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {

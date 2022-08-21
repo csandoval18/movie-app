@@ -1,4 +1,4 @@
-export interface MovieSearchData {
+export interface MoviesSearchData {
 	Title: string
 	Year: string
 	Type: string
@@ -6,4 +6,35 @@ export interface MovieSearchData {
 	imdbID: string
 }
 
-export interface MovieDetails {}
+interface RatingsFields {
+	Source: string
+	Value: string
+}
+
+export interface MovieDetails {
+	Title: string
+	Year: string | number
+	Rated: string
+	Released: string
+	Runtine: string
+	Genre: string
+	Director: string
+	Writer: string
+	Actors: string
+	Plot: string
+	Language: string
+	Country: string
+	Awards: string
+	Poster: string
+	Ratings: RatingsFields[]
+	Metascore: string | number
+	imdbRating: string | number
+	imdbVotes: string | number
+	imdbID: string
+	Type: string
+	DVD: string
+	BoxOffice: string | number
+	Production: string
+	Website: string
+	Response: string
+}

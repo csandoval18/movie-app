@@ -20,7 +20,7 @@ const SearchBar = () => {
 					<SearchBarInput
 						type='text'
 						placeholder='Search movies'
-						className='input input-bordered max-w-none w-[500px]'
+						className='input input-bordered '
 						onInput={(e) =>
 							setSearchInput((e.target as HTMLInputElement).value)
 						}

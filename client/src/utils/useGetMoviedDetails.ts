@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector } from '../app/hooks'
 import { selectMovieSearchInput } from '../features/searchMovie/searchMovieSlice'
-import { MovieSearchData } from '../types'
+import { MovieDetails } from '../types'
 
-export const useSearchMovies = (pageNumber = 1): MovieSearchData[] => {
-	const [movie, setMovie] = useState<MovieSearchData>()
+export const useSearchMovies = (): MovieDetails | undefined => {
+	const [movie, setMovie] = useState<MovieDetails | undefined>(undefined)
 	const searchMovieInput = useAppSelector(selectMovieSearchInput)
 	const url = `http://www.omdbapi.com/?t=${searchMovieInput}&apikey=9eaecb1}`
 
