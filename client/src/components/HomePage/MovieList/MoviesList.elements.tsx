@@ -23,7 +23,7 @@ export const MovieResults = styled.div`
 	} */
 `
 
-export const PaginationBtns = styled.div`
+export const PaginationBtnsStyle = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;

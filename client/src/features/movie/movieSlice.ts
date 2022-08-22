@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState, AppThunk } from '../../app/store'
+import { MoviesSearchData } from '../../types'
 
 export interface SearchMovieState {
 	searchVal: String
+	movies: MoviesSearchData[]
 }
 
 const initialState: SearchMovieState = {
 	searchVal: '',
+	movies: [],
 }
 
 export const movieSlice = createSlice({
@@ -15,6 +18,9 @@ export const movieSlice = createSlice({
 	reducers: {
 		setSearchVal: (state, action) => {
 			state.searchVal = action.payload
+		},
+		setMovies: (state, action) => {
+			state.movies = action.payload
 		},
 	},
 })

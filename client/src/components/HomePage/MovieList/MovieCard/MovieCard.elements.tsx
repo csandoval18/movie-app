@@ -8,9 +8,6 @@ export const MovieCardContainer = styled.div`
 	height: 44rem;
 	width: 22rem;
 	border-radius: 12px;
-	&:hover {
-		cursor: pointer;
-	}
 
 	.card {
 		width: 100%;

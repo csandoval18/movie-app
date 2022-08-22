@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 import { NavbarContainer } from '../Navbar.elements'
 
+export const SearchBarContainer = styled(NavbarContainer)`
+	justify-content: center;
+	.options-container {
+		width: 100%;
+	}
+`
 export const SearchBarInput = styled.input`
-	height: 2.4rem;
+	min-width: 300px;
 `
 
 export const ReturnBtn = styled.button`
-	width: 2.5rem;
+	width: 3rem;
 	/* background-color: hsl(var(--n)); */
 	color: white;
 	display: flex;

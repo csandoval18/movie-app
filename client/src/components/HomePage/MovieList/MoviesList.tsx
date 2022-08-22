@@ -8,7 +8,7 @@ import MovieCard from './MovieCard/MovieCard'
 import {
 	MovieResults,
 	MoviesListContainer,
-	PaginationBtns,
+	PaginationBtnsStyle,
 } from './MoviesList.elements'
 
 const MovieList: React.FC = () => {
@@ -42,7 +42,7 @@ const MovieList: React.FC = () => {
 				))}
 			</MovieResults>
 			{movies.length !== 0 ? (
-				<PaginationBtns>
+				<PaginationBtnsStyle>
 					<div className='btn-group'>
 						<button
 							className='btn'
@@ -94,7 +94,7 @@ const MovieList: React.FC = () => {
 							»
 						</button>
 					</div>
-				</PaginationBtns>
+				</PaginationBtnsStyle>
 			) : (
 				<div></div>
 			)}

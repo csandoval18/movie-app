@@ -15,11 +15,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const [isFavorite, setIsFavorite] = useState(false)
 
 	return (
-		<MovieCardContainer
-			onClick={() => {
-				navigate('/movie-details')
-			}}
-		>
+		<MovieCardContainer>
 			<div className='card card-compact bg-base-100 shadow-xl'>
 				<figure>
 					<img src={data.Poster} alt='poster picture' />
@@ -29,7 +25,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 					<p>{data.Type[0].toUpperCase() + data.Type.substring(1)}</p>
 					<p>{data.Year}</p>
 					<div className='card-actions justify-end'>
-						<button className='btn btn-primary'>Details</button>
+						<button
+							className='btn btn-primary'
+							onClick={() => {
+								navigate('/movie-details')
+							}}
+						>
+							Details
+						</button>
 						<button
 							className='btn btn-primary'
 							onClick={() => {

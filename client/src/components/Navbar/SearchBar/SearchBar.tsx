@@ -6,7 +6,11 @@ import { setSearchVal } from '../../../features/movie/movieSlice'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
 import { Flex, HomeBtn } from '../../../styles/GlobalStyles.elements'
 import { NavbarContainer } from '../Navbar.elements'
-import { ReturnBtn, SearchBarInput } from './SearchBar.elements'
+import {
+	ReturnBtn,
+	SearchBarContainer,
+	SearchBarInput,
+} from './SearchBar.elements'
 
 const SearchBar: React.FC = () => {
 	const navigate = useNavigate()
@@ -14,11 +18,8 @@ const SearchBar: React.FC = () => {
 	const [searchInput, setSearchInput] = useState<String>()
 
 	return (
-		<NavbarContainer className='searchbar-container'>
-			<Link className='' to='/'>
-				<HomeBtn>CAS</HomeBtn>
-			</Link>
-			<Flex gap='1rem'>
+		<SearchBarContainer className='searchbar-container'>
+			<Flex gap='1rem' className='options-container'>
 				<ReturnBtn
 					onClick={() => {
 						dispatch(setToggleSearchBar(false))
@@ -45,8 +46,7 @@ const SearchBar: React.FC = () => {
 					</form>
 				</div>
 			</Flex>
-			<div></div>
-		</NavbarContainer>
+		</SearchBarContainer>
 	)
 }
 
