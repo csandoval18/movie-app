@@ -9,7 +9,7 @@ const initialState: SearchMovieState = {
 	searchVal: '',
 }
 
-export const searchMovieSlice = createSlice({
+export const movieSlice = createSlice({
 	name: 'SET_MOVIE_SEARCH_INPUT',
 	initialState,
 	reducers: {
@@ -19,7 +19,7 @@ export const searchMovieSlice = createSlice({
 	},
 })
 
-export const { setSearchVal } = searchMovieSlice.actions
+export const { setSearchVal } = movieSlice.actions
 export const selectMovieSearchInput = (state: RootState) =>
-	state.searchMovie.searchVal
-export default searchMovieSlice.reducer
+	state.movie.searchVal
+export default movieSlice.reducer

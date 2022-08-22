@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../../app/hooks'
-import { setSearchVal } from '../../../features/searchMovie/searchMovieSlice'
+import { setSearchVal } from '../../../features/movie/searchMovieSlice'
 import { SearchBarContainer, SearchBarInput } from './SearchBar.elements'
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [searchInput, setSearchInput] = useState<String>()
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
-import { Link, useNavigate } from 'react-router-dom'
-import { Flex } from '../../styles/GlobalStyles.elements'
+import { Link } from 'react-router-dom'
+import { useAppDispatch } from '../../app/hooks'
+import { setToggleSearchBar } from '../../features/navbar/navbarToggleSlice'
 import {
 	DropDown,
 	DropDownAnchor,
@@ -11,8 +12,9 @@ import {
 import SearchBar from './SearchBar/SearchBar'
 
 const Navbar: React.FC = () => {
+	const dispatch = useAppDispatch()
 	const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false)
-	const [toggleSearch, setToggleSearch] = useState<Boolean>(false)
+
 	return (
 		<NavbarContainer className='navbar-container base-100'>
 			<div>
@@ -20,7 +22,7 @@ const Navbar: React.FC = () => {
 					CAS
 				</Link>
 			</div>
-			{/* <SearchBar /> */}
+			<SearchBar></SearchBar>
 			{isLoggedIn ? (
 				<>
 					<button>
@@ -58,7 +60,12 @@ const Navbar: React.FC = () => {
 				</>
 			) : (
 				<NavOptionsFlex ai='center' jc='right'>
-					<button className='btn search-btn'>
+					<button
+						className='btn search-btn'
+						onClick={() => {
+							dispatch(setToggleSearchBar(true))
+						}}
+					>
 						<IoIosSearch className='icon'></IoIosSearch>
 					</button>
 					<Link className='btn' to='/login'>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector } from '../app/hooks'
-import { selectMovieSearchInput } from '../features/searchMovie/searchMovieSlice'
+import { selectMovieSearchInput } from '../features/movie/searchMovieSlice'
 import { MoviesSearchData } from '../types'
 
 export const useSearchMovies = (pageNumber = 1): MoviesSearchData[] => {
