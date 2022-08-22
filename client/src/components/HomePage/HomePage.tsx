@@ -8,11 +8,8 @@ import { HomePageContainer } from './HomePage.elements'
 import MoviesList from './MovieList/MoviesList'
 
 const HomePage = () => {
-	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
-	console.log('searchBar:', toggleSearchBar)
 	return (
 		<>
-			{toggleSearchBar ? <SearchBar /> : <Navbar></Navbar>}
 			<HomePageContainer className='homepage-container bg-base-100'>
 				<MoviesList />
 			</HomePageContainer>

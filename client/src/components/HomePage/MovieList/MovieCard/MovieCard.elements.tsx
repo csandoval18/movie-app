@@ -8,19 +8,26 @@ export const MovieCardContainer = styled.div`
 	height: 44rem;
 	width: 22rem;
 	border-radius: 12px;
+	&:hover {
+		cursor: pointer;
+	}
 
 	.card {
 		width: 100%;
-		padding-top: 1rem;
 		padding-bottom: 1rem;
 	}
 
 	figure {
 		height: 30rem;
 		width: 100%;
-	}
 
-	@media ${device.laptopL} {
+		img {
+			width: 100%;
+			height: 30rem;
+		}
+	}
+`
+/* @media ${device.laptopL} {
 		height: 100%;
 
 		.card {
@@ -43,5 +50,4 @@ export const MovieCardContainer = styled.div`
 				width: 18rem;
 			}
 		}
-	}
-`
+	} */

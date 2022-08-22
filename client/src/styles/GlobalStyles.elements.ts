@@ -47,6 +47,6 @@ export const HomeBtn = styled.button`
 	padding: 0 0.5rem;
 
 	&:hover {
-		background-color: hsl(var(--dark-hover));
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 `
