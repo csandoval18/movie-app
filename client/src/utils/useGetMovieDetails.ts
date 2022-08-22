@@ -3,7 +3,7 @@ import { useAppSelector } from '../app/hooks'
 import { selectMovieSearchInput } from '../features/movie/movieSlice'
 import { MovieDetails } from '../types'
 
-export const useSearchMovies = (): MovieDetails | undefined => {
+export const useGetMovieDetails = (): MovieDetails | undefined => {
 	const [movie, setMovie] = useState<MovieDetails | undefined>(undefined)
 	const searchMovieInput = useAppSelector(selectMovieSearchInput)
 	const url = `http://www.omdbapi.com/?t=${searchMovieInput}&apikey=9eaecb1}`

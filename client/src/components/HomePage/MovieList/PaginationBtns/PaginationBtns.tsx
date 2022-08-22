@@ -1,19 +1,26 @@
 import React, { useState } from 'react'
+import { useAppDispatch } from '../../../../app/hooks'
+import { setMovies } from '../../../../features/movie/movieSlice'
 import { useSearchMovies } from '../../../../utils/useSearchMovies'
+import { useSortByYear } from '../../../../utils/useSortByYear'
 import { PaginationBtnsStyle } from '../MoviesList.elements'
 
-const PaginationBtns = () => {
+const PaginationBtns = async () => {
 	const [currPageNum, setCurrPageNum] = useState<number>(1)
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
-	let movies = useSearchMovies(currPageNum)
+	let movies = await useSearchMovies(currPageNum)
+	movies = useSortByYear(movies)
+	let dispatch = useAppDispatch()
 
 	const increasePagPages = () => {
 		console.log('increase pages')
 		setPagPageNums(pagPageNums.map((curr: number) => curr + 4))
+		dispatch(setMovies(movies))
 	}
 
 	const decreasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr - 4))
+		dispatch(setMovies(movies))
 	}
 	return (
 		<PaginationBtnsStyle>
