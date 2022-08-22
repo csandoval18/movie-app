@@ -19,9 +19,10 @@ const MovieList: React.FC = () => {
 	// const searchMovieInput = useAppSelector(selectMovieSearchInput)
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
 
-	let movies: MoviesSearchData[] = []
-	// let movies = useAppSelector(selectMovies)
-	// console.log('movies movielist:', movies)
+	let movies = useAppSelector(selectMovies)
+	console.log('movies movielist:', movies)
+
+	// console.log('moviemovies = useAppSelector(ses movielist:', movies)
 
 	console.log('currPage:', currPageNum)
 	return (

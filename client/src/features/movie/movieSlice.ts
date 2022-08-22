@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { AiOutlineConsoleSql } from 'react-icons/ai'
+import { useAppSelector } from '../../app/hooks'
 import { RootState, AppThunk } from '../../app/store'
 import { MoviesSearchData } from '../../types'
 import { useSearchMovies } from '../../utils/useSearchMovies'
@@ -7,25 +9,25 @@ import { useSearchMovies } from '../../utils/useSearchMovies'
 export interface SearchMovieState {
 	searchVal: String
 	movies: MoviesSearchData[]
-  loading: Boolean
+	loading: Boolean
+}
+
+interface fetchMoviesArgs {
+	searchMovieInput: String | undefined
+	pageNum?: number
 }
 
 const initialState: SearchMovieState = {
 	searchVal: '',
 	movies: [],
-  loading: false,
+	loading: false,
 }
 
 export const fetchMoviesThunk = createAsyncThunk(
 	'movie/fetchMoviesThunk',
-	async (pageNumber: number = 1) => {
-		const searchMovieInput = selectMovieSearchInput
-		const movies = await axios
-			.get(
-				`http://www.omdbapi.com/?s=${searchMovieInput}&apikey=9eaecb1&page=${pageNumber}`,
-			)
-			.then((res) => res.data)
-
+	async (fetchMoviesArgs: fetchMoviesArgs) => {
+		const url = `http://www.omdbapi.com/?s=${fetchMoviesArgs.searchMovieInput}&apikey=9eaecb1`
+		const movies = await axios.get(url).then((res) => res.data.Search)
 		return movies
 		// return res.data.Search.map((movie: MoviesSearchData) => movie.Title)
 	},
@@ -45,14 +47,15 @@ export const movieSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchMoviesThunk.pending, (state) => {
-				state. = 'loading'
+				state.loading = true
 			})
 			.addCase(fetchMoviesThunk.fulfilled, (state, action) => {
-				state.status = 'idle'
-				state.movies.push(...action.payload)
+				state.loading = false
+				state.movies = [...action.payload]
 			})
 			.addCase(fetchMoviesThunk.rejected, (state) => {
-				state.status = 'failed'
+				state.loading = false
+				state.movies = []
 			})
 	},
 })
