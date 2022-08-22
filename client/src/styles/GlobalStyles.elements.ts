@@ -34,3 +34,19 @@ export const PrimaryButton = styled.button`
 		background-color: hsl(var(--nf));
 	}
 `
+export const HomeBtn = styled.button`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	height: 48px;
+	font-weight: 700;
+	/* background-color: red; */
+	font-size: 2.5rem;
+	border-radius: 10px;
+	padding: 0 0.5rem;
+
+	&:hover {
+		background-color: hsl(var(--dark-hover));
+	}
+`

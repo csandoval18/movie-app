@@ -3,6 +3,7 @@ import { IoIosSearch } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../app/hooks'
 import { setToggleSearchBar } from '../../features/navbar/navbarSlice'
+import { HomeBtn } from '../../styles/GlobalStyles.elements'
 import {
 	DropDown,
 	DropDownAnchor,
@@ -17,11 +18,9 @@ const Navbar: React.FC = () => {
 
 	return (
 		<NavbarContainer className='navbar-container base-100'>
-			<div>
-				<Link className='btn btn-ghost normal-case text-xl home-btn' to='/'>
-					CAS
-				</Link>
-			</div>
+			<Link to='/'>
+				<HomeBtn>CAS</HomeBtn>
+			</Link>
 			{isLoggedIn ? (
 				<>
 					<button>

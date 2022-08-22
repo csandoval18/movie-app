@@ -1,12 +1,17 @@
 import React from 'react'
+import { useAppSelector } from '../../app/hooks'
+import { selectToggleSearchbar } from '../../features/navbar/navbarSlice'
 import { Header } from '../../styles/GlobalStyles.elements'
 import Navbar from '../Navbar/Navbar'
+import SearchBar from '../Navbar/SearchBar/SearchBar'
 import { LoginContainer } from './Login.elements'
 
 const Login = () => {
+	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
+	console.log('searchBar:', toggleSearchBar)
 	return (
 		<>
-			<Navbar></Navbar>
+			{toggleSearchBar ? <SearchBar /> : <Navbar></Navbar>}
 			<LoginContainer>
 				<div className='card  bg-base-100 shadow-xl'>
 					<div className='card-body'>
