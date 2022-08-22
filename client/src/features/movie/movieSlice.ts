@@ -13,7 +13,7 @@ export interface SearchMovieState {
 }
 
 interface fetchMoviesArgs {
-	searchMovieInput: String | undefined
+	searchVal: String | undefined
 	pageNum?: number
 }
 
@@ -26,10 +26,12 @@ const initialState: SearchMovieState = {
 export const fetchMoviesThunk = createAsyncThunk(
 	'movie/fetchMoviesThunk',
 	async (fetchMoviesArgs: fetchMoviesArgs) => {
-		const url = `http://www.omdbapi.com/?s=${fetchMoviesArgs.searchMovieInput}&apikey=9eaecb1`
-		const movies = await axios.get(url).then((res) => res.data.Search)
+		const url = `http://www.omdbapi.com/?s=${fetchMoviesArgs.searchVal}&apikey=9eaecb1`
+		const movies = await axios
+			.get(url)
+			.then((res) => res.data.Search)
+			.catch((err) => console.log(err))
 		return movies
-		// return res.data.Search.map((movie: MoviesSearchData) => movie.Title)
 	},
 )
 

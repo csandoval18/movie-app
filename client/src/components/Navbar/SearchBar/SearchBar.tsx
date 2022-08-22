@@ -45,7 +45,7 @@ const SearchBar: React.FC = () => {
 						onSubmit={(e) => {
 							e.preventDefault()
 							dispatch(setSearchVal(searchInput))
-							dispatch(fetchMoviesThunk({ searchMovieInput: searchInput }))
+							dispatch(fetchMoviesThunk({ searchVal: searchInput }))
 							navigate('/')
 						}}
 					>
