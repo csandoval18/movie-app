@@ -16,22 +16,20 @@ import {
 import PaginationBtns from './PaginationBtns/PaginationBtns'
 
 const MovieList: React.FC = () => {
-	const [currPageNum, setCurrPageNum] = useState<number>(1)
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
 
 	let movies = useAppSelector(selectMovies)
 	console.log('movies movielist:', movies)
-	console.log('currPage:', currPageNum)
 	return (
 		<MoviesListContainer className='movielist-container'>
 			<Header className='header'>Search Results</Header>
-			<PaginationBtns />
+			{movies.length !== 0 ? <PaginationBtns /> : <div></div>}
 			<MovieResults className='movie-results'>
 				{movies?.map((movie) => (
 					<MovieCard key={movie.imdbID} data={movie}></MovieCard>
 				))}
 			</MovieResults>
-			{movies.length !== 0 ? <></> : <div></div>}
+			{movies.length !== 0 ? <PaginationBtns /> : <div></div>}
 		</MoviesListContainer>
 	)
 }

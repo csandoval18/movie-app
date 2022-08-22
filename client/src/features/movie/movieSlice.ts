@@ -5,6 +5,7 @@ import { useAppSelector } from '../../app/hooks'
 import { RootState, AppThunk } from '../../app/store'
 import { MoviesSearchData } from '../../types'
 import { useSearchMovies } from '../../utils/useSearchMovies'
+import { useSortByYear } from '../../utils/useSortByYear'
 
 export interface SearchMovieState {
 	searchVal: String
@@ -25,12 +26,13 @@ const initialState: SearchMovieState = {
 
 export const fetchMoviesThunk = createAsyncThunk(
 	'movie/fetchMoviesThunk',
-	async (fetchMoviesArgs: fetchMoviesArgs) => {
-		const url = `http://www.omdbapi.com/?s=${fetchMoviesArgs.searchVal}&apikey=9eaecb1`
-		const movies = await axios
+	async (fetchMoviesArgs: fetchMoviesArgs = { searchVal: '', pageNum: 1 }) => {
+		const url = `http://www.omdbapi.com/?s=${fetchMoviesArgs.searchVal}&apikey=9eaecb1&page=${fetchMoviesArgs.pageNum}`
+		let movies = await axios
 			.get(url)
 			.then((res) => res.data.Search)
 			.catch((err) => console.log(err))
+		movies = useSortByYear(movies)
 		return movies
 	},
 )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks'
 import {
 	fetchMoviesThunk,
@@ -14,21 +14,27 @@ const PaginationBtns = () => {
 	const [currPageNum, setCurrPageNum] = useState<number>(1)
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
 	const searchVal = useAppSelector(selectMovieSearchInput)
-	const movies = useAppSelector(selectMovies)
-	// let movies =  useSearchMovies(currPageNum)
-	// movies = useSortByYear(movies)
 	let dispatch = useAppDispatch()
+	let movies = useAppSelector(selectMovies)
 
 	const increasePagPages = () => {
-		console.log('increase pages')
 		setPagPageNums(pagPageNums.map((curr: number) => curr + 4))
-		dispatch(fetchMoviesThunk({ searchVal: searchVal }))
 	}
 
 	const decreasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr - 4))
-		dispatch(fetchMoviesThunk({ searchVal: searchVal }))
 	}
+
+	useEffect(() => {
+		if (searchVal)
+			dispatch(
+				fetchMoviesThunk({
+					searchVal: searchVal,
+					pageNum: currPageNum,
+				}),
+			)
+		else return
+	}, [searchVal, currPageNum])
 	return (
 		<PaginationBtnsStyle>
 			<div className='btn-group'>
