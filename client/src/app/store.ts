@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import counterReducer from '../features/counter/counterSlice'
-import movieSlice from '../features/movie/searchMovieSlice'
+import movieSlice from '../features/movie/movieSlice'
+import navbarSlice from '../features/navbar/navbarSlice'
 
 export const store = configureStore({
 	reducer: {
 		counter: counterReducer,
 		movie: movieSlice,
+		navbar: navbarSlice,
 	},
 })
 

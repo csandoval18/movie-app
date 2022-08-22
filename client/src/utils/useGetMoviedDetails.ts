@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector } from '../app/hooks'
-import { selectMovieSearchInput } from '../features/movie/searchMovieSlice'
+import { selectMovieSearchInput } from '../features/movie/movieSlice'
 import { MovieDetails } from '../types'
 
 export const useSearchMovies = (): MovieDetails | undefined => {

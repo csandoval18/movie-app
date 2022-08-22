@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState, AppThunk } from '../../app/store'
 
 export interface SearchBarToggle {
-	toggleSearchBar: boolean
+	toggleSearchBar: Boolean
 }
 
 const initialState: SearchBarToggle = {
@@ -10,7 +10,7 @@ const initialState: SearchBarToggle = {
 }
 
 export const navbarSlice = createSlice({
-	name: 'SET_MOVIE_SEARCH_INPUT',
+	name: 'TOGGLE_SEARCH_BAR',
 	initialState,
 	reducers: {
 		setToggleSearchBar: (state, action) => {
@@ -20,6 +20,6 @@ export const navbarSlice = createSlice({
 })
 
 export const { setToggleSearchBar } = navbarSlice.actions
-export const selectMovieSearchInput = (state: RootState) =>
-	state.movie.searchVal
+export const selectToggleSearchbar = (state: RootState) =>
+	state.navbar.toggleSearchBar
 export default navbarSlice.reducer

@@ -1,17 +1,18 @@
 import { useState } from 'react'
+import { couldStartTrivia } from 'typescript'
 import { useAppSelector } from '../../app/hooks'
-import { setToggleSearchBar } from '../../features/navbar/navbarToggleSlice'
+import { selectToggleSearchbar } from '../../features/navbar/navbarSlice'
 import Navbar from '../Navbar/Navbar'
 import SearchBar from '../Navbar/SearchBar/SearchBar'
 import { HomePageContainer } from './HomePage.elements'
 import MoviesList from './MovieList/MoviesList'
 
 const HomePage = () => {
-	const [toggleSearch, setToggleSearch] = useState<Boolean>(false)
-	const toggleSearchBar = useAppSelector(setToggleSearchBar)
+	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
+	console.log('searchBar:', toggleSearchBar)
 	return (
 		<>
-			{toggleSearch ? <SearchBar /> : <Navbar></Navbar>}
+			{toggleSearchBar ? <SearchBar /> : <Navbar></Navbar>}
 			<HomePageContainer className='homepage-container bg-base-100'>
 				<MoviesList />
 			</HomePageContainer>

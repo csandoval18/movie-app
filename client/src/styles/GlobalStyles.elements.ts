@@ -8,6 +8,7 @@ interface FlexProps {
 	bg?: string
 	ai?: string
 	jc?: string
+	gap?: string
 }
 
 export const Flex = styled.div<FlexProps>`
@@ -15,6 +16,7 @@ export const Flex = styled.div<FlexProps>`
 	display: flex;
 	align-items: ${(p) => p.ai};
 	justify-content: ${(p) => p.jc};
+	gap: ${(p) => p.gap};
 `
 
 export const PrimaryButton = styled.button`

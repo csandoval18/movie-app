@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react'
 import { useAppSelector } from '../../../app/hooks'
-import { selectMovieSearchInput } from '../../../features/movie/searchMovieSlice'
+import { selectMovieSearchInput } from '../../../features/movie/movieSlice'
 import { Header } from '../../../styles/GlobalStyles.elements'
 import { useSearchMovies } from '../../../utils/useSearchMovies'
 import { useSortByYear } from '../../../utils/useSortByYear'

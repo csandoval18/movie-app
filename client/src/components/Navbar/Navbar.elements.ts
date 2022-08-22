@@ -24,6 +24,10 @@ export const NavbarContainer = styled.nav`
 		position: fixed;
 		font-size: 1.8rem;
 	}
+
+	.home-btn {
+		color: white;
+	}
 `
 
 export const NavOptionsFlex = styled(Flex)`
