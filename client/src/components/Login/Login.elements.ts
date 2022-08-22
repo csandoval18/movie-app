@@ -5,7 +5,7 @@ export const LoginContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 4rem 4rem;
+	padding: 1rem 1rem;
 	height: 80vh;
 
 	.card {

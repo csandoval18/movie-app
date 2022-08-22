@@ -1,21 +1,34 @@
 import styled from 'styled-components'
+import { Flex } from '../../styles/GlobalStyles.elements'
 
 export const NavbarContainer = styled.nav`
-	background-color: red;
+	background-color: hsl(var(--p));
 	width: 100%;
 	height: 5rem;
 	display: flex;
 	flex: 1;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 2rem;
+	padding: 0 1rem;
 	font-size: 16;
 	font-weight: 500;
-	/* letter-spacing: 2px; */
 	position: sticky;
 	top: 0;
-	/* z-index: 1; */
+	z-index: 1;
+
+	.search-btn {
+		width: 3rem;
+		font-size: 2rem;
+	}
+	.icon {
+		position: fixed;
+		font-size: 1.8rem;
+	}
 `
 
+export const NavOptionsFlex = styled(Flex)`
+	width: 50%;
+	gap: 1.3rem;
+`
 export const DropDown = styled.ul``
 export const DropDownAnchor = styled.a``

@@ -3,20 +3,14 @@ import { device } from '../../../styles/deviceSizes'
 
 export const MoviesListContainer = styled.div`
 	.header {
-		margin-left: 3rem;
 		padding: 2rem 0;
-	}
-
-	@media ${device.laptopL} {
-		.header {
-			margin-left: 7rem;
-		}
+		margin-left: 1rem;
 	}
 `
 
 export const MovieResults = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr;
 	gap: 1rem;
 	justify-items: center;
 
@@ -24,16 +18,9 @@ export const MovieResults = styled.div`
 		height: 56px;
 	}
 
-	figure > img {
-		width: 100%;
-		height: 30rem;
-		border-top-left-radius: 14px;
-		border-top-right-radius: 14px;
-	}
-
-	@media only screen and (${device.desktopM}) {
-		grid-template-columns: 1fr 1fr;
-	}
+	/* @media only screen and (${device.mobileL}) {
+		grid-template-columns: 1fr;
+	} */
 `
 
 export const PaginationBtns = styled.div`
