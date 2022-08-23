@@ -16,7 +16,7 @@ export interface MovieDetails {
 	Year: string | number
 	Rated: string
 	Released: string
-	Runtine: string
+	Runtime: string
 	Genre: string
 	Director: string
 	Writer: string

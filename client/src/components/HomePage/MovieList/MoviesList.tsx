@@ -16,9 +16,8 @@ import {
 import PaginationBtns from './PaginationBtns/PaginationBtns'
 
 const MovieList: React.FC = () => {
-	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
-
 	let movies = useAppSelector(selectMovies)
+
 	console.log('movies movielist:', movies)
 	return (
 		<MoviesListContainer className='movielist-container'>

@@ -4,6 +4,7 @@ import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
 import { MoviesSearchData } from '../../../../types'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
+import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
 
 interface MovieCardProps {
 	data: MoviesSearchData
@@ -28,6 +29,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 						<button
 							className='btn btn-primary'
 							onClick={() => {
+								dispatch(fetchMovieDetailsThunk({ searchVal: data.imdbID }))
 								navigate('/movie-details')
 							}}
 						>
