@@ -12,13 +12,12 @@ const registerValidation = (body) => {
     return schema.validate(body);
 };
 exports.registerValidation = registerValidation;
-const loginValidation = (data) => {
+const loginValidation = (body) => {
     const schema = Joi.object({
-        username: Joi.string().min(6).required(),
-        email: Joi.string().min(6).required().email(),
-        password: Joi.string().min(6).required(),
+        email: Joi.string().required().email(),
+        password: Joi.string().required(),
     });
-    schema.validate(data, schema);
+    return schema.validate(body);
 };
 exports.loginValidation = loginValidation;
 //# sourceMappingURL=validation.js.map

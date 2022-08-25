@@ -17,7 +17,7 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
     const { error } = (0, validation_1.registerValidation)(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
-    const usernameExists = yield User.findOne({ email: req.body.email });
+    const usernameExists = yield User.findOne({ username: req.body.username });
     console.log('username:', usernameExists);
     if (usernameExists)
         return res.status(400).send('Username already taken');
@@ -38,6 +38,18 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
     catch (err) {
         return res.status(400).send(err);
     }
+}));
+router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { error } = (0, validation_1.loginValidation)(req.body);
+    if (error)
+        return res.status(400).send(error.details[0].message);
+    const user = yield User.findOne({ email: req.body.email });
+    if (!user)
+        return res.status(400).send('Email or password is wrong');
+    const valid = yield argon2.verify(user.password, req.body.password);
+    if (!valid)
+        return res.status(400).send('Invalid password');
+    return res.send('Login successful');
 }));
 exports.default = router;
 //# sourceMappingURL=auth.js.map
