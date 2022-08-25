@@ -1,8 +1,10 @@
 import { Request, Response } from 'express'
+import { trusted } from 'mongoose'
 const router = require('express').Router()
 const User = require('../model/User')
 import { loginValidation, registerValidation } from '../utils/validation'
 const argon2 = require('argon2')
+const jwt = require('jsonwebtoken')
 
 // Register validaiton
 router.post('/register', async (req: Request, res: Response) => {
@@ -51,6 +53,10 @@ router.post('/login', async (req: Request, res: Response) => {
 	//Successful login
 	const valid = await argon2.verify(user.password, req.body.password)
 	if (!valid) return res.status(400).send('Invalid password')
+
+	//Create and assign jwt
+	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
+	res.header('auth-token', token).send(token)
 
 	return res.send('Login successful')
 })
