@@ -13,9 +13,14 @@ import { PaginationBtnsStyle } from '../MoviesList.elements'
 const PaginationBtns = () => {
 	const [currPageNum, setCurrPageNum] = useState<number>(1)
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
-	const searchVal = useAppSelector(selectMovieSearchInput)
 	let dispatch = useAppDispatch()
-	let movies = useAppSelector(selectMovies)
+	const searchVal = useAppSelector(selectMovieSearchInput)
+
+	console.log('currpage:', currPageNum)
+	console.log('serachVal:', searchVal)
+	// useEffect(() => {
+	// 	dispatch(fetchMoviesThunk({ searchVal: searchVal, pageNum: currPageNum }))
+	// }, [searchVal])
 
 	const increasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr + 4))
@@ -71,7 +76,7 @@ const PaginationBtns = () => {
 				<button
 					className='btn'
 					onClick={() => {
-						if (movies.length !== 10) return
+						// if (movies.length !== 10) return
 						if (currPageNum === pagPageNums[pagPageNums.length - 1])
 							increasePagPages()
 						setCurrPageNum(currPageNum + 1)

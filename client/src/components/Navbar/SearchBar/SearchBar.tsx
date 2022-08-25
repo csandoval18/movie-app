@@ -40,7 +40,6 @@ const SearchBar: React.FC = () => {
 					<form
 						onSubmit={(e) => {
 							e.preventDefault()
-							// dispatch(setSearchVal(searchInput))
 							// dispatch(fetchMoviesThunk({ searchVal: searchInput }))
 							navigate('/')
 						}}
@@ -49,9 +48,10 @@ const SearchBar: React.FC = () => {
 							type='text'
 							placeholder='Search movies'
 							className='input input-bordered '
-							onInput={(e) =>
+							onInput={(e) => {
 								setSearchInput((e.target as HTMLInputElement).value)
-							}
+								dispatch(setSearchVal((e.target as HTMLInputElement).value))
+							}}
 						/>
 					</form>
 				</div>

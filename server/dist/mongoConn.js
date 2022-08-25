@@ -15,7 +15,7 @@ const mongoConn = () => {
     });
     const db = mongoose_1.default.connection;
     db.once('open', () => {
-        console.log('Database conneced:', url);
+        console.log('Database conneced');
     });
     db.on('error', (err) => {
         console.error('connection error', err);
