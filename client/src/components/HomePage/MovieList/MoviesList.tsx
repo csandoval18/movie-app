@@ -16,6 +16,8 @@ import {
 import PaginationBtns from './PaginationBtns/PaginationBtns'
 
 const MovieList: React.FC = () => {
+	// Need to add a loader for movie search and disable going to the next/previous page pagination btns while loading
+
 	let movies = useAppSelector(selectMovies)
 
 	console.log('movies movielist:', movies)
