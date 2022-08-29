@@ -50,15 +50,13 @@ router.post('/login', async (req: Request, res: Response) => {
 	const user = await User.findOne({ email: req.body.email })
 	if (!user) return res.status(400).send('Email or password is wrong')
 
-	//Successful login
+	//Unsuccessful login
 	const valid = await argon2.verify(user.password, req.body.password)
 	if (!valid) return res.status(400).send('Invalid password')
 
 	//Create and assign jwt
 	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
 	res.header('auth-token', token).send(token)
-
-	return res.send('Login successful')
 })
 
 export default router

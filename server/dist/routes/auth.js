@@ -52,7 +52,6 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return res.status(400).send('Invalid password');
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     res.header('auth-token', token).send(token);
-    return res.send('Login successful');
 }));
 exports.default = router;
 //# sourceMappingURL=auth.js.map
