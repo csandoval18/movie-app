@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import { useAppSelector } from '../../app/hooks'
 import { selectToggleSearchbar } from '../../features/navbar/navbarSlice'
 import { Header } from '../../styles/GlobalStyles.elements'
@@ -7,6 +8,17 @@ import SearchBar from '../Navbar/SearchBar/SearchBar'
 import { LoginContainer } from './Login.elements'
 
 const Login: React.FC = () => {
+	const [username, setUsername] = useState('')
+	const [password, setPass] = useState('')
+	const [errorMessages, setErrorMessages] = useState({})
+
+	const handleLogin = () => {
+		axios.post('http://localhost:4000/api/user/login', {
+			username: username,
+			password: password,
+		})
+	}
+
 	return (
 		<>
 			<LoginContainer>
@@ -20,6 +32,7 @@ const Login: React.FC = () => {
 								type='text'
 								placeholder='username'
 								className='input input-bordered input-primary w-full max-w'
+								onChange={(e) => setUsername(e.target.value)}
 							/>
 							<label htmlFor='password'>Password</label>
 							<input
@@ -27,6 +40,7 @@ const Login: React.FC = () => {
 								type='text'
 								placeholder='password'
 								className='input input-bordered input-primary w-full max-w'
+								onChange={(e) => setPass(e.target.value)}
 							/>
 							<span className='card-actions justify-end'>
 								<button className='btn btn-primary'>Login</button>

@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import { trusted } from 'mongoose'
 const router = require('express').Router()
 const User = require('../model/User')
 import { loginValidation, registerValidation } from '../utils/validation'
@@ -47,16 +46,16 @@ router.post('/login', async (req: Request, res: Response) => {
 	if (error) return res.status(400).send(error.details[0].message)
 
 	//Check if email exists
-	const user = await User.findOne({ email: req.body.email })
-	if (!user) return res.status(400).send('Email or password is wrong')
+	const user = await User.findOne({ username: req.body.username })
+	if (!user) return res.status(400).send('Username or password is incorrect')
 
 	//Unsuccessful login
 	const valid = await argon2.verify(user.password, req.body.password)
-	if (!valid) return res.status(400).send('Invalid password')
+	if (!valid) return res.status(400).send('Wrong password')
 
 	//Create and assign jwt
 	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
-	res.header('auth-token', token).send(token)
+	return res.header('auth-token', token).send(token)
 })
 
 export default router

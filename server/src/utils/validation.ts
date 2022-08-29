@@ -17,8 +17,8 @@ export const registerValidation = (body: UserFields) => {
 
 export const loginValidation = (body: UserFields) => {
 	const schema = Joi.object({
-		// username: Joi.string().min(6).required(),
-		email: Joi.string().required().email(),
+		username: Joi.string().required(),
+		// email: Joi.string().required().email(),
 		password: Joi.string().required(),
 	})
 

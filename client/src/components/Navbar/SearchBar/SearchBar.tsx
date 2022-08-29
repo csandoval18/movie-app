@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../../app/hooks'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
 	fetchMoviesThunk,
+	selectMovieSearchInput,
 	setSearchVal,
 } from '../../../features/movie/movieSlice'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
-import { Flex, HomeBtn } from '../../../styles/GlobalStyles.elements'
-import { useSearchMovies } from '../../../utils/useSearchMovies'
-import { useSortByYear } from '../../../utils/useSortByYear'
-import { NavbarContainer } from '../Navbar.elements'
+import { Flex } from '../../../styles/GlobalStyles.elements'
 import {
 	ReturnBtn,
 	SearchBarContainer,
@@ -20,7 +18,9 @@ import {
 const SearchBar: React.FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
-	const [searchInput, setSearchInput] = useState<String>('')
+	const [searchInput, setSearchInput] = useState<String>(
+		useAppSelector(selectMovieSearchInput),
+	)
 
 	useEffect(() => {
 		dispatch(fetchMoviesThunk({ searchVal: searchInput }))
@@ -45,6 +45,7 @@ const SearchBar: React.FC = () => {
 						}}
 					>
 						<SearchBarInput
+							value={searchInput as string}
 							type='text'
 							placeholder='Search movies'
 							className='input input-bordered '

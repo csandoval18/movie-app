@@ -44,14 +44,14 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const { error } = (0, validation_1.loginValidation)(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
-    const user = yield User.findOne({ email: req.body.email });
+    const user = yield User.findOne({ username: req.body.username });
     if (!user)
-        return res.status(400).send('Email or password is wrong');
+        return res.status(400).send('Username or password is incorrect');
     const valid = yield argon2.verify(user.password, req.body.password);
     if (!valid)
-        return res.status(400).send('Invalid password');
+        return res.status(400).send('Wrong password');
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
+    return res.header('auth-token', token).send(token);
 }));
 exports.default = router;
 //# sourceMappingURL=auth.js.map
