@@ -25,8 +25,14 @@ const MovieDetails = () => {
 			<p>Metascore: {movieDetails?.Metascore}</p>
 			<p>Country: {movieDetails?.DVD}</p>
 			<p>Country: {movieDetails?.Director}</p>
-			<p>Country: {movieDetails?.Production}</p>
+			<p>Production: {movieDetails?.Production}</p>
 			<p>Country: {movieDetails?.Language}</p>
+			<p>Released: {movieDetails?.Released}</p>
+			<p>Runtime: {movieDetails?.Runtime}</p>
+			<p>Type: {movieDetails?.Type}</p>
+			<p>Writer: {movieDetails?.Writer}</p>
+			<p>IMDB Rating: {movieDetails?.imdbRating}</p>
+			<p>IMDB Votes: {movieDetails?.imdbVotes}</p>
 			<p>Ratings:</p>
 			<Flex bg='yellow'>
 				{movieDetails?.Ratings.map((rating) => (
@@ -35,8 +41,6 @@ const MovieDetails = () => {
 					</div>
 				))}
 			</Flex>
-			<p>Released: {movieDetails?.Released}</p>
-			<p>Runtime: {movieDetails?.Runtime}</p>
 		</MovieDetailsContainer>
 	)
 }
