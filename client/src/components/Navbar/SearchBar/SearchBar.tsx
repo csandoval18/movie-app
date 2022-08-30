@@ -23,6 +23,7 @@ const SearchBar: React.FC = () => {
 	)
 
 	useEffect(() => {
+		// dispatch(setSearchVal(searchInput))
 		dispatch(fetchMoviesThunk({ searchVal: searchInput }))
 	}, [searchInput])
 
@@ -49,9 +50,9 @@ const SearchBar: React.FC = () => {
 							type='text'
 							placeholder='Search movies'
 							className='input input-bordered '
-							onInput={(e) => {
-								setSearchInput((e.target as HTMLInputElement).value)
-								dispatch(setSearchVal((e.target as HTMLInputElement).value))
+							onChange={(e) => {
+								setSearchInput(e.target.value)
+								dispatch(setSearchVal(e.target.value))
 							}}
 						/>
 					</form>
