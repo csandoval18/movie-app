@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import moviesimg from '../../assets/images/HomePage/movies.webp'
 
-export const LoginContainer = styled.div`
+export const AuthContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;

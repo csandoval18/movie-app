@@ -1,17 +1,13 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Router, useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks'
-import { selectToggleSearchbar } from '../../features/navbar/navbarSlice'
-import { Header } from '../../styles/GlobalStyles.elements'
-import { setUserSession } from '../../utils/common'
-import Navbar from '../Navbar/Navbar'
-import SearchBar from '../Navbar/SearchBar/SearchBar'
-import { LoginContainer } from './Login.elements'
+import { Header } from '../../../styles/GlobalStyles.elements'
+import { setUserSession } from '../../../utils/common'
+import { AuthContainer } from '../Login.elements'
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
 	// const navigate = useNavigate()
 	const [username, setUsername] = useState('')
+	const [email, setEmail] = useState('')
 	const [password, setPass] = useState('')
 	const [errorMessages, setErrorMessages] = useState({})
 
@@ -30,10 +26,10 @@ const Login: React.FC = () => {
 
 	return (
 		<>
-			<LoginContainer>
+			<AuthContainer>
 				<div className='card  bg-base-100 shadow-xl'>
 					<div className='card-body'>
-						<Header className='card-title'>Login</Header>
+						<Header className='card-title'>Register</Header>
 						<form
 							onSubmit={(e) => {
 								e.preventDefault()
@@ -48,6 +44,14 @@ const Login: React.FC = () => {
 								className='input input-bordered input-primary w-full max-w'
 								onChange={(e) => setUsername(e.target.value)}
 							/>
+							<label htmlFor='email'>Email</label>
+							<input
+								name='email'
+								type='text'
+								placeholder='email'
+								className='input input-bordered input-primary w-full max-w'
+								onChange={(e) => setEmail(e.target.value)}
+							/>
 							<label htmlFor='password'>Password</label>
 							<input
 								name='password'
@@ -57,14 +61,14 @@ const Login: React.FC = () => {
 								onChange={(e) => setPass(e.target.value)}
 							/>
 							<span className='card-actions justify-end'>
-								<button className='btn btn-primary'>Login</button>
+								<button className='btn btn-primary'>Register</button>
 							</span>
 						</form>
 					</div>
 				</div>
-			</LoginContainer>
+			</AuthContainer>
 		</>
 	)
 }
 
-export default Login
+export default Register
