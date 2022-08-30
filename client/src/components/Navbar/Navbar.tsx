@@ -1,18 +1,6 @@
-import React, { useState } from 'react'
-import { IoIosSearch } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import {
-	selectToggleSearchbar,
-	setToggleSearchBar,
-} from '../../features/navbar/navbarSlice'
-import { HomeBtn } from '../../styles/GlobalStyles.elements'
-import {
-	DropDown,
-	DropDownAnchor,
-	NavbarContainer,
-	NavOptionsFlex,
-} from './Navbar.elements'
+import { selectToggleSearchbar } from '../../features/navbar/navbarSlice'
 import OptionsBar from './OptionsBar/OptionsBar'
 import SearchBar from './SearchBar/SearchBar'
 

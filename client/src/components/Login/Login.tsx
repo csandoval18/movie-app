@@ -1,22 +1,31 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Router, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../app/hooks'
 import { selectToggleSearchbar } from '../../features/navbar/navbarSlice'
 import { Header } from '../../styles/GlobalStyles.elements'
+import { setUserSession } from '../../utils/common'
 import Navbar from '../Navbar/Navbar'
 import SearchBar from '../Navbar/SearchBar/SearchBar'
 import { LoginContainer } from './Login.elements'
 
 const Login: React.FC = () => {
+	const navigate = useNavigate()
 	const [username, setUsername] = useState('')
 	const [password, setPass] = useState('')
 	const [errorMessages, setErrorMessages] = useState({})
 
 	const handleLogin = () => {
-		axios.post('http://localhost:4000/api/user/login', {
-			username: username,
-			password: password,
-		})
+		axios
+			.post('http://localhost:4000/api/user/login', {
+				username: username,
+				password: password,
+			})
+			.then((res) => {
+				console.log(res)
+				setUserSession(res.data)
+				window.location.href = '/'
+			})
 	}
 
 	return (
@@ -25,7 +34,15 @@ const Login: React.FC = () => {
 				<div className='card  bg-base-100 shadow-xl'>
 					<div className='card-body'>
 						<Header className='card-title'>Login</Header>
-						<form onSubmit={() => {}}>
+						<form
+							onSubmit={(e) => {
+								e.preventDefault()
+								handleLogin()
+								// console.log('token:', sessionStorage.getItem('token'))
+								// window.location.href = '/'
+								// navigate('/')
+							}}
+						>
 							<label htmlFor='username'>Username</label>
 							<input
 								name='username'
