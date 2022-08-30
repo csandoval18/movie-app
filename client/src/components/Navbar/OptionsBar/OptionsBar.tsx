@@ -21,7 +21,7 @@ const OptionsBar: React.FC = () => {
 
 	if (isLoggedIn) {
 		body = (
-			<NavOptionsFlex>
+			<NavOptionsFlex ai='center' jc='right'>
 				<button
 					className='btn search-btn'
 					onClick={() => {

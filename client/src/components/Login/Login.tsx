@@ -10,7 +10,7 @@ import SearchBar from '../Navbar/SearchBar/SearchBar'
 import { LoginContainer } from './Login.elements'
 
 const Login: React.FC = () => {
-	const navigate = useNavigate()
+	// const navigate = useNavigate()
 	const [username, setUsername] = useState('')
 	const [password, setPass] = useState('')
 	const [errorMessages, setErrorMessages] = useState({})
@@ -38,9 +38,6 @@ const Login: React.FC = () => {
 							onSubmit={(e) => {
 								e.preventDefault()
 								handleLogin()
-								// console.log('token:', sessionStorage.getItem('token'))
-								// window.location.href = '/'
-								// navigate('/')
 							}}
 						>
 							<label htmlFor='username'>Username</label>
