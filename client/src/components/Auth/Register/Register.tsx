@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Header } from '../../../styles/GlobalStyles.elements'
 import { setUserSession } from '../../../utils/common'
-import { AuthContainer } from '../Login.elements'
+import { AuthContainer } from '../Login/Login.elements'
 
 const Register: React.FC = () => {
 	// const navigate = useNavigate()

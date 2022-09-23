@@ -3,7 +3,7 @@ import { IoIosSearch } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../../app/hooks'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
-import { HomeBtn } from '../../../styles/GlobalStyles.elements'
+import { HomeBtn, PrimaryButton } from '../../../styles/GlobalStyles.elements'
 import {
 	DropDown,
 	DropDownAnchor,
@@ -71,17 +71,24 @@ const OptionsBar: React.FC = () => {
 	} else {
 		body = (
 			<NavOptionsFlex ai='center' jc='right'>
-				<button
-					className='btn search-btn'
+				<PrimaryButton
+					className='search-btn'
 					onClick={() => {
 						dispatch(setToggleSearchBar(true))
 					}}
 				>
 					<IoIosSearch className='icon'></IoIosSearch>
-				</button>
-				<Link className='btn' to='/login'>
-					Login
-				</Link>
+				</PrimaryButton>
+				<PrimaryButton>
+					<Link className='' to='/login'>
+						Login
+					</Link>
+				</PrimaryButton>
+				<PrimaryButton>
+					<Link className='' to='/register'>
+						Register
+					</Link>
+				</PrimaryButton>
 			</NavOptionsFlex>
 		)
 	}

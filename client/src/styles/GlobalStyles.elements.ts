@@ -23,15 +23,19 @@ export const PrimaryButton = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: white;
-	background-color: hsl(var(--n));
-	border: none;
-	height: 2.9rem;
-	width: 3rem;
+	/* color: white; */
+	color: hsl(var(--n));
+	/* background-color: hsl(var(--n)); */
+	border: 2px solid hsl(var(--n));
 	border-radius: 8px;
+	padding: 10px 1rem;
 
 	&:hover {
-		background-color: hsl(var(--nf));
+		/* background-color: #63fced;
+		border: 2px solid #63fced; */
+		/* transition: all ease-in 0.1s; */
+		background-color: hsl(var(--n));
+		color: hsla(var(--bc) / var(--tw-text-opacity, 1));
 	}
 `
 export const HomeBtn = styled.button`
@@ -40,8 +44,7 @@ export const HomeBtn = styled.button`
 	justify-content: center;
 	color: white;
 	height: 48px;
-	font-weight: 700;
-	/* background-color: red; */
+	font-weight: 800;
 	font-size: 2.5rem;
 	border-radius: 10px;
 	padding: 0 0.5rem;

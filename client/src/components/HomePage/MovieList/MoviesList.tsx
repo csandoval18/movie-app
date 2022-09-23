@@ -30,7 +30,7 @@ const MovieList: React.FC = () => {
 					<MovieCard key={movie.imdbID} data={movie}></MovieCard>
 				))}
 			</MovieResults>
-			{movies.length !== 0 ? <PaginationBtns /> : <div></div>}
+			{/* {movies.length !== 0 ? <PaginationBtns /> : <div></div>} */}
 		</MoviesListContainer>
 	)
 }

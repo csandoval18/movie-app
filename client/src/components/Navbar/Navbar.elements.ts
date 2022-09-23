@@ -19,6 +19,7 @@ export const NavbarContainer = styled.nav`
 	.search-btn {
 		width: 3rem;
 		font-size: 2rem;
+		height: 3rem;
 	}
 	.icon {
 		position: fixed;

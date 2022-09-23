@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Header } from '../../../styles/GlobalStyles.elements'
 import { setUserSession } from '../../../utils/common'
-import { AuthContainer } from '../Login.elements'
+import { AuthContainer } from './Login.elements'
 
 const Login: React.FC = () => {
 	// const navigate = useNavigate()
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
 								onChange={(e) => setPass(e.target.value)}
 							/>
 							<span className='card-actions justify-end'>
-								<button className='btn btn-primary'>Login</button>
+								<button className='btn '>Login</button>
 							</span>
 						</form>
 					</div>

@@ -26,13 +26,14 @@ module.exports = {
 	plugins: [require('daisyui')],
 	daisyui: {
 		themes: [
-			'light',
+			// 'light',
+			// 'dark',
 			{
 				mytheme: {
 					primary: '#93c5fd',
 					secondary: '#6ee7b7',
 					accent: '#d1d5db',
-					neutral: '#f3f4f6',
+					neutral: '#192239',
 					'base-100': '#111827',
 					info: '#84A6F0',
 					success: '#86efac',

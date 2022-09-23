@@ -22,10 +22,10 @@ const SearchBar: React.FC = () => {
 		useAppSelector(selectMovieSearchInput),
 	)
 
-	useEffect(() => {
-		// dispatch(setSearchVal(searchInput))
-		dispatch(fetchMoviesThunk({ searchVal: searchInput }))
-	}, [searchInput])
+	// useEffect(() => {
+	// 	// dispatch(setSearchVal(searchInput))
+	// 	dispatch(fetchMoviesThunk({ searchVal: searchInput }))
+	// }, [searchInput])
 
 	return (
 		<SearchBarContainer className='searchbar-container'>
@@ -41,7 +41,7 @@ const SearchBar: React.FC = () => {
 					<form
 						onSubmit={(e) => {
 							e.preventDefault()
-							// dispatch(fetchMoviesThunk({ searchVal: searchInput }))
+							dispatch(fetchMoviesThunk({ searchVal: searchInput }))
 							navigate('/')
 						}}
 					>
