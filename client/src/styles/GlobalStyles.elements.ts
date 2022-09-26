@@ -56,8 +56,8 @@ export const HomeBtn = styled.button`
 
 export const Card = styled.div`
 	background-color: hsl(var(--n));
-	padding: 3rem;
-	margin: 0.7rem;
+	padding: 3rem 3rem;
+	margin: 0.25rem;
 	border-radius: 15px;
 	display: flex;
 	justify-content: center;

@@ -14,7 +14,8 @@ const HomePage = () => {
 			<HomePageContainer className='homepage-container bg-base-100'>
 				<Card>
 					<p className='card-heading'>
-						Search for your favorite movies and add them to your favorites!
+						Search for your movies of interest and add them to your favorites!
+						😄
 					</p>
 				</Card>
 				<MoviesList />

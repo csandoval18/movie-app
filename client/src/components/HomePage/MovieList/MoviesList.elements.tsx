@@ -3,7 +3,7 @@ import { device } from '../../../styles/deviceSizes'
 
 export const MoviesListContainer = styled.div`
 	.header {
-		padding: 2rem 0;
+		padding-top: 1rem;
 		margin-left: 1.5rem;
 	}
 `
@@ -28,5 +28,6 @@ export const PaginationBtnsStyle = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 3rem 0;
+	padding-top: 1.3rem;
+	padding-bottom: 2rem;
 `
