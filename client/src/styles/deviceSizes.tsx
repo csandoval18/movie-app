@@ -5,7 +5,7 @@ export const size = {
 	tablet: '768px',
 	laptop: '1024px',
 	laptopL: '1440px',
-	desktopM: '1080px',
+	desktopM: '1920px',
 	desktopL: '2560px',
 }
 
