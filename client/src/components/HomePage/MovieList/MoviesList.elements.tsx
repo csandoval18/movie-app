@@ -18,9 +18,9 @@ export const MovieResults = styled.div`
 		height: 56px;
 	}
 
-	/* @media only screen and (${device.mobileL}) {
-		grid-template-columns: 1fr;
-	} */
+	@media only screen and (${device.mobileL}) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 `
 
 export const PaginationBtnsStyle = styled.div`

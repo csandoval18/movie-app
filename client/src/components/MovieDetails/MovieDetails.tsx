@@ -51,7 +51,7 @@ const MovieDetails = () => {
 					</Flex>
 				</>
 			) : (
-				<div>No movie data</div>
+				<div>loading movie data...</div>
 			)}
 		</MovieDetailsContainer>
 	)

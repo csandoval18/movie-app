@@ -53,3 +53,14 @@ export const HomeBtn = styled.button`
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 `
+
+export const Card = styled.div`
+	background-color: hsl(var(--n));
+	padding: 3rem;
+	margin: 0.7rem;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.8rem;
+`
