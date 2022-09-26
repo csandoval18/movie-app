@@ -79,16 +79,12 @@ const OptionsBar: React.FC = () => {
 				>
 					<IoIosSearch className='icon'></IoIosSearch>
 				</PrimaryButton>
-				<PrimaryButton>
-					<Link className='' to='/login'>
-						Login
-					</Link>
-				</PrimaryButton>
-				<PrimaryButton>
-					<Link className='' to='/register'>
-						Register
-					</Link>
-				</PrimaryButton>
+				<Link className='' to='/login'>
+					<PrimaryButton>Login</PrimaryButton>
+				</Link>
+				<Link className='' to='/register'>
+					<PrimaryButton>Register</PrimaryButton>
+				</Link>
 			</NavOptionsFlex>
 		)
 	}
