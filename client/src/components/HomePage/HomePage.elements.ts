@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HomePageContainer = styled.div`
-	/* height: 100vh; */
+	margin: 0 0.25rem;
 	padding-top: 0.2rem;
 	.card-heading {
 		font-size: 16px;

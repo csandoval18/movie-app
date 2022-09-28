@@ -4,7 +4,7 @@ import { device } from '../../../styles/deviceSizes'
 export const MoviesListContainer = styled.div`
 	.header {
 		padding-top: 1rem;
-		margin-left: 1.5rem;
+		margin-left: 0.3rem;
 	}
 `
 

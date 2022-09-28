@@ -12,18 +12,16 @@ const MovieDetails = () => {
 	console.log('movie details:', movieDetails)
 
 	return (
-		<MovieDetailsContainer>
-			<MovieDetailsCard>
+		<MovieDetailsContainer className='movie-details-container'>
+			<MovieDetailsCard className='details-card'>
 				<Header className='header'>Movie Details</Header>
 				{movieDetails ? (
 					<>
 						<div className='overflow-x-auto'>
-							<table className='table w-full'>
+							<table className='content-table'>
 								<thead>
 									<tr>
-										<th colSpan={2} style={{ textAlign: 'center' }}>
-											{movieDetails?.Title}
-										</th>
+										<th colSpan={2}>{movieDetails?.Title}</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -57,15 +55,33 @@ const MovieDetails = () => {
 										<td>Box Office</td>
 										<td>{movieDetails?.BoxOffice}</td>
 									</tr>
+									<tr>
+										<td>Country:</td>
+										<td>{movieDetails?.Country}</td>
+									</tr>
+									<tr>
+										<td>Metascore:</td>
+										<td>{movieDetails?.Metascore}</td>
+									</tr>
+									<tr>
+										<td>Plot:</td>
+										<td>{movieDetails?.Plot}</td>
+									</tr>
+									<tr>
+										<td>Awards:</td>
+										<td>{movieDetails?.Awards}</td>
+									</tr>
+									<tr>
+										<td>Director:</td>
+										<td>{movieDetails?.Director}</td>
+									</tr>
+									<tr>
+										<td>DVD</td>
+										<td>{movieDetails?.DVD}</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
-						<p>Box Office: {movieDetails?.BoxOffice}</p>
-						<p>Country: {movieDetails?.Country}</p>
-						<p>Plot: {movieDetails?.Plot}</p>
-
-						<p>Awards: {movieDetails?.Awards}</p>
-						<p>Metascore: {movieDetails?.Metascore}</p>
 						<p>Country: {movieDetails?.DVD}</p>
 						<p>Country: {movieDetails?.Director}</p>
 						<p>Production: {movieDetails?.Production}</p>
