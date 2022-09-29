@@ -1,3 +1,4 @@
+import { reduceEachTrailingCommentRange } from 'typescript'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { selectMovieDetails } from '../../features/movie/movieSlice'
 import { Flex, Header } from '../../styles/GlobalStyles.elements'
@@ -60,12 +61,16 @@ const MovieDetails = () => {
 										<td>{movieDetails?.Country}</td>
 									</tr>
 									<tr>
-										<td>Metascore:</td>
-										<td>{movieDetails?.Metascore}</td>
+										<td>Language:</td>
+										<td>{movieDetails?.Language}</td>
 									</tr>
 									<tr>
 										<td>Plot:</td>
 										<td>{movieDetails?.Plot}</td>
+									</tr>
+									<tr>
+										<td>Runtime:</td>
+										<td>{movieDetails?.Runtime}</td>
 									</tr>
 									<tr>
 										<td>Awards:</td>
@@ -76,29 +81,46 @@ const MovieDetails = () => {
 										<td>{movieDetails?.Director}</td>
 									</tr>
 									<tr>
+										<td>Writer:</td>
+										<td>{movieDetails?.Writer}</td>
+									</tr>
+									<tr>
+										<td>Release Date:</td>
+										<td>{movieDetails?.Released}</td>
+									</tr>
+									<tr>
 										<td>DVD</td>
 										<td>{movieDetails?.DVD}</td>
+									</tr>
+									<tr>
+										<td>Production:</td>
+										<td>{movieDetails?.Production}</td>
+									</tr>
+									<tr>
+										<td>Metascore:</td>
+										<td>{movieDetails?.Metascore}</td>
+									</tr>
+									<tr>
+										<td>IMDB Votes:</td>
+										<td>{movieDetails?.imdbVotes}</td>
+									</tr>
+									<tr>
+										<td>Ratings:</td>
+										<td>
+											{movieDetails?.Ratings.map((rating) => (
+												<ul>
+													<li>
+														{rating.Source === 'Internet Movie Database'
+															? 'IMDB: ' + rating.Value
+															: `${rating.Source}: ${rating.Value}`}
+													</li>
+												</ul>
+											))}
+										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						<p>Country: {movieDetails?.DVD}</p>
-						<p>Country: {movieDetails?.Director}</p>
-						<p>Production: {movieDetails?.Production}</p>
-						<p>Country: {movieDetails?.Language}</p>
-						<p>Released: {movieDetails?.Released}</p>
-						<p>Runtime: {movieDetails?.Runtime}</p>
-						<p>Writer: {movieDetails?.Writer}</p>
-						<p>IMDB Rating: {movieDetails?.imdbRating}</p>
-						<p>IMDB Votes: {movieDetails?.imdbVotes}</p>
-						<p>Ratings:</p>
-						<Flex bg='yellow'>
-							{movieDetails?.Ratings.map((rating) => (
-								<div>
-									<p>{rating.Source}</p> <p>{rating.Value}</p>
-								</div>
-							))}
-						</Flex>
 					</>
 				) : (
 					<div>loading movie data...</div>
