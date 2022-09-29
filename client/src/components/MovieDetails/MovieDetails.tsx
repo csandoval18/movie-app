@@ -54,7 +54,9 @@ const MovieDetails = () => {
 									</tr>
 									<tr>
 										<td>Box Office</td>
-										<td>{movieDetails?.BoxOffice}</td>
+										<td>
+											{movieDetails?.BoxOffice ? movieDetails.BoxOffice : 'N/A'}
+										</td>
 									</tr>
 									<tr>
 										<td>Country:</td>
@@ -90,11 +92,15 @@ const MovieDetails = () => {
 									</tr>
 									<tr>
 										<td>DVD</td>
-										<td>{movieDetails?.DVD}</td>
+										<td>{movieDetails?.DVD ? movieDetails.DVD : 'N/A'}</td>
 									</tr>
 									<tr>
 										<td>Production:</td>
-										<td>{movieDetails?.Production}</td>
+										<td>
+											{movieDetails?.Production
+												? movieDetails.Production
+												: 'N/A'}
+										</td>
 									</tr>
 									<tr>
 										<td>Metascore:</td>
@@ -107,15 +113,17 @@ const MovieDetails = () => {
 									<tr>
 										<td>Ratings:</td>
 										<td>
-											{movieDetails?.Ratings.map((rating) => (
-												<ul>
-													<li>
-														{rating.Source === 'Internet Movie Database'
-															? 'IMDB: ' + rating.Value
-															: `${rating.Source}: ${rating.Value}`}
-													</li>
-												</ul>
-											))}
+											{movieDetails?.Ratings.length !== 0
+												? movieDetails?.Ratings.map((rating) => (
+														<ul>
+															<li>
+																{rating.Source === 'Internet Movie Database'
+																	? 'IMDB: ' + rating.Value
+																	: `${rating.Source}: ${rating.Value}`}
+															</li>
+														</ul>
+												  ))
+												: 'N/A'}
 										</td>
 									</tr>
 								</tbody>
