@@ -55,7 +55,9 @@ export const HomeBtn = styled.button`
 `
 
 export const Card = styled.div`
-	background-color: hsl(var(--n));
+	/* background-color: hsl(var(--n)); */
+	background-color: rgba(25, 34, 57, 90%);
+	color: #fff;
 	padding: 3rem 3rem;
 	border-radius: 15px;
 	display: flex;

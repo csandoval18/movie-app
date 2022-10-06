@@ -70,7 +70,7 @@ const OptionsBar: React.FC = () => {
 		)
 	} else {
 		body = (
-			<NavOptionsFlex ai='center' jc='right'>
+			<NavOptionsFlex ai='center' jc='right' className='options-navbar'>
 				<PrimaryButton
 					className='search-btn'
 					onClick={() => {

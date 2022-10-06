@@ -34,6 +34,7 @@ export const NavbarContainer = styled.nav`
 export const NavOptionsFlex = styled(Flex)`
 	width: 50%;
 	gap: 1.3rem;
+	display: none;
 `
 export const DropDown = styled.ul``
 export const DropDownAnchor = styled.a``
