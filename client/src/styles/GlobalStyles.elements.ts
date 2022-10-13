@@ -12,42 +12,36 @@ interface FlexProps {
 }
 
 export const Flex = styled.div<FlexProps>`
+	align-items: ${(p) => p.ai};
 	background-color: ${(p) => p.bg};
 	display: flex;
-	align-items: ${(p) => p.ai};
-	justify-content: ${(p) => p.jc};
 	gap: ${(p) => p.gap};
+	justify-content: ${(p) => p.jc};
 `
 
 export const PrimaryButton = styled.button`
-	display: flex;
 	align-items: center;
-	justify-content: center;
-	/* color: white; */
-	color: hsl(var(--n));
-	/* background-color: hsl(var(--n)); */
 	border: 2px solid hsl(var(--n));
 	border-radius: 8px;
+	color: hsl(var(--n));
+	display: flex;
+	justify-content: center;
 	padding: 10px 1rem;
 
 	&:hover {
-		/* background-color: #63fced;
-		border: 2px solid #63fced; */
-		/* transition: all ease-in 0.1s; */
 		background-color: hsl(var(--n));
-		/* color: hsla(var(--bc) / var(--tw-text-opacity, 1)); */
     color: aliceblue;
 	}
 `
 export const HomeBtn = styled.button`
-	display: flex;
 	align-items: center;
-	justify-content: center;
+	border-radius: 10px;
 	color: white;
-	height: 48px;
+	display: flex;
 	font-weight: 800;
 	font-size: 2.5rem;
-	border-radius: 10px;
+	height: 48px;
+	justify-content: center;
 	padding: 0 0.5rem;
 
 	&:hover {

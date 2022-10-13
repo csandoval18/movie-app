@@ -50,4 +50,4 @@ module.exports = {
 		logs: true,
 		darkTheme: 'dark',
 	},
-}
+};
