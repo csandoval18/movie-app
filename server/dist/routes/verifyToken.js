@@ -8,9 +8,10 @@ const verifyToken = (req, res) => {
     try {
         const verified = jwt.verify(token, process.env.TOKEN_SECRET);
         req.user = verified;
+        return res.status(200).send('Successfully verified user');
     }
     catch (err) {
-        res.status(400).send('Invalid Token');
+        return res.status(400).send('Invalid Token');
     }
 };
 //# sourceMappingURL=verifyToken.js.map

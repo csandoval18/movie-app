@@ -6,17 +6,17 @@ import MovieDetails from './components/MovieDetails/MovieDetails'
 import Navbar from './components/Navbar/Navbar'
 
 function App() {
-	return (
-		<div className='App'>
-			<Navbar />
-			<Routes>
-				<Route path='/' element={<HomePage />}></Route>
-				<Route path='/register' element={<Register />} />
-				<Route path='/login' element={<Login />} />
-				<Route path='/movie-details' element={<MovieDetails />} />
-			</Routes>
-		</div>
-	)
+  return (
+    <div className='App'>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/movie-details/:imdbID' element={<MovieDetails />} />
+      </Routes>
+    </div>
+  )
 }
 
 export default App

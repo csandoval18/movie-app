@@ -35,7 +35,8 @@ export const PrimaryButton = styled.button`
 		border: 2px solid #63fced; */
 		/* transition: all ease-in 0.1s; */
 		background-color: hsl(var(--n));
-		color: hsla(var(--bc) / var(--tw-text-opacity, 1));
+		/* color: hsla(var(--bc) / var(--tw-text-opacity, 1)); */
+    color: aliceblue;
 	}
 `
 export const HomeBtn = styled.button`

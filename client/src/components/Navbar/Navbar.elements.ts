@@ -15,7 +15,9 @@ export const NavbarContainer = styled.nav`
 	position: sticky;
 	top: 0;
 	z-index: 10000;
-
+  .navbar-options {
+    display: flex;
+  }
 	.search-btn {
 		width: 3rem;
 		font-size: 2rem;
