@@ -2,30 +2,31 @@ import styled from 'styled-components'
 import { Flex } from '../../styles/GlobalStyles.elements'
 
 export const NavbarContainer = styled.nav`
+	align-items: center;
 	background-color: hsl(var(--p));
-	width: 100%;
-	height: 5rem;
 	display: flex;
 	flex: 1;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 1rem;
 	font-size: 16;
 	font-weight: 500;
+	height: 5rem;
+	justify-content: space-between;
+	padding: 0 1rem;
 	position: sticky;
 	top: 0;
+	width: 100%;
 	z-index: 10000;
-  .navbar-options {
-    display: flex;
-  }
+	.navbar-options {
+		display: flex;
+	}
 	.search-btn {
-		width: 3rem;
 		font-size: 2rem;
 		height: 3rem;
+		position: relative;
+		width: 3rem;
 	}
 	.icon {
-		position: fixed;
 		font-size: 1.8rem;
+		position: absolute;
 	}
 
 	.home-btn {
@@ -34,9 +35,9 @@ export const NavbarContainer = styled.nav`
 `
 
 export const NavOptionsFlex = styled(Flex)`
-	width: 50%;
-	gap: 1.3rem;
 	display: none;
+	gap: 1.3rem;
+	width: 50%;
 `
 export const DropDown = styled.ul``
 export const DropDownAnchor = styled.a``
