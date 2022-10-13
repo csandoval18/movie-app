@@ -15,7 +15,7 @@ function App() {
 				<Route path='/' element={<HomePage />}></Route>
 				<Route path='/register' element={<Register />} />
 				<Route path='/login' element={<Login />} />
-				<Route path='/movie-details/*' element={<MovieCard />} />
+				<Route path='/movie-details/:imdbID' element={<MovieDetails />} />
 				<Route path='*' element={<NotFound />} />
 				{/* <Route path="/search/:searchVal" element={<MovieList/>} */}
 			</Routes>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/deviceSizes'
 import { Flex } from '../../styles/GlobalStyles.elements'
 
 export const NavbarContainer = styled.nav`
@@ -31,6 +32,12 @@ export const NavbarContainer = styled.nav`
 
 	.home-btn {
 		color: white;
+	}
+
+	@media screen and (${device.laptop}) {
+		.navbar-options {
+			display: none;
+		}
 	}
 `
 

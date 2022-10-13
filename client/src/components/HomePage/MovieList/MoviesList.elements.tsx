@@ -15,10 +15,10 @@ export const MovieResults = styled.div`
 	.card-title {
 		height: 56px;
 	}
-	@media only screen and (${device.tablet}) {
+	@media screen and (${device.tablet}) {
 		grid-template-columns: 1fr 1fr;
 	}
-	@media only screen and (${device.desktopM}) {
+	@media screen and (${device.desktopM}) {
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	}
 `
