@@ -57,7 +57,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 					</div>
 				</MovieCardContainer>
 			) : (
-				<NotFound />
+				<>{/*  <NotFound /> */}</>
 			)}
 		</>
 	)

@@ -1,24 +1,24 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
 	fetchMovieDetailsThunk,
 	selectMovieDetails,
-} from '../../features/movie/movieSlice';
-import { Header } from '../../styles/GlobalStyles.elements';
+} from '../../features/movie/movieSlice'
+import { Header } from '../../styles/GlobalStyles.elements'
 import {
 	MovieDetailsCard,
 	MovieDetailsContainer,
-} from './MovieDetails.elements';
+} from './MovieDetails.elements'
 
 const MovieDetails = () => {
 	// Get imdbID from url through useParams hook from react router
-	const { imdbID } = useParams();
-	const dispatch = useAppDispatch();
+	const { imdbID } = useParams()
+	const dispatch = useAppDispatch()
 	useEffect(() => {
-		dispatch(fetchMovieDetailsThunk({ searchVal: imdbID }));
-	}, [imdbID]);
-	const movieDetails = useAppSelector(selectMovieDetails);
+		dispatch(fetchMovieDetailsThunk({ searchVal: imdbID }))
+	}, [imdbID])
+	const movieDetails = useAppSelector(selectMovieDetails)
 	return (
 		<MovieDetailsContainer className='movie-details-container'>
 			<MovieDetailsCard className='details-card'>
@@ -120,17 +120,17 @@ const MovieDetails = () => {
 									<tr>
 										<td>Ratings:</td>
 										<td>
-											{movieDetails?.Ratings.length !== 0
-												? movieDetails?.Ratings.map((rating) => (
-														<ul>
-															<li>
+											<ul>
+												{movieDetails?.Ratings.length !== 0
+													? movieDetails?.Ratings.map((rating) => (
+															<li key={movieDetails.imdbID + rating.Source}>
 																{rating.Source === 'Internet Movie Database'
 																	? 'IMDB: ' + rating.Value
 																	: `${rating.Source}: ${rating.Value}`}
 															</li>
-														</ul>
-												  ))
-												: 'N/A'}
+													  ))
+													: 'N/A'}
+											</ul>
 										</td>
 									</tr>
 								</tbody>
@@ -142,10 +142,10 @@ const MovieDetails = () => {
 				)}
 			</MovieDetailsCard>
 		</MovieDetailsContainer>
-	);
-};
+	)
+}
 
-export default MovieDetails;
+export default MovieDetails
 function dispatch(arg0: any) {
-	throw new Error('Function not implemented.');
+	throw new Error('Function not implemented.')
 }
