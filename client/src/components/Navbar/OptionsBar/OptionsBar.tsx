@@ -3,12 +3,11 @@ import { IoIosSearch } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../../app/hooks'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
-import { HomeBtn, PrimaryButton } from '../../../styles/GlobalStyles.elements'
+import { Flex, HomeBtn, PrimaryButton } from '../../../styles/GlobalStyles.elements'
 import {
   DropDown,
   DropDownAnchor,
   NavbarContainer,
-  NavOptionsFlex,
 } from '../Navbar.elements'
 
 const OptionsBar: React.FC = () => {
@@ -21,7 +20,7 @@ const OptionsBar: React.FC = () => {
 
   if (isLoggedIn) {
     body = (
-      <NavOptionsFlex ai='center' jc='right' className="navbar-options">
+      <Flex ai='center' jc='right' className="navbar-options">
         <PrimaryButton
           className='search-btn'
           onClick={() => {
@@ -66,26 +65,41 @@ const OptionsBar: React.FC = () => {
             </DropDown>
           </div>
         </div>
-      </NavOptionsFlex>
+      </Flex>
     )
   } else {
     body = (
-      <NavOptionsFlex ai='center' jc='right' className='navbar-options'>
-        <PrimaryButton
-          className='search-btn'
-          onClick={() => {
-            dispatch(setToggleSearchBar(true))
-          }}
-        >
-          <IoIosSearch className='icon'></IoIosSearch>
-        </PrimaryButton>
-        <Link className='' to='/login'>
-          <PrimaryButton>Login</PrimaryButton>
-        </Link>
-        <Link className='' to='/register'>
-          <PrimaryButton>Register</PrimaryButton>
-        </Link>
-      </NavOptionsFlex>
+      <>
+        <Flex ai='center' jc='right' className='nav-options-desktop'>
+          <PrimaryButton
+            className='search-btn'
+            onClick={() => {
+              dispatch(setToggleSearchBar(true))
+            }}
+          >
+            <IoIosSearch className='icon'></IoIosSearch>
+          </PrimaryButton>
+          <Link className='' to='/login'>
+            <PrimaryButton>Login</PrimaryButton>
+          </Link>
+          <Link className='' to='/register'>
+            <PrimaryButton>Register</PrimaryButton>
+          </Link>
+        </Flex>
+        <div className="drawer drawer-end">
+          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">Open drawer</label>
+          </div>
+          <div className="drawer-side">
+            <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+            <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+              <li><a>Sidebar Item 1</a></li>
+              <li><a>Sidebar Item 2</a></li>
+            </ul>
+          </div>
+        </div>
+      </>
     )
   }
 

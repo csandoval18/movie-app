@@ -16,8 +16,13 @@ export const NavbarContainer = styled.nav`
 	top: 0;
 	width: 100%;
 	z-index: 10000;
-	.navbar-options {
-		display: flex;
+	.nav-options,
+	.nav-options-desktop {
+		gap: 1.3rem;
+		width: 50%;
+	}
+	.nav-options-desktop {
+		display: none;
 	}
 	.search-btn {
 		font-size: 2rem;
@@ -29,22 +34,14 @@ export const NavbarContainer = styled.nav`
 		font-size: 1.8rem;
 		position: absolute;
 	}
-
 	.home-btn {
 		color: white;
 	}
-
 	@media screen and (${device.laptop}) {
-		.navbar-options {
-			display: none;
+		.nav-options-desktop {
+			display: flex;
 		}
 	}
-`
-
-export const NavOptionsFlex = styled(Flex)`
-	display: none;
-	gap: 1.3rem;
-	width: 50%;
 `
 export const DropDown = styled.ul``
 export const DropDownAnchor = styled.a``
