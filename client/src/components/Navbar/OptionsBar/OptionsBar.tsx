@@ -21,15 +21,15 @@ const OptionsBar: React.FC = () => {
 
   if (isLoggedIn) {
     body = (
-      <NavOptionsFlex ai='center' jc='right'>
-        <button
-          className='btn search-btn'
+      <NavOptionsFlex ai='center' jc='right' className="navbar-options">
+        <PrimaryButton
+          className='search-btn'
           onClick={() => {
             dispatch(setToggleSearchBar(true))
           }}
         >
           <IoIosSearch className='icon'></IoIosSearch>
-        </button>
+        </PrimaryButton>
         <div className='flex-none gap-2 text-primary-content'>
           <div className='dropdown dropdown-end'>
             <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
