@@ -8,25 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const router = require('express').Router();
-const User = require('../model/User');
+const User_1 = require("../model/User");
 const validation_1 = require("../utils/validation");
-const argon2 = require('argon2');
-const jwt = require('jsonwebtoken');
+const argon2_1 = __importDefault(require("argon2"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const router = require('express').Router();
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { error } = (0, validation_1.registerValidation)(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
-    const usernameExists = yield User.findOne({ username: req.body.username });
+    const usernameExists = yield User_1.UserModel.findOne({ username: req.body.username });
     console.log('username:', usernameExists);
     if (usernameExists)
         return res.status(400).send('Username already taken');
-    const emailExists = yield User.findOne({ email: req.body.email });
+    const emailExists = yield User_1.UserModel.findOne({ email: req.body.email });
     if (emailExists)
         return res.status(400).send('Email is already linked to an account');
-    const hashpw = yield argon2.hash(req.body.password);
-    const user = new User({
+    const hashpw = yield argon2_1.default.hash(req.body.password);
+    const user = new User_1.UserModel({
         name: req.body.name,
         username: req.body.username,
         email: req.body.email,
@@ -44,13 +47,13 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const { error } = (0, validation_1.loginValidation)(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
-    const user = yield User.findOne({ username: req.body.username });
+    const user = yield User_1.UserModel.findOne({ username: req.body.username });
     if (!user)
         return res.status(400).send('Username or password is incorrect');
-    const valid = yield argon2.verify(user.password, req.body.password);
+    const valid = yield argon2_1.default.verify(user.password, req.body.password);
     if (!valid)
         return res.status(400).send('Wrong password');
-    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    const token = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     return res.header('auth-token', token).send(token);
 }));
 exports.default = router;

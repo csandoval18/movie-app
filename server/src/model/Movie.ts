@@ -1,15 +1,24 @@
-import { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
-const movieSchema = new Schema({
+export interface IMovie {
+	title: string
+	type: string
+	cast: string[]
+	rated: string
+	directors: string
+	plot: string
+	release: string
+}
+
+const Movie = new Schema<IMovie>({
 	title: String,
 	type: String,
 	cast: [String],
 	rated: String,
 	directors: [String],
-	fullplot: String,
-	released: Date,
+	plot: String,
+	release: Date,
 })
 
-module.exports = {
-	movieSchema,
-}
+export const MovieModel = mongoose.model('Movie', Movie)
+export default Movie

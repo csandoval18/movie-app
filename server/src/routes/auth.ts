@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-const router = require('express').Router()
-const User = require('../model/User')
+import { UserModel } from '../model/User'
 import { loginValidation, registerValidation } from '../utils/validation'
-const argon2 = require('argon2')
-const jwt = require('jsonwebtoken')
+import argon2 from 'argon2'
+import jwt, { Secret } from 'jsonwebtoken'
+const router = require('express').Router()
 
 // Register validaiton
 router.post('/register', async (req: Request, res: Response) => {
@@ -12,20 +12,18 @@ router.post('/register', async (req: Request, res: Response) => {
 	if (error) return res.status(400).send(error.details[0].message)
 
 	// Check if username already exists
-	const usernameExists = await User.findOne({ username: req.body.username })
+	const usernameExists = await UserModel.findOne({ username: req.body.username })
 	console.log('username:', usernameExists)
 	if (usernameExists) return res.status(400).send('Username already taken')
 
 	// Check if email already exists
-	const emailExists = await User.findOne({ email: req.body.email })
+	const emailExists = await UserModel.findOne({ email: req.body.email })
 	if (emailExists)
 		return res.status(400).send('Email is already linked to an account')
-
 	// Hash passwords
 	const hashpw = await argon2.hash(req.body.password)
-
 	// Create a new user
-	const user = new User({
+	const user = new UserModel({
 		name: req.body.name,
 		username: req.body.username,
 		email: req.body.email,
@@ -46,7 +44,7 @@ router.post('/login', async (req: Request, res: Response) => {
 	if (error) return res.status(400).send(error.details[0].message)
 
 	//Check if email exists
-	const user = await User.findOne({ username: req.body.username })
+	const user = await UserModel.findOne({ username: req.body.username })
 	if (!user) return res.status(400).send('Username or password is incorrect')
 
 	//Unsuccessful login
@@ -54,7 +52,7 @@ router.post('/login', async (req: Request, res: Response) => {
 	if (!valid) return res.status(400).send('Wrong password')
 
 	//Create and assign jwt
-	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
+	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET as Secret)
 	return res.header('auth-token', token).send(token)
 })
 

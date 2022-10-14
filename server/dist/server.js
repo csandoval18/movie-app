@@ -16,6 +16,7 @@ const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const mongoConn_1 = __importDefault(require("./mongoConn"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const favorites_1 = __importDefault(require("./routes/favorites"));
 require('dotenv').config();
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const app = (0, express_1.default)();
@@ -26,6 +27,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     }));
     app.use(express_1.default.json());
     app.use('/api/user', auth_1.default);
+    app.use('/api/user', favorites_1.default);
     const port = process.env.PORT;
     app.listen(port, () => console.log('server started in port:', port));
 });

@@ -1,6 +1,17 @@
-import mongoose from 'mongoose'
+import mongoose, { Model, Schema, Types } from "mongoose"
+import  Movie, { IMovie } from './Movie'
 
-export const usersSchema = new mongoose.Schema({
+export interface IUser {
+  name: string,
+  username: string,
+  email: string,
+  password: string,
+  date_created: Date,
+  favorites: Types.DocumentArray<IMovie>
+  
+}
+
+const User = new Schema<IUser, Model<IUser>>({
 	name: {
 		type: String,
 		required: true,
@@ -25,10 +36,14 @@ export const usersSchema = new mongoose.Schema({
 		max: 1024,
 		min: 45,
 	},
-	date: {
+	date_created: {
 		type: Date,
 		default: Date.now,
 	},
+  favorites: {
+    type: [Movie]
+  },
 })
-
-module.exports = mongoose.model('Users', usersSchema)
+ 
+export const UserModel = mongoose.model('User', User)
+export default Movie
