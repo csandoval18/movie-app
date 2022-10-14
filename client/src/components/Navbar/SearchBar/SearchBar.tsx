@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
   fetchMoviesThunk,
@@ -18,7 +18,7 @@ import {
 const SearchBar: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const [searchInput, setSearchInput] = useState<String>(
+  const [searchInput, setSearchBarInput] = useState<String | undefined>(
     useAppSelector(selectMovieSearchInput),
   )
   // useEffect(() => {
@@ -40,6 +40,8 @@ const SearchBar: React.FC = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault()
+              dispatch(setSearchVal(searchInput))
+              dispatch(fetchMoviesThunk({ searchVal: searchInput }))
               navigate(`/search=${searchInput}`)
             }}
           >
@@ -49,8 +51,7 @@ const SearchBar: React.FC = () => {
               placeholder='Search movies'
               className='input input-bordered '
               onChange={(e) => {
-                setSearchInput(e.target.value)
-                dispatch(setSearchVal(e.target.value))
+                setSearchBarInput(e.target.value)
               }}
             />
           </form>
