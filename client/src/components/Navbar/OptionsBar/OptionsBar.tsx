@@ -20,7 +20,7 @@ const OptionsBar: React.FC = () => {
 
   if (isLoggedIn) {
     body = (
-      <Flex ai='center' jc='right' className="navbar-options">
+      <Flex ai='center' jc='right' className="nav-menu">
         <PrimaryButton
           className='search-btn'
           onClick={() => {
@@ -70,7 +70,7 @@ const OptionsBar: React.FC = () => {
   } else {
     body = (
       <>
-        <Flex ai='center' jc='right' className='nav-options-desktop'>
+        <Flex ai='center' jc='right' className='nav-menu'>
           <PrimaryButton
             className='search-btn'
             onClick={() => {
@@ -86,29 +86,31 @@ const OptionsBar: React.FC = () => {
             <PrimaryButton>Register</PrimaryButton>
           </Link>
         </Flex>
-        <div className="drawer drawer-end">
-          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
-            <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">Open drawer</label>
-          </div>
-          <div className="drawer-side">
-            <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-            <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-              <li><a>Sidebar Item 1</a></li>
-              <li><a>Sidebar Item 2</a></li>
-            </ul>
-          </div>
-        </div>
       </>
     )
   }
 
+  // return (
+  //   <NavbarContainer className='navbar-container base-100'>
+  //     <Link to='/'>
+  //       <HomeBtn>CAS</HomeBtn>
+  //     </Link>
+  //     {body}
+  //   </NavbarContainer>
+  // )
   return (
-    <NavbarContainer className='navbar-container base-100'>
+    <NavbarContainer className="navbar">
+      <div className="flex-none lg:hidden">
+        <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </label>
+      </div>
       <Link to='/'>
         <HomeBtn>CAS</HomeBtn>
       </Link>
-      {body}
+      <div className="flex-none hidden lg:block">
+        {body}
+      </div>
     </NavbarContainer>
   )
 }
