@@ -1,14 +1,12 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState, AppThunk } from '../../app/store'
+import { createSlice } from '@reduxjs/toolkit'
+import { RootState } from '../../app/store'
 
 export interface SearchBarToggle {
 	toggleSearchBar: Boolean
 }
-
 const initialState: SearchBarToggle = {
 	toggleSearchBar: false,
 }
-
 export const navbarSlice = createSlice({
 	name: 'TOGGLE_SEARCH_BAR',
 	initialState,
@@ -18,7 +16,6 @@ export const navbarSlice = createSlice({
 		},
 	},
 })
-
 export const { setToggleSearchBar } = navbarSlice.actions
 export const selectToggleSearchbar = (state: RootState) =>
 	state.navbar.toggleSearchBar

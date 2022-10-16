@@ -10,20 +10,17 @@ export const SearchBarContainer = styled(NavbarContainer)`
 export const SearchBarInput = styled.input`
 	min-width: 300px;
 `
-
 export const ReturnBtn = styled.button`
 	width: 3rem;
-	/* background-color: hsl(var(--n)); */
 	color: white;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.2);
+		/* background-color: red; */
 	}
-
 	.icon {
 		font-size: 1.7rem;
 	}

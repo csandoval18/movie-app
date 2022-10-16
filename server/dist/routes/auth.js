@@ -21,13 +21,18 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
     const { error } = (0, validation_1.registerValidation)(req.body);
     if (error)
         return res.status(400).send(error.details[0].message);
-    const usernameExists = yield User_1.UserModel.findOne({ username: req.body.username });
-    console.log('username:', usernameExists);
+    const usernameExists = yield User_1.UserModel.findOne({
+        username: req.body.username,
+    });
     if (usernameExists)
-        return res.status(400).send('Username already taken');
+        return res
+            .status(400)
+            .send({ field: 'username', msg: 'Username already taken' });
     const emailExists = yield User_1.UserModel.findOne({ email: req.body.email });
     if (emailExists)
-        return res.status(400).send('Email is already linked to an account');
+        return res
+            .status(400)
+            .send({ field: 'email', msg: 'Email is already linked to an account' });
     const hashpw = yield argon2_1.default.hash(req.body.password);
     const user = new User_1.UserModel({
         name: req.body.name,
@@ -49,10 +54,12 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return res.status(400).send(error.details[0].message);
     const user = yield User_1.UserModel.findOne({ username: req.body.username });
     if (!user)
-        return res.status(400).send('Username or password is incorrect');
+        return res
+            .status(400)
+            .send({ field: 'username', msg: 'Username or password is incorrect' });
     const valid = yield argon2_1.default.verify(user.password, req.body.password);
     if (!valid)
-        return res.status(400).send('Wrong password');
+        return res.status(400).send({ field: 'password', msg: 'Wrong password' });
     const token = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     return res.header('auth-token', token).send(token);
 }));

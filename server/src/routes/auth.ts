@@ -12,14 +12,20 @@ router.post('/register', async (req: Request, res: Response) => {
 	if (error) return res.status(400).send(error.details[0].message)
 
 	// Check if username already exists
-	const usernameExists = await UserModel.findOne({ username: req.body.username })
-	console.log('username:', usernameExists)
-	if (usernameExists) return res.status(400).send('Username already taken')
+	const usernameExists = await UserModel.findOne({
+		username: req.body.username,
+	})
+	if (usernameExists)
+		return res
+			.status(400)
+			.send({ field: 'username', msg: 'Username already taken' })
 
 	// Check if email already exists
 	const emailExists = await UserModel.findOne({ email: req.body.email })
 	if (emailExists)
-		return res.status(400).send('Email is already linked to an account')
+		return res
+			.status(400)
+			.send({ field: 'email', msg: 'Email is already linked to an account' })
 	// Hash passwords
 	const hashpw = await argon2.hash(req.body.password)
 	// Create a new user
@@ -45,11 +51,15 @@ router.post('/login', async (req: Request, res: Response) => {
 
 	//Check if email exists
 	const user = await UserModel.findOne({ username: req.body.username })
-	if (!user) return res.status(400).send('Username or password is incorrect')
+	if (!user)
+		return res
+			.status(400)
+			.send({ field: 'username', msg: 'Username or password is incorrect' })
 
 	//Unsuccessful login
 	const valid = await argon2.verify(user.password, req.body.password)
-	if (!valid) return res.status(400).send('Wrong password')
+	if (!valid)
+		return res.status(400).send({ field: 'password', msg: 'Wrong password' })
 
 	//Create and assign jwt
 	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET as Secret)

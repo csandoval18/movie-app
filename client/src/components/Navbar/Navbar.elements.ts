@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import { device } from '../../styles/deviceSizes'
-import { Flex } from '../../styles/GlobalStyles.elements'
 
 export const NavbarContainer = styled.nav`
 	background-color: hsl(var(--p));
@@ -15,9 +13,6 @@ export const NavbarContainer = styled.nav`
 	z-index: 10000;
 	.nav-menu {
 		gap: 1.3rem;
-	}
-	.nav-options-desktop {
-		display: none;
 	}
 	.search-btn {
 		font-size: 2rem;
