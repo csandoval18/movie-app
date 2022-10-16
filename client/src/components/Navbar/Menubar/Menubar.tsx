@@ -10,7 +10,7 @@ import {
   NavbarContainer,
 } from '../Navbar.elements'
 
-const OptionsBar: React.FC = () => {
+const Menubar: React.FC = () => {
   const dispatch = useAppDispatch()
   const [isLoggedIn, setIsLoggedIn] = useState<string>(
     sessionStorage.getItem('token') as string,
@@ -115,4 +115,4 @@ const OptionsBar: React.FC = () => {
   )
 }
 
-export default OptionsBar
+export default Menubar

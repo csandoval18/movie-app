@@ -3,22 +3,20 @@ import styled from 'styled-components'
 export const Header = styled.div`
 	font-size: 30px;
 `
-
 interface FlexProps {
 	bg?: string
 	ai?: string
 	jc?: string
 	gap?: string
 }
-
 export const Flex = styled.div<FlexProps>`
 	align-items: ${(p) => p.ai};
 	background-color: ${(p) => p.bg};
 	display: flex;
 	gap: ${(p) => p.gap};
 	justify-content: ${(p) => p.jc};
+	height: inherit;
 `
-
 export const PrimaryButton = styled.button`
 	align-items: center;
 	border: 2px solid hsl(var(--n));
@@ -27,10 +25,9 @@ export const PrimaryButton = styled.button`
 	display: flex;
 	justify-content: center;
 	padding: 10px 1rem;
-
 	&:hover {
 		background-color: hsl(var(--n));
-    color: aliceblue;
+		color: aliceblue;
 	}
 `
 export const HomeBtn = styled.button`
@@ -48,7 +45,6 @@ export const HomeBtn = styled.button`
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 `
-
 export const Card = styled.div`
 	/* background-color: hsl(var(--n)); */
 	background-color: rgba(25, 34, 57, 90%);

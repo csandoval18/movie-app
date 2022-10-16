@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
   fetchMoviesThunk,
   selectMovieSearchInput,
-  setSearchVal,
+  setSearchVal
 } from '../../../features/movie/movieSlice'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
 import { Flex } from '../../../styles/GlobalStyles.elements'
 import {
   ReturnBtn,
   SearchBarContainer,
-  SearchBarInput,
+  SearchBarInput
 } from './SearchBar.elements'
 
 const SearchBar: React.FC = () => {
@@ -25,11 +25,10 @@ const SearchBar: React.FC = () => {
   // 	// dispatch(setSearchVal(searchInput))
   // 	dispatch(fetchMoviesThunk({ searchVal: searchInput }))
   // }, [searchInput])
-
   return (
     <SearchBarContainer className='searchbar-container'>
-      <Flex gap='1rem' className='options-container'>
-        <ReturnBtn
+      <Flex gap='1rem' ai="center">
+        <ReturnBtn className="search-return-btn"
           onClick={() => {
             dispatch(setToggleSearchBar(false))
           }}
