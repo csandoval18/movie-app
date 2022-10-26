@@ -27,35 +27,33 @@ const SearchBar: React.FC = () => {
   // }, [searchInput])
   return (
     <SearchBarContainer className='searchbar-container'>
-      <Flex gap='1rem' ai="center">
-        <ReturnBtn className="search-return-btn"
-          onClick={() => {
-            dispatch(setToggleSearchBar(false))
+      <ReturnBtn className="search-return-btn"
+        onClick={() => {
+          dispatch(setToggleSearchBar(false))
+        }}
+      >
+        <AiOutlineArrowLeft className='icon'></AiOutlineArrowLeft>
+      </ReturnBtn>
+      <div className='form-control'>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            dispatch(setSearchVal(searchInput))
+            dispatch(fetchMoviesThunk({ searchVal: searchInput }))
+            navigate(`/search=${searchInput}`)
           }}
         >
-          <AiOutlineArrowLeft className='icon'></AiOutlineArrowLeft>
-        </ReturnBtn>
-        <div className='form-control'>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              dispatch(setSearchVal(searchInput))
-              dispatch(fetchMoviesThunk({ searchVal: searchInput }))
-              navigate(`/search=${searchInput}`)
+          <SearchBarInput
+            value={searchInput as string}
+            type='text'
+            placeholder='Search movies'
+            className='input input-bordered '
+            onChange={(e) => {
+              setSearchBarInput(e.target.value)
             }}
-          >
-            <SearchBarInput
-              value={searchInput as string}
-              type='text'
-              placeholder='Search movies'
-              className='input input-bordered '
-              onChange={(e) => {
-                setSearchBarInput(e.target.value)
-              }}
-            />
-          </form>
-        </div>
-      </Flex>
+          />
+        </form>
+      </div>
     </SearchBarContainer>
   )
 }

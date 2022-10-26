@@ -2,7 +2,10 @@ import styled from 'styled-components'
 import { NavbarContainer } from '../Navbar.elements'
 
 export const SearchBarContainer = styled(NavbarContainer)`
-	justify-content: center;
+	align-items: center;
+	display: flex;
+	justify-content: left;
+	gap: 1rem;
 	.options-container {
 		width: 100%;
 	}
@@ -11,15 +14,15 @@ export const SearchBarInput = styled.input`
 	min-width: 300px;
 `
 export const ReturnBtn = styled.button`
-	width: 3rem;
+	align-items: center;
+	border-radius: 50%;
 	color: white;
 	display: flex;
-	align-items: center;
+	height: 3rem;
 	justify-content: center;
-	border-radius: 50%;
+	width: 3rem;
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.2);
-		/* background-color: red; */
 	}
 	.icon {
 		font-size: 1.7rem;

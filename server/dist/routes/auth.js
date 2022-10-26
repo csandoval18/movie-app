@@ -16,6 +16,7 @@ const User_1 = require("../model/User");
 const validation_1 = require("../utils/validation");
 const argon2_1 = __importDefault(require("argon2"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+require('dotenv').config();
 const router = require('express').Router();
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { error } = (0, validation_1.registerValidation)(req.body);
@@ -35,7 +36,6 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
             .send({ field: 'email', msg: 'Email is already linked to an account' });
     const hashpw = yield argon2_1.default.hash(req.body.password);
     const user = new User_1.UserModel({
-        name: req.body.name,
         username: req.body.username,
         email: req.body.email,
         password: hashpw,
@@ -53,6 +53,7 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     if (error)
         return res.status(400).send(error.details[0].message);
     const user = yield User_1.UserModel.findOne({ username: req.body.username });
+    console.log('user:', user);
     if (!user)
         return res
             .status(400)

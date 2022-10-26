@@ -1,23 +1,16 @@
-import mongoose, { Model, Schema, Types } from "mongoose"
-import  Movie, { IMovie } from './Movie'
+import mongoose, { Model, Schema, Types } from 'mongoose'
+import Movie, { IMovie } from './Movie'
 
 export interface IUser {
-  name: string,
-  username: string,
-  email: string,
-  password: string,
-  date_created: Date,
-  favorites: Types.DocumentArray<IMovie>
-  
+	name: string
+	username: string
+	email: string
+	password: string
+	date_created: Date
+	favorites: Types.DocumentArray<IMovie>
 }
 
 const User = new Schema<IUser, Model<IUser>>({
-	name: {
-		type: String,
-		required: true,
-		min: 6,
-		max: 45,
-	},
 	username: {
 		type: String,
 		required: true,
@@ -40,10 +33,10 @@ const User = new Schema<IUser, Model<IUser>>({
 		type: Date,
 		default: Date.now,
 	},
-  favorites: {
-    type: [Movie]
-  },
+	favorites: {
+		type: [Movie],
+	},
 })
- 
+
 export const UserModel = mongoose.model('User', User)
 export default Movie

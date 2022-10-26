@@ -30,12 +30,6 @@ exports.UserModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const Movie_1 = __importDefault(require("./Movie"));
 const User = new mongoose_1.Schema({
-    name: {
-        type: String,
-        required: true,
-        min: 6,
-        max: 45,
-    },
     username: {
         type: String,
         required: true,
@@ -59,7 +53,7 @@ const User = new mongoose_1.Schema({
         default: Date.now,
     },
     favorites: {
-        type: [Movie_1.default]
+        type: [Movie_1.default],
     },
 });
 exports.UserModel = mongoose_1.default.model('User', User);

@@ -2,24 +2,26 @@ import styled from 'styled-components'
 import { device } from '../../../styles/deviceSizes'
 
 export const MoviesListContainer = styled.div`
-	.header {
-		padding-top: 1rem;
-	}
+  margin: 2rem auto;
 `
 
 export const MovieResults = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 1rem;
-	justify-items: center;
-	.card-title {
+	gap: 0.5rem;
+	/* justify-items: center; */ 
+	rd-title {
 		height: 56px;
 	}
 	@media screen and (${device.tablet}) {
 		grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+    row-gap: 1rem;
 	}
 	@media screen and (${device.desktopM}) {
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 4rem;
+    row-gap: 1rem;
 	}
 `
 
@@ -28,6 +30,5 @@ export const PaginationBtnsStyle = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-top: 1.5rem;
-	padding-bottom: 2rem;
+  padding: 3rem 0;
 `

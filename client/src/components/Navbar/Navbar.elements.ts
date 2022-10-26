@@ -4,7 +4,7 @@ export const NavbarContainer = styled.nav`
 	background-color: hsl(var(--p));
 	font-size: 16;
 	font-weight: 500;
-	height: 5rem;
+	min-height: 4rem;
 	justify-content: space-between;
 	padding: 0 1rem;
 	position: sticky;
@@ -25,6 +25,9 @@ export const NavbarContainer = styled.nav`
 		position: absolute;
 	}
 	.home-btn {
+		color: white;
+	}
+	.hamburger {
 		color: white;
 	}
 `

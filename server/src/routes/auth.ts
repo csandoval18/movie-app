@@ -3,6 +3,7 @@ import { UserModel } from '../model/User'
 import { loginValidation, registerValidation } from '../utils/validation'
 import argon2 from 'argon2'
 import jwt, { Secret } from 'jsonwebtoken'
+require('dotenv').config()
 const router = require('express').Router()
 
 // Register validaiton
@@ -30,7 +31,6 @@ router.post('/register', async (req: Request, res: Response) => {
 	const hashpw = await argon2.hash(req.body.password)
 	// Create a new user
 	const user = new UserModel({
-		name: req.body.name,
 		username: req.body.username,
 		email: req.body.email,
 		password: hashpw,
@@ -51,6 +51,7 @@ router.post('/login', async (req: Request, res: Response) => {
 
 	//Check if email exists
 	const user = await UserModel.findOne({ username: req.body.username })
+	console.log('user:', user)
 	if (!user)
 		return res
 			.status(400)
