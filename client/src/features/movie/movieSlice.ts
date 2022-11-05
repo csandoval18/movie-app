@@ -1,10 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { AiOutlineConsoleSql } from 'react-icons/ai'
-import { useAppSelector } from '../../app/hooks'
-import { RootState, AppThunk } from '../../app/store'
+import { RootState } from '../../app/store'
 import { MovieDetails, MoviesSearchData } from '../../types'
-import { useSearchMovies } from '../../utils/useSearchMovies'
 import { useSortByYear } from '../../utils/useSortByYear'
 
 export interface SearchMovieState {
@@ -52,7 +49,7 @@ export const fetchMovieDetailsThunk = createAsyncThunk(
 )
 
 export const movieSlice = createSlice({
-	name: 'SET_MOVIE_SEARCH_INPUT',
+	name: 'MOVIE_SLICE',
 	initialState,
 	reducers: {
 		setSearchVal: (state, action) => {

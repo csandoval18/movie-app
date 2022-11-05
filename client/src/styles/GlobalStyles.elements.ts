@@ -24,7 +24,7 @@ export const PrimaryButton = styled.button`
 	color: hsl(var(--n));
 	display: flex;
 	justify-content: center;
-	padding: 10px 1rem;
+	padding: 8px 8px;
 	&:hover {
 		background-color: hsl(var(--n));
 		color: aliceblue;

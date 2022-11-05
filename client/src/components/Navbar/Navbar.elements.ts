@@ -16,9 +16,9 @@ export const NavbarContainer = styled.nav`
 	}
 	.search-btn {
 		font-size: 2rem;
-		height: 3rem;
+		height: 45px;
 		position: relative;
-		width: 3rem;
+		width: 45px;
 	}
 	.icon {
 		font-size: 1.8rem;
