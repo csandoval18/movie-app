@@ -6,28 +6,11 @@ module.exports = {
 		'./public/index.html',
 		'./src/components/**/*.{ts,tsx}',
 	],
-	theme: {
-		extend: {
-			// fontFamily: {
-			// tillium: "'Titillium Web', sans-serif",
-			// inter: 'Inter',
-			// },
-			// colors: {
-			// 	primary: '#94b3eb',
-			// 	'primary-content': '#ffffff',
-			// 	secondary: '#e89eef',
-			// 	accent: '#f7b7ec',
-			// 	// 'base-100': '#111827',
-			// 	// 'base-100': '#ffffff',
-			// 	neutral: '#383B56',
-			// },
-		},
-	},
 	plugins: [require('daisyui')],
 	daisyui: {
 		themes: [
 			// 'light',
-			// 'dark',
+			'dark',
 			{
 				mytheme: {
 					primary: '#93c5fd',

@@ -2,33 +2,31 @@ import styled from 'styled-components'
 import { device } from '../../../styles/deviceSizes'
 
 export const MoviesListContainer = styled.div`
-  margin: 2rem auto;
+	margin: 2rem auto;
+	.header {
+		text-align: center;
+	}
 `
-
 export const MovieResults = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 0.5rem;
-	/* justify-items: center; */ 
+	gap: 2rem;
 	rd-title {
 		height: 56px;
 	}
-	@media screen and (${device.tablet}) {
+	@media (${device.tablet}) {
 		grid-template-columns: 1fr 1fr;
-    column-gap: 4rem;
-    row-gap: 1rem;
+		gap: 2rem;
 	}
-	@media screen and (${device.desktopM}) {
+	@media (${device.desktopM}) {
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 4rem;
-    row-gap: 1rem;
+		gap: 2rem;
 	}
 `
-
 export const PaginationBtnsStyle = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-  padding: 3rem 0;
+	padding: 3rem 0;
 `

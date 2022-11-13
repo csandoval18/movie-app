@@ -1,44 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { redirect, useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks'
 import {
 	fetchMoviesThunk,
 	selectMovies,
 	selectMovieSearchInput,
-	setMovies,
 } from '../../../../features/movie/movieSlice'
-import { useSearchMovies } from '../../../../utils/useSearchMovies'
-import { useSortByYear } from '../../../../utils/useSortByYear'
 import { PaginationBtnsStyle } from '../MoviesList.elements'
 
 const PaginationBtns = () => {
-	const [currPageNum, setCurrPageNum] = useState<number>(1)
+	const movies = useAppSelector(selectMovies)
+	const { searchInput, pageNum } = useParams()
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
+	const [currPageNum, setCurrPageNum] = useState<number>(
+		pageNum ? parseInt(pageNum) : 1,
+	)
+
+	const navigate = useNavigate()
 	let dispatch = useAppDispatch()
 	const searchVal = useAppSelector(selectMovieSearchInput)
 
 	console.log('currpage:', currPageNum)
 	console.log('serachVal:', searchVal)
-	// useEffect(() => {
-	// 	dispatch(fetchMoviesThunk({ searchVal: searchVal, pageNum: currPageNum }))
-	// }, [searchVal])
 
 	const increasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr + 4))
 	}
-
 	const decreasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr - 4))
 	}
 
 	useEffect(() => {
-		if (searchVal)
+		if (searchVal) {
 			dispatch(
 				fetchMoviesThunk({
 					searchVal: searchVal,
 					pageNum: currPageNum,
 				}),
 			)
-		else return
+			navigate(`/search=${searchInput}&page=${currPageNum}`)
+		} else return
 	}, [searchVal, currPageNum])
 	return (
 		<PaginationBtnsStyle>
@@ -76,7 +77,7 @@ const PaginationBtns = () => {
 				<button
 					className='btn'
 					onClick={() => {
-						// if (movies.length !== 10) return
+						if (movies.length !== 10) return
 						if (currPageNum === pagPageNums[pagPageNums.length - 1])
 							increasePagPages()
 						setCurrPageNum(currPageNum + 1)

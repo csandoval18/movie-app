@@ -14,11 +14,18 @@ export const NavbarContainer = styled.nav`
 	.nav-menu {
 		gap: 1.3rem;
 	}
-	.search-btn {
-		font-size: 2rem;
-		height: 45px;
+	.search-btn,
+	.mobile-search-btn {
+		font-size: 1.5em !important;
 		position: relative;
+	}
+	.search-btn {
+		height: 45px;
 		width: 45px;
+	}
+	.mobile-search-btn {
+		height: 40px;
+		width: 40px;
 	}
 	.icon {
 		font-size: 1.8rem;

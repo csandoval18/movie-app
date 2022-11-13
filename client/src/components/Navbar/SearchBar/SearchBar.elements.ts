@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../../styles/deviceSizes'
 import { NavbarContainer } from '../Navbar.elements'
 
 export const SearchBarContainer = styled(NavbarContainer)`
@@ -6,8 +7,19 @@ export const SearchBarContainer = styled(NavbarContainer)`
 	display: flex;
 	justify-content: left;
 	gap: 1rem;
+	.searchbar-layout {
+		display: flex;
+	}
 	.options-container {
 		width: 100%;
+	}
+	.searchbar-home-btn {
+		display: none;
+	}
+	@media (${device.tablet}) {
+		.searchbar-home-btn {
+			display: block;
+		}
 	}
 `
 export const SearchBarInput = styled.input`
