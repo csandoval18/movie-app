@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/deviceSizes'
 
 export const NavbarContainer = styled.nav`
 	background-color: hsl(var(--p));
@@ -36,6 +37,75 @@ export const NavbarContainer = styled.nav`
 	}
 	.hamburger {
 		color: white;
+	}
+	.handle-searchbar-display,
+	.menu-options {
+		display: none;
+	}
+	.handle-mobile-menu-display {
+	}
+	@media (${device.tablet}) {
+		.handle-searchbar-display,
+		.menu-options {
+			display: flex;
+		}
+		.handle-mobile-menu-display,
+		.search-return-btn {
+			display: none;
+		}
+	}
+`
+export const SearchBarContainer = styled(NavbarContainer)`
+	align-items: center;
+	display: flex;
+	justify-content: left;
+	gap: 1rem;
+	.searchbar-container {
+		padding: 0;
+	}
+	.searchbar-layout {
+		display: flex;
+		flex: 1;
+		justify-content: left;
+		gap: 0.5rem;
+	}
+	.options-container {
+		width: 100%;
+	}
+	.form-control {
+		width: 100%;
+	}
+	@media (${device.tablet}) {
+		.form-control {
+			width: auto;
+		}
+		.searchbar-layout {
+			justify-content: center;
+		}
+	}
+`
+export const SearchBarInput = styled.input`
+	max-width: 500px;
+	width: 100%;
+	@media (${device.tablet}) {
+		& {
+			min-width: 400px;
+		}
+	}
+`
+export const ReturnBtn = styled.button`
+	align-items: center;
+	border-radius: 50%;
+	color: white;
+	display: flex;
+	height: 3rem;
+	justify-content: center;
+	width: 3rem;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	.icon {
+		font-size: 1.7rem;
 	}
 `
 export const DropDown = styled.ul``

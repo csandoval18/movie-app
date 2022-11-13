@@ -10,19 +10,22 @@ import {
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
 import { Flex, HomeBtn } from '../../../styles/GlobalStyles.elements'
 import {
-	ReturnBtn,
 	SearchBarContainer,
+	ReturnBtn,
 	SearchBarInput,
-} from './SearchBar.elements'
+} from '../Navbar.elements'
+interface SearBarProps {
+	className: string
+}
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [searchInput, setSearchBarInput] = useState<String | undefined>(
 		useAppSelector(selectMovieSearchInput),
 	)
 	return (
-		<SearchBarContainer className='searchbar-container'>
+		<SearchBarContainer className={`searchbar-container ${className}`}>
 			<div className='searchbar-layout'>
 				<ReturnBtn
 					className='search-return-btn'
@@ -34,10 +37,10 @@ const SearchBar: React.FC = () => {
 				</ReturnBtn>
 				<div className='form-control'>
 					<form
-						onSubmit={(e) => {
+						onSubmit={async (e) => {
 							e.preventDefault()
 							dispatch(setSearchVal(searchInput))
-							dispatch(fetchMoviesThunk({ searchVal: searchInput }))
+							await dispatch(fetchMoviesThunk({ searchVal: searchInput }))
 							navigate(`/search=${searchInput}&page=1`)
 						}}
 					>

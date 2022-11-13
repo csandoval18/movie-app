@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { device } from '../../../styles/deviceSizes'
 import { NavbarContainer } from '../Navbar.elements'
 
-export const SearchBarContainer = styled(NavbarContainer)`
-	align-items: center;
+export const SearchBarContainer2 = styled(NavbarContainer)``
+/* align-items: center;
 	display: flex;
 	justify-content: left;
 	gap: 1rem;
@@ -19,16 +19,10 @@ export const SearchBarContainer = styled(NavbarContainer)`
 	.options-container {
 		width: 100%;
 	}
-	.searchbar-home-btn {
-		display: none;
-	}
 	.form-control {
 		width: 100%;
 	}
 	@media (${device.tablet}) {
-		.searchbar-home-btn {
-			display: block;
-		}
 		.form-control {
 			width: auto;
 		}
@@ -60,4 +54,4 @@ export const ReturnBtn = styled.button`
 	.icon {
 		font-size: 1.7rem;
 	}
-`
+` */

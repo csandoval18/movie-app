@@ -20,6 +20,7 @@ interface MenubarProps {
 
 const Menubar: React.FC<MenubarProps> = ({ children }) => {
 	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
+	console.log('togglesearchbar', toggleSearchBar)
 	const dispatch = useAppDispatch()
 	const [isLoggedIn, setIsLoggedIn] = useState<string>(
 		sessionStorage.getItem('token') as string,
@@ -30,7 +31,6 @@ const Menubar: React.FC<MenubarProps> = ({ children }) => {
 	if (isLoggedIn) {
 		body = (
 			<Flex ai='center' jc='right' className='nav-menu'>
-				{toggleSearchBar ? <SearchBar /> : <></>}
 				<div className='flex-none gap-2 text-primary-content'>
 					<div className='dropdown dropdown-end'>
 						<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
@@ -73,14 +73,6 @@ const Menubar: React.FC<MenubarProps> = ({ children }) => {
 		body = (
 			<>
 				<Flex ai='center' jc='right' className='nav-menu'>
-					{/* <PrimaryButton
-						className='search-btn'
-						onClick={() => {
-							dispatch(setToggleSearchBar(true))
-						}}
-					>
-						<IoIosSearch className='icon'></IoIosSearch>
-					</PrimaryButton> */}
 					<Link className='' to='/login'>
 						<PrimaryButton>Login</PrimaryButton>
 					</Link>
@@ -94,9 +86,18 @@ const Menubar: React.FC<MenubarProps> = ({ children }) => {
 	return (
 		<NavbarContainer className='navbar'>
 			<Link to='/'>
-				<HomeBtn>CAS</HomeBtn>
+				<HomeBtn className={toggleSearchBar ? 'handle-searchbar-display' : ''}>
+					CAS
+				</HomeBtn>
 			</Link>
-			<div className='flex-none lg:hidden gap-4'>
+			<SearchBar
+				className={toggleSearchBar ? '' : 'handle-searchbar-display'}
+			/>
+			<div
+				className={`handle-mobile-menu-display flex-none gap-4 ${
+					toggleSearchBar ? 'handle-searchbar-display' : ''
+				}`}
+			>
 				<PrimaryButton
 					className='mobile-search-btn'
 					onClick={() => {
@@ -121,7 +122,7 @@ const Menubar: React.FC<MenubarProps> = ({ children }) => {
 					</svg>
 				</label>
 			</div>
-			<div className='flex-none hidden lg:block'>{body}</div>
+			<div className='flex-none menu-options'>{body}</div>
 		</NavbarContainer>
 	)
 }
