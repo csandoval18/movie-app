@@ -1,16 +1,25 @@
 import React, { useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { Link } from 'react-router-dom'
-import { useAppDispatch } from '../../../app/hooks'
-import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import {
+	selectToggleSearchbar,
+	setToggleSearchBar,
+} from '../../../features/navbar/navbarSlice'
 import {
 	Flex,
 	HomeBtn,
 	PrimaryButton,
 } from '../../../styles/GlobalStyles.elements'
 import { DropDown, DropDownAnchor, NavbarContainer } from '../Navbar.elements'
+import SearchBar from '../SearchBar/SearchBar'
 
-const Menubar: React.FC = () => {
+interface MenubarProps {
+	children?: any
+}
+
+const Menubar: React.FC<MenubarProps> = ({ children }) => {
+	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
 	const dispatch = useAppDispatch()
 	const [isLoggedIn, setIsLoggedIn] = useState<string>(
 		sessionStorage.getItem('token') as string,
@@ -21,14 +30,7 @@ const Menubar: React.FC = () => {
 	if (isLoggedIn) {
 		body = (
 			<Flex ai='center' jc='right' className='nav-menu'>
-				<PrimaryButton
-					className='search-btn'
-					onClick={() => {
-						dispatch(setToggleSearchBar(true))
-					}}
-				>
-					<IoIosSearch className='icon'></IoIosSearch>
-				</PrimaryButton>
+				{toggleSearchBar ? <SearchBar /> : <></>}
 				<div className='flex-none gap-2 text-primary-content'>
 					<div className='dropdown dropdown-end'>
 						<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
@@ -71,14 +73,14 @@ const Menubar: React.FC = () => {
 		body = (
 			<>
 				<Flex ai='center' jc='right' className='nav-menu'>
-					<PrimaryButton
+					{/* <PrimaryButton
 						className='search-btn'
 						onClick={() => {
 							dispatch(setToggleSearchBar(true))
 						}}
 					>
 						<IoIosSearch className='icon'></IoIosSearch>
-					</PrimaryButton>
+					</PrimaryButton> */}
 					<Link className='' to='/login'>
 						<PrimaryButton>Login</PrimaryButton>
 					</Link>

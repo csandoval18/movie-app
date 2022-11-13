@@ -7,8 +7,14 @@ export const SearchBarContainer = styled(NavbarContainer)`
 	display: flex;
 	justify-content: left;
 	gap: 1rem;
+	.searchbar-container {
+		padding: 0;
+	}
 	.searchbar-layout {
 		display: flex;
+		flex: 1;
+		justify-content: left;
+		gap: 0.5rem;
 	}
 	.options-container {
 		width: 100%;
@@ -16,14 +22,29 @@ export const SearchBarContainer = styled(NavbarContainer)`
 	.searchbar-home-btn {
 		display: none;
 	}
+	.form-control {
+		width: 100%;
+	}
 	@media (${device.tablet}) {
 		.searchbar-home-btn {
 			display: block;
 		}
+		.form-control {
+			width: auto;
+		}
+		.searchbar-layout {
+			justify-content: center;
+		}
 	}
 `
 export const SearchBarInput = styled.input`
-	min-width: 300px;
+	max-width: 500px;
+	width: 100%;
+	@media (${device.tablet}) {
+		& {
+			min-width: 600px;
+		}
+	}
 `
 export const ReturnBtn = styled.button`
 	align-items: center;

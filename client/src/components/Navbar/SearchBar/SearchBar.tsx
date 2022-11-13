@@ -23,11 +23,6 @@ const SearchBar: React.FC = () => {
 	)
 	return (
 		<SearchBarContainer className='searchbar-container'>
-			<div className='searchbar-home-btn'>
-				<Link to='/'>
-					<HomeBtn>CAS</HomeBtn>
-				</Link>
-			</div>
 			<div className='searchbar-layout'>
 				<ReturnBtn
 					className='search-return-btn'
