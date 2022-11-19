@@ -18,25 +18,21 @@ export const MovieDetailsCard = styled.div`
 	p {
 		padding: 0.5rem 0;
 	}
-
 	.poster-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-
 	.content-table {
 		border-collapse: collapse;
-		margin: 25px 0;
-		font-size: 0.9em;
-		max-width: 360px;
 		border-radius: 15px;
+		font-size: 0.9em;
+		margin: 0 0.4rem;
+		max-width: 360px;
 		overflow: hidden;
-		margin: 0 0.2rem;
-		/* box-shadow: 0 0 20px rgba(0, 0, 0, 20%); */
 		thead tr {
 			background-color: hsl(var(--n));
-			color: #fff;
+			/* color: #fff; */
 			text-align: center;
 			font-weight: bold;
 		}
@@ -45,13 +41,12 @@ export const MovieDetailsCard = styled.div`
 			padding: 12px 15px;
 		}
 		tbody tr {
-			border-bottom: 1px solid #dddddd;
+			/* border-bottom: 1px solid #dddddd; */
 		}
-
 		tbody tr:nth-of-type(even) {
-			background-color: #f3f3f3;
+			/* background-color: #f3f3f3; */
+			background-color: hsl(var(--n));
 		}
-
 		tbody tr:last-of-type {
 			border-bottom: 2px solid hsl(var(--p));
 		}

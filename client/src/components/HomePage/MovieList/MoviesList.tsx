@@ -11,9 +11,15 @@ import { MovieResults, MoviesListContainer } from './MoviesList.elements'
 import PaginationBtns from './PaginationBtns/PaginationBtns'
 const MovieList: React.FC = () => {
 	const { searchInput, pageNum } = useParams()
+	console.log('pageNumber movielist:', pageNum)
 	const dispatch = useAppDispatch()
 	useEffect(() => {
-		dispatch(fetchMoviesThunk({ searchVal: searchInput }))
+		dispatch(
+			fetchMoviesThunk({
+				searchVal: searchInput,
+				pageNum: parseInt(pageNum as string),
+			}),
+		)
 	}, [searchInput])
 	const movies = useAppSelector(selectMovies)
 	console.log('movies movielist:', movies)

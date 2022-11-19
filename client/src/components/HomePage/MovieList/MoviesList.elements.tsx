@@ -11,9 +11,6 @@ export const MovieResults = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 2rem;
-	rd-title {
-		height: 56px;
-	}
 	@media (${device.tablet}) {
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;

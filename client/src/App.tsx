@@ -2,12 +2,10 @@ import { Link, Route, Routes } from 'react-router-dom'
 import Login from './components/Auth/Login/Login'
 import Register from './components/Auth/Register/Register'
 import HomePage from './components/HomePage/HomePage'
-import MovieCard from './components/HomePage/MovieList/MovieCard/MovieCard'
 import MovieList from './components/HomePage/MovieList/MoviesList'
 import MovieDetails from './components/MovieDetails/MovieDetails'
 import Navbar from './components/Navbar/Navbar'
 import NotFound from './components/NotFound/NotFound'
-import { PrimaryButton } from './styles/GlobalStyles.elements'
 
 function App() {
 	return (

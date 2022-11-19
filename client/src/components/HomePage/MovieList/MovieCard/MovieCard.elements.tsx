@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { device } from '../../../../styles/deviceSizes'
 
 export const MovieCardStyle = styled.div`
 	transition: transform 0.2s ease-out;
-	width: 22rem;
+	width: 21rem;
 	&:hover {
 		transform: scale(1.03);
 	}
@@ -16,6 +17,11 @@ export const MovieCardStyle = styled.div`
 		img {
 			height: 30rem;
 			width: 100%;
+		}
+	}
+	@media (${device.tablet}) {
+		& {
+			width: 22rem;
 		}
 	}
 `

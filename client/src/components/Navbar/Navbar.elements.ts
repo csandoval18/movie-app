@@ -55,11 +55,12 @@ export const NavbarContainer = styled.nav`
 		}
 	}
 `
-export const SearchBarContainer = styled(NavbarContainer)`
+export const SearchBarContainer = styled.div`
 	align-items: center;
 	display: flex;
 	justify-content: left;
 	gap: 1rem;
+	width: 100%;
 	.searchbar-container {
 		padding: 0;
 	}
@@ -90,6 +91,12 @@ export const SearchBarInput = styled.input`
 	@media (${device.tablet}) {
 		& {
 			min-width: 400px;
+		}
+	}
+	@media (${device.laptop}) {
+		& {
+			margin-left: 6%;
+			min-width: 500px;
 		}
 	}
 `

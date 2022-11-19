@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Header = styled.div`
 	font-size: 30px;
+	text-align: center;
 `
 interface FlexProps {
 	bg?: string

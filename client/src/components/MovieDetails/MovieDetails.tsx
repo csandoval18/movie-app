@@ -41,7 +41,7 @@ const MovieDetails = () => {
 										</td>
 									</tr>
 									<tr>
-										<th>Type:</th>
+										<td>Type:</td>
 										<td>
 											{movieDetails?.Type[0].toUpperCase() +
 												movieDetails?.Type.substring(1)}
