@@ -26,13 +26,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MovieModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const Movie = new mongoose_1.Schema({
-    title: String,
-    type: String,
-    cast: [String],
-    rated: String,
-    directors: [String],
-    plot: String,
-    release: Date,
+    Title: String,
+    Year: Number,
+    Rated: String,
+    Released: String,
+    Runtime: String,
+    Genre: String,
+    Director: String,
+    Writer: String,
+    Actors: String,
+    Plot: String,
+    Language: String,
+    Country: String,
+    Awards: String,
+    Poster: String,
+    Ratings: (Array),
+    Metascore: String,
+    imdbRating: String,
+    imdbVotes: String,
+    imdbID: String,
+    Type: String,
+    DVD: String,
+    BoxOffice: String,
+    Production: String,
+    Website: String,
+    Response: String,
 });
 exports.MovieModel = mongoose_1.default.model('Movie', Movie);
 exports.default = Movie;
