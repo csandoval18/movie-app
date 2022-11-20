@@ -1,5 +1,5 @@
 import mongoose, { Model, Schema, Types } from 'mongoose'
-import Movie, { IMovie } from './Movie'
+import Movie from './Movie'
 
 export interface IUser {
 	name: string
@@ -7,7 +7,7 @@ export interface IUser {
 	email: string
 	password: string
 	date_created: Date
-	favorites: Types.DocumentArray<IMovie>
+	favorites: Types.DocumentArray<typeof Movie>
 }
 
 const User = new Schema<IUser, Model<IUser>>({
