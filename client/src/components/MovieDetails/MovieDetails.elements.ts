@@ -1,13 +1,12 @@
 import styled from 'styled-components'
+import { device } from '../../styles/deviceSizes'
 
 export const MovieDetailsContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 `
-
 export const MovieDetailsCard = styled.div`
-	max-width: 360px;
 	padding: 2rem 0;
 	.header {
 		padding-bottom: 2rem;
@@ -24,6 +23,8 @@ export const MovieDetailsCard = styled.div`
 		align-items: center;
 	}
 	.content-table {
+		background-color: rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(24px);
 		border-collapse: collapse;
 		border-radius: 15px;
 		font-size: 0.9em;
@@ -32,7 +33,6 @@ export const MovieDetailsCard = styled.div`
 		overflow: hidden;
 		thead tr {
 			background-color: hsl(var(--n));
-			/* color: #fff; */
 			text-align: center;
 			font-weight: bold;
 		}
@@ -44,11 +44,20 @@ export const MovieDetailsCard = styled.div`
 			/* border-bottom: 1px solid #dddddd; */
 		}
 		tbody tr:nth-of-type(even) {
-			/* background-color: #f3f3f3; */
 			background-color: hsl(var(--n));
 		}
 		tbody tr:last-of-type {
 			border-bottom: 2px solid hsl(var(--p));
+		}
+	}
+	@media (${device.tablet}) {
+		.content-table {
+			max-width: 650px;
+			margin: 4rem;
+		}
+		.poster-container img {
+			height: 100%;
+			max-width: 300px;
 		}
 	}
 `

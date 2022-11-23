@@ -32,15 +32,22 @@ export const Flex = styled.div<FlexProps>`
 `
 export const PrimaryButton = styled.button`
 	align-items: center;
-	border: 2px solid hsl(var(--n));
+	/* border: 2px solid hsl(var(--n)); */
+	border: 1px solid white;
 	border-radius: 8px;
-	color: hsl(var(--n));
+	/* color: hsl(var(--n)); */
+	color: white;
 	display: flex;
 	justify-content: center;
 	padding: 8px 8px;
+	transform: translateY(0);
+	transition: transform 0.5s ease-in-out;
 	&:hover {
-		background-color: hsl(var(--n));
-		color: aliceblue;
+		background-color: #29437a5f;
+		/* background-color: hsl(var(--n));
+		border: 1px solid hsl(var(--p));
+		color: hsl(var(--p)); */
+		transform: translateY(-4px);
 	}
 `
 export const HomeBtn = styled.button`

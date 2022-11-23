@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
+import { IoLogoAmplify } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
@@ -87,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
 		<NavbarContainer className='Navbar px-responsive'>
 			<Link to='/'>
 				<HomeBtn className={toggleSearchBar ? 'handle-searchbar-display' : ''}>
-					CAS
+					<IoLogoAmplify />
 				</HomeBtn>
 			</Link>
 			<SearchBar
