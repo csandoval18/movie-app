@@ -16,5 +16,5 @@
 		"noEmit": true,
 		"jsx": "react-jsx"
 	},
-	"include": ["src", "postcss.config.ts", "../server/types.ts", "../server/types.ts"]
+	"include": ["src", "postcss.config.js", "../server/types.ts", "../server/types.ts"]
 }
