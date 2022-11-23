@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { Link, useNavigate } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
 	fetchMoviesThunk,
@@ -8,18 +8,17 @@ import {
 	setSearchVal,
 } from '../../../features/movie/movieSlice'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
-import { Flex, HomeBtn } from '../../../styles/GlobalStyles.elements'
 import {
-	SearchBarContainer,
 	ReturnBtn,
+	SearchBarContainer,
 	SearchBarInput,
 } from '../Navbar.elements'
+
 interface SearBarProps {
 	className: string
 }
 
 const SearchBar: React.FC<SearBarProps> = ({ className }) => {
-	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [searchInput, setSearchBarInput] = useState<String | undefined>(
 		useAppSelector(selectMovieSearchInput),
@@ -41,7 +40,7 @@ const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 							e.preventDefault()
 							dispatch(setSearchVal(searchInput))
 							await dispatch(fetchMoviesThunk({ searchVal: searchInput }))
-							navigate(`/search=${searchInput}&page=1`)
+							redirect(`/search=${searchInput}&page=1`)
 						}}
 					>
 						<SearchBarInput

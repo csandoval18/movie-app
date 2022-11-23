@@ -9,19 +9,19 @@ import {
 import { PaginationBtnsStyle } from '../MoviesList.elements'
 
 const PaginationBtns = () => {
+	const navigate = useNavigate()
 	const movies = useAppSelector(selectMovies)
 	const { searchInput, pageNum } = useParams()
+	// Have to set the initial values based on input page number in url otherwise pagination buttons wont go to next/prev page
 	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
 	const [currPageNum, setCurrPageNum] = useState<number>(
 		pageNum ? parseInt(pageNum) : 1,
 	)
 
-	const navigate = useNavigate()
 	let dispatch = useAppDispatch()
-	const searchVal = useAppSelector(selectMovieSearchInput)
 
 	console.log('currpage:', currPageNum)
-	console.log('serachVal:', searchVal)
+	console.log('serachVal:', searchInput)
 
 	const increasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr + 4))
@@ -29,18 +29,17 @@ const PaginationBtns = () => {
 	const decreasePagPages = () => {
 		setPagPageNums(pagPageNums.map((curr: number) => curr - 4))
 	}
-
 	useEffect(() => {
-		if (searchVal) {
+		if (searchInput) {
 			dispatch(
 				fetchMoviesThunk({
-					searchVal: searchVal,
+					searchVal: searchInput,
 					pageNum: currPageNum,
 				}),
 			)
 			navigate(`/search=${searchInput}&page=${currPageNum}`)
 		} else return
-	}, [searchVal, currPageNum])
+	}, [searchInput, currPageNum])
 	return (
 		<PaginationBtnsStyle>
 			<div className='btn-group'>
@@ -81,6 +80,8 @@ const PaginationBtns = () => {
 						if (currPageNum === pagPageNums[pagPageNums.length - 1])
 							increasePagPages()
 						setCurrPageNum(currPageNum + 1)
+						console.log('curr page num:', currPageNum)
+						navigate(`/search=${searchInput}&page=${currPageNum}`)
 					}}
 				>
 					»

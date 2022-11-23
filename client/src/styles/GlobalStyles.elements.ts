@@ -13,6 +13,15 @@ export const Header = styled.div`
 	text-align: center;
 `
 export const GlobalStyle = createGlobalStyle`
+  // Overriding Daisy UI default button hover colors
+	.btn-accent:hover {
+		background-color: hsl(var(--a)) !important;
+		border: 1px solid hsl(var(--a))!important;
+	}
+	.btn-primary:hover {
+		background-color: hsl(var(--p)) !important;
+		border: 1px solid hsl(var(--p))!important;
+	}
   .px-responsive {
     padding-inline: 1rem;
   }
@@ -32,10 +41,8 @@ export const Flex = styled.div<FlexProps>`
 `
 export const PrimaryButton = styled.button`
 	align-items: center;
-	/* border: 2px solid hsl(var(--n)); */
 	border: 1px solid white;
 	border-radius: 8px;
-	/* color: hsl(var(--n)); */
 	color: white;
 	display: flex;
 	justify-content: center;
@@ -43,10 +50,7 @@ export const PrimaryButton = styled.button`
 	transform: translateY(0);
 	transition: transform 0.5s ease-in-out;
 	&:hover {
-		background-color: #29437a5f;
-		/* background-color: hsl(var(--n));
-		border: 1px solid hsl(var(--p));
-		color: hsl(var(--p)); */
+		background-color: rgba(41, 67, 122, 0.2);
 		transform: translateY(-4px);
 	}
 `
@@ -60,14 +64,12 @@ export const HomeBtn = styled.button`
 	height: 48px;
 	justify-content: center;
 	padding: 0 0.5rem;
-
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.2);
+		background-color: rgba(41, 67, 122, 0.2);
 	}
 `
 export const Card = styled.div`
 	background-color: hsl(var(--n));
-	/* background-color: rgba(25, 34, 57, 90%); */
 	color: #fff;
 	padding: 3rem 3rem;
 	border-radius: 15px;

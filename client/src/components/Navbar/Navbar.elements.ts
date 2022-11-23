@@ -3,7 +3,7 @@ import { device } from '../../styles/deviceSizes'
 
 export const NavbarContainer = styled.nav`
 	align-items: center;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.08);
 	backdrop-filter: blur(24px);
 	display: flex;
 	font-size: 16;

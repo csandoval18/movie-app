@@ -34,7 +34,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 				<p>{data.Year}</p>
 				<div className='card-actions justify-end'>
 					<button
-						className='btn btn-primary'
+						className='btn btn-outline btn-accent'
 						onClick={() => {
 							navigate(`/movie-details/${data.imdbID}`)
 						}}
@@ -42,7 +42,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 						Details
 					</button>
 					<button
-						className='btn btn-primary'
+						className='btn btn-outline btn-primary'
 						onClick={() => {
 							setIsFavorite(!isFavorite)
 							handleAddToFavorites()
