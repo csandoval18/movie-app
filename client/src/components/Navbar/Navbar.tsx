@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
 		)
 	}
 	return (
-		<NavbarContainer className='navbar'>
+		<NavbarContainer className='Navbar px-responsive'>
 			<Link to='/'>
 				<HomeBtn className={toggleSearchBar ? 'handle-searchbar-display' : ''}>
 					CAS
@@ -94,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
 				className={toggleSearchBar ? '' : 'handle-searchbar-display'}
 			/>
 			<div
-				className={`handle-mobile-menu-display flex-none gap-4 ${
+				className={`handle-mobile-menu-display flex gap-4 items-center ${
 					toggleSearchBar ? 'handle-searchbar-display' : ''
 				}`}
 			>

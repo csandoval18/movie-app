@@ -1,15 +1,27 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+import { device } from './deviceSizes'
 
-export const Header = styled.div`
-	font-size: 30px;
-	text-align: center;
-`
 interface FlexProps {
 	bg?: string
 	ai?: string
 	jc?: string
 	gap?: string
 }
+
+export const Header = styled.div`
+	font-size: 30px;
+	text-align: center;
+`
+export const GlobalStyle = createGlobalStyle`
+  .px-responsive {
+    padding-inline: 1rem;
+  }
+  @media (${device.tablet}) {
+    .px-responsive {
+      padding-inline: 4rem !important;
+    }
+  }
+`
 export const Flex = styled.div<FlexProps>`
 	align-items: ${(p) => p.ai};
 	background-color: ${(p) => p.bg};

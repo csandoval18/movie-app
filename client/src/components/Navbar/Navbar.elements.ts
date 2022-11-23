@@ -2,12 +2,14 @@ import styled from 'styled-components'
 import { device } from '../../styles/deviceSizes'
 
 export const NavbarContainer = styled.nav`
+	align-items: center;
 	background-color: hsl(var(--p));
+	display: flex;
 	font-size: 16;
 	font-weight: 500;
 	min-height: 4rem;
 	justify-content: space-between;
-	padding: 0 1rem;
+	/* padding: 0 1rem; */
 	position: sticky;
 	top: 0;
 	width: 100%;
@@ -45,6 +47,9 @@ export const NavbarContainer = styled.nav`
 	.handle-mobile-menu-display {
 	}
 	@media (${device.tablet}) {
+		& {
+			/* padding: 0 4rem; */
+		}
 		.handle-searchbar-display,
 		.menu-options {
 			display: flex;

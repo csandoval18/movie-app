@@ -26,6 +26,7 @@ const Login: React.FC = () => {
 			})
 			.then((res) => {
 				console.log('res.data:', res.data)
+				// Store jwt token in session storage
 				setUserSession(res.data)
 				window.location.href = '/'
 			})
