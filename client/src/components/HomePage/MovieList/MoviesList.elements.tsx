@@ -26,4 +26,10 @@ export const PaginationBtnsStyle = styled.div`
 	align-items: center;
 	justify-content: center;
 	padding: 3rem 0;
+	button:hover {
+		background-color: rgba(147, 196, 253, 0.158);
+	}
+	.btn-active:hover {
+		background-color: hsl(var(--p));
+	}
 `
