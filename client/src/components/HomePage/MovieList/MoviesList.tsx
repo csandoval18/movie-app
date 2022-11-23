@@ -9,6 +9,7 @@ import { Header } from '../../../styles/GlobalStyles.elements'
 import MovieCard from './MovieCard/MovieCard'
 import { MovieResults, MoviesListContainer } from './MoviesList.elements'
 import PaginationBtns from './PaginationBtns/PaginationBtns'
+
 const MovieList: React.FC = () => {
 	const { searchInput, pageNum } = useParams()
 	console.log('pageNumber movielist:', pageNum)

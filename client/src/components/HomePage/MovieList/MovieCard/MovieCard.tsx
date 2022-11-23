@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
+import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
 import { MoviesSearchData } from '../../../../types'
 import { MovieCardStyle } from './MovieCard.elements'
 
@@ -14,6 +16,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const dispatch = useAppDispatch()
 	const [isFavorite, setIsFavorite] = useState(false)
 
+	const handleAddToFavorites = async () => {
+		const movieDetails = await dispatch(
+			fetchMovieDetailsThunk({ searchVal: data.imdbID }),
+		)
+		console.log(movieDetails.payload)
+		await axios.post('http://localhost:4000/api/user/')
+	}
 	return (
 		<MovieCardStyle className='card card-compact bg-base-100 shadow-xl'>
 			<figure>
@@ -36,6 +45,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 						className='btn btn-primary'
 						onClick={() => {
 							setIsFavorite(!isFavorite)
+							handleAddToFavorites()
 						}}
 					>
 						{isFavorite ? (

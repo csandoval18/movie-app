@@ -12,15 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Movie_1 = require("../model/Movie");
 const router = require('express').Router();
 router.post('/favorite', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const movie = new Movie_1.MovieModel({
-        title: req.body.title,
-        type: req.body.type,
-        cast: req.body.cast,
-        rated: req.body.rated,
-        directors: req.body.directors,
-        plot: req.body.plot,
-        release: req.body.realease,
-    });
+    const data = req.body.data;
+    const movie = new Movie_1.MovieModel(data);
+    try {
+        const savedMovie = yield movie.save();
+        return res.send(savedMovie);
+    }
+    catch (err) {
+        return res.status(400).send(err);
+    }
 }));
 exports.default = router;
 //# sourceMappingURL=favorites.js.map
