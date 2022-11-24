@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { IoLogoAmplify } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-import { useIsAuth } from '../../api/isAuth'
+import { useIsAuth } from '../../utils/api/isAuth'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
 	selectToggleSearchbar,

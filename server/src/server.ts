@@ -8,18 +8,15 @@ require('dotenv').config()
 const main = async () => {
 	const app = express()
 	mongoConn()
-
 	app.use(
-		//aplies to all routes
 		cors({
 			origin: ['http://localhost:3000'],
 			credentials: true,
 		}),
 	)
-
-	//Middleware body parser
+	// Middleware body parser
 	app.use(express.json())
-	//Route Middleware
+	// Route Middleware
 	app.use('/api/user', authRoute)
 	app.use('/api/user', favoriteRoute)
 
