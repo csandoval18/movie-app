@@ -25,7 +25,7 @@ const Login: React.FC = () => {
 				password: password,
 			})
 			.then((res) => {
-				console.log('res.data:', res.data)
+				console.log('login res.data:', res.data)
 				// Store jwt token in session storage
 				setUserSession(res.data)
 				window.location.href = '/'
@@ -50,6 +50,7 @@ const Login: React.FC = () => {
 								e.preventDefault()
 								handleLogin()
 							}}
+							autoComplete='on'
 						>
 							<label htmlFor='username'>Username</label>
 							<input

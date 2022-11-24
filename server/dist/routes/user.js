@@ -16,7 +16,7 @@ const User_1 = require("../model/User");
 const validation_1 = require("../utils/validation");
 const argon2_1 = __importDefault(require("argon2"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const isAuth_1 = require("../utils/isAuth");
+const verifyToken_1 = __importDefault(require("../utils/verifyToken"));
 require('dotenv').config();
 const router = require('express').Router();
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -61,12 +61,11 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const valid = yield argon2_1.default.verify(user.password, req.body.password);
     if (!valid)
         return res.status(400).send({ field: 'password', msg: 'Wrong password' });
-    const token = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
+    const token = jsonwebtoken_1.default.sign({ _id: user._id, username: user.username }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
     return res.header('Authorization', token).send(token);
 }));
-router.post('/me', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    (0, isAuth_1.isAuth)(req, res, next);
-    res.send();
+router.post('/me', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    (0, verifyToken_1.default)(req, res);
 }));
 exports.default = router;
 //# sourceMappingURL=user.js.map

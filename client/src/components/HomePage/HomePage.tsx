@@ -3,10 +3,18 @@ import { useEffect, useState } from 'react'
 import { Card } from '../../styles/GlobalStyles.elements'
 import { HomePageContainer } from './HomePage.elements'
 
+interface TokenData {
+	_id: string
+	username: string
+	iat: number
+	exp: number
+}
+
 const HomePage = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState<string>(
 		sessionStorage.getItem('token') as string,
 	)
+	const [userData, setUserData] = useState<TokenData>()
 	useEffect(() => {
 		axios
 			.post(
@@ -18,9 +26,10 @@ const HomePage = () => {
 			)
 			.then((res) => {
 				console.log('res.data:', res.data)
+				setUserData(res.data)
 			})
 			.catch((err) => {
-				console.log(err)
+				console.log(err.response.data)
 			})
 	}, [])
 	return (
@@ -32,6 +41,7 @@ const HomePage = () => {
 						😄
 					</p>
 				</Card>
+				<h1>{userData?._id}</h1>
 			</HomePageContainer>
 		</>
 	)

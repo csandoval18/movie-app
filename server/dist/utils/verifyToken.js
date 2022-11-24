@@ -5,16 +5,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const verifyToken = (req, res) => {
-    const token = req.headers['auth-token'];
+    const token = req.headers['authorization'];
+    console.log('verify token request header:', req.headers['authorization']);
     if (!token)
-        return res.status(401).send('Access Denied');
+        return res.status(401).send('Server Access Denied');
     try {
         const verified = jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET);
         req.user = verified;
-        return res.status(200).send('Successfully verified user');
+        console.log('req.user:', req.user);
+        return res.status(200).send(req.user);
     }
     catch (err) {
-        return res.status(400).send('Invalid Token');
+        let error = err;
+        return res.status(400).send(error);
     }
 };
 exports.default = verifyToken;

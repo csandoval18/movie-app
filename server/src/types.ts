@@ -52,3 +52,9 @@ export interface MovieDetails {
 	Website: string
 	Response: string
 }
+
+export interface JWTError {
+	name: string
+	message: string
+	expiredAt: string
+}
