@@ -1,6 +1,6 @@
 import { Response } from 'express'
 import { ExtendedRequest } from 'src/types'
-import jwt, { Secret } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 const verifyToken = (req: ExtendedRequest, res: Response) => {
 	const token = req.headers['authorization'] as string
@@ -11,8 +11,7 @@ const verifyToken = (req: ExtendedRequest, res: Response) => {
 		req.user = payload
 		return res.status(200).send(req.user)
 	} catch (err) {
-		// return res.status(400).send('You are not authorized')
-		res.send('You are not authorized')
+		return res.send(false)
 	}
 }
 

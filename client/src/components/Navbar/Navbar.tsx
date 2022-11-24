@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { IoLogoAmplify } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import { useIsAuth } from '../../api/isAuth'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
 	selectToggleSearchbar,
@@ -12,22 +13,19 @@ import {
 	HomeBtn,
 	PrimaryButton,
 } from '../../styles/GlobalStyles.elements'
+import { TokenPayload } from '../../types'
 import { DropDown, DropDownAnchor, NavbarContainer } from './Navbar.elements'
 import SearchBar from './SearchBar/SearchBar'
 
-interface NavbarProps {
-	children?: any
-}
+interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = ({ children }) => {
+const Navbar: React.FC<NavbarProps> = ({}) => {
 	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
 	console.log('togglesearchbar', toggleSearchBar)
 	const dispatch = useAppDispatch()
-	const [isLoggedIn, setIsLoggedIn] = useState<string>(
-		sessionStorage.getItem('token') as string,
-	)
+	const isLoggedIn = useIsAuth()
+	console.log('isloggedin:', isLoggedIn)
 	let body
-	console.log('token:', isLoggedIn)
 
 	if (isLoggedIn) {
 		body = (

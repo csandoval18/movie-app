@@ -15,7 +15,7 @@ const verifyToken = (req, res) => {
         return res.status(200).send(req.user);
     }
     catch (err) {
-        res.send('You are not authorized');
+        return res.send(false);
     }
 };
 exports.default = verifyToken;

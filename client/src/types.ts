@@ -38,3 +38,10 @@ export interface MovieDetails {
 	Website: string
 	Response: string
 }
+
+export interface TokenPayload {
+	_id: string
+	username: string
+	iat: number
+	exp: number
+}
