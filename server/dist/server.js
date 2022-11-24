@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const mongoConn_1 = __importDefault(require("./mongoConn"));
-const auth_1 = __importDefault(require("./routes/auth"));
+const user_1 = __importDefault(require("./routes/user"));
 const favorites_1 = __importDefault(require("./routes/favorites"));
 require('dotenv').config();
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -26,10 +26,10 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         credentials: true,
     }));
     app.use(express_1.default.json());
-    app.use('/api/user', auth_1.default);
+    app.use('/api/user', user_1.default);
     app.use('/api/user', favorites_1.default);
     const port = process.env.PORT;
-    app.listen(port, () => console.log('server started in port:', port));
+    app.listen(port, () => console.log('Server started in port:', port));
 });
 main().catch((err) => {
     console.log(err);

@@ -12,7 +12,7 @@ const mongoConn = () => {
 
 	const db = Mongoose.connection
 	db.once('open', () => {
-		console.log('Database conneced')
+		console.log('Database connected')
 	})
 	db.on('error', (err) => {
 		console.error('connection error', err)

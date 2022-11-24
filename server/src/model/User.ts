@@ -9,7 +9,6 @@ export interface IUser {
 	date_created: Date
 	favorites: Types.DocumentArray<typeof Movie>
 }
-
 const User = new Schema<IUser, Model<IUser>>({
 	username: {
 		type: String,

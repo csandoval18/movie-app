@@ -61,12 +61,12 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const valid = yield argon2_1.default.verify(user.password, req.body.password);
     if (!valid)
         return res.status(400).send({ field: 'password', msg: 'Wrong password' });
-    const token = jsonwebtoken_1.default.sign({ _id: user._id, username: user.username }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
-    return res.header('authorization', token).send(token);
+    const token = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
+    return res.header('Authorization', token).send(token);
 }));
 router.post('/me', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     (0, isAuth_1.isAuth)(req, res, next);
-    return 'success';
+    res.send();
 }));
 exports.default = router;
-//# sourceMappingURL=auth.js.map
+//# sourceMappingURL=user.js.map

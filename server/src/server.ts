@@ -1,8 +1,8 @@
 import cors from 'cors'
 import express from 'express'
 import mongoConn from './mongoConn'
-import authRoute from './routes/auth'
-import favoriteRoute from './routes/favorites' 
+import authRoute from './routes/user'
+import favoriteRoute from './routes/favorites'
 require('dotenv').config()
 
 const main = async () => {
@@ -24,7 +24,7 @@ const main = async () => {
 	app.use('/api/user', favoriteRoute)
 
 	const port = process.env.PORT
-	app.listen(port, () => console.log('server started in port:', port))
+	app.listen(port, () => console.log('Server started in port:', port))
 }
 
 main().catch((err) => {

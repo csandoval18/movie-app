@@ -12,7 +12,6 @@ import PaginationBtns from './PaginationBtns/PaginationBtns'
 
 const MovieList: React.FC = () => {
 	const { searchInput, pageNum } = useParams()
-	console.log('pageNumber movielist:', pageNum)
 	const dispatch = useAppDispatch()
 	useEffect(() => {
 		dispatch(

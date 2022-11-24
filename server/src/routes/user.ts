@@ -1,8 +1,10 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { UserModel } from '../model/User'
 import { loginValidation, registerValidation } from '../utils/validation'
 import argon2 from 'argon2'
 import jwt, { Secret } from 'jsonwebtoken'
+import { ExtendedRequest } from 'src/types'
+import { isAuth } from '../utils/isAuth'
 require('dotenv').config()
 const router = require('express').Router()
 
@@ -45,26 +47,34 @@ router.post('/register', async (req: Request, res: Response) => {
 })
 
 // Login validation
-router.post('/login', async (req: Request, res: Response) => {
+router.post('/login', async (req: ExtendedRequest, res: Response) => {
 	const { error } = loginValidation(req.body)
 	if (error) return res.status(400).send(error.details[0].message)
-
 	//Check if email exists
 	const user = await UserModel.findOne({ username: req.body.username })
-	console.log('user:', user)
 	if (!user)
 		return res
 			.status(400)
 			.send({ field: 'username', msg: 'Username or password is incorrect' })
-
 	//Unsuccessful login
 	const valid = await argon2.verify(user.password, req.body.password)
 	if (!valid)
 		return res.status(400).send({ field: 'password', msg: 'Wrong password' })
-
-	//Create and assign jwt
-	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET as Secret)
-	return res.header('auth-token', token).send(token)
+	//Sign jwt
+	const token = jwt.sign(
+		{ _id: user._id },
+		process.env.TOKEN_SECRET as Secret,
+		{ expiresIn: '1d' },
+	)
+	return res.header('Authorization', token).send(token)
 })
+
+router.post(
+	'/me',
+	async (req: ExtendedRequest, res: Response, next: NextFunction) => {
+		isAuth(req, res, next)
+		res.send()
+	},
+)
 
 export default router
