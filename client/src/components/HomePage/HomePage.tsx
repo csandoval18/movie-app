@@ -18,7 +18,7 @@ const HomePage = () => {
 	useEffect(() => {
 		axios
 			.post(
-				'http://localhost:4000/api/user/me',
+				'http://localhost:4000/api/user/auth',
 				{},
 				{
 					headers: { Authorization: `${isLoggedIn}` },
@@ -41,7 +41,7 @@ const HomePage = () => {
 						😄
 					</p>
 				</Card>
-				<h1>{userData?._id}</h1>
+				<h1>{userData?.username}</h1>
 			</HomePageContainer>
 		</>
 	)

@@ -10,14 +10,12 @@ const verifyToken = (req, res) => {
     if (!token)
         return res.status(401).send('Server Access Denied');
     try {
-        const verified = jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET);
-        req.user = verified;
-        console.log('req.user:', req.user);
+        const payload = jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET);
+        req.user = payload;
         return res.status(200).send(req.user);
     }
     catch (err) {
-        let error = err;
-        return res.status(400).send(error);
+        res.send('You are not authorized');
     }
 };
 exports.default = verifyToken;

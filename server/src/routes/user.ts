@@ -70,9 +70,7 @@ router.post('/login', async (req: ExtendedRequest, res: Response) => {
 	return res.header('Authorization', token).send(token)
 })
 
-router.post('/me', async (req: ExtendedRequest, res: Response) => {
-	// const auth = isAuth(req, res)
-	// console.log('auth:', auth.name)
+router.post('/auth', async (req: ExtendedRequest, res: Response) => {
 	verifyToken(req, res)
 })
 

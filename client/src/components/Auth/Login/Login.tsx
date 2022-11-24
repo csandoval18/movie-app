@@ -50,7 +50,6 @@ const Login: React.FC = () => {
 								e.preventDefault()
 								handleLogin()
 							}}
-							autoComplete='on'
 						>
 							<label htmlFor='username'>Username</label>
 							<input

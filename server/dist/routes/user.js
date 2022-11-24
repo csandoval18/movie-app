@@ -64,7 +64,7 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const token = jsonwebtoken_1.default.sign({ _id: user._id, username: user.username }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
     return res.header('Authorization', token).send(token);
 }));
-router.post('/me', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/auth', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     (0, verifyToken_1.default)(req, res);
 }));
 exports.default = router;
