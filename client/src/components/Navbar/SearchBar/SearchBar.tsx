@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { redirect } from 'react-router-dom'
+import { redirect, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
 	fetchMoviesThunk,
@@ -20,6 +20,7 @@ interface SearBarProps {
 
 const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 	const [searchInput, setSearchBarInput] = useState<String | undefined>(
 		useAppSelector(selectMovieSearchInput),
 	)
@@ -40,7 +41,7 @@ const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 							e.preventDefault()
 							dispatch(setSearchVal(searchInput))
 							await dispatch(fetchMoviesThunk({ searchVal: searchInput }))
-							redirect(`/search=${searchInput}&page=1`)
+							navigate(`/search=${searchInput}&page=1`)
 						}}
 					>
 						<SearchBarInput

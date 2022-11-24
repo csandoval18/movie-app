@@ -7,27 +7,37 @@ import {
 	selectMovieSearchInput,
 } from '../../../../features/movie/movieSlice'
 import { PaginationBtnsStyle } from '../MoviesList.elements'
+const setPaginationBtnValues = (pageNum: number) => {
+	if (pageNum === 1) {
+		return [1, 2, 3, 4]
+	} else {
+		let page = pageNum
+		let remainder = page % 4
+		let firstPagNum = remainder === 0 ? page - 3 : page - (remainder - 1)
+		console.log('firstpage:', pageNum)
+		return [firstPagNum, firstPagNum + 1, firstPagNum + 2, firstPagNum + 3]
+	}
+}
 
 const PaginationBtns = () => {
 	const navigate = useNavigate()
 	const movies = useAppSelector(selectMovies)
 	const { searchInput, pageNum } = useParams()
-	// Have to set the initial values based on input page number in url otherwise pagination buttons wont go to next/prev page
-	const [pagPageNums, setPagPageNums] = useState([1, 2, 3, 4])
+	const pageNumInt = parseInt(pageNum as string)
+	const [pageNums, setPageNums] = useState<number[]>(
+		setPaginationBtnValues(pageNumInt),
+	)
 	const [currPageNum, setCurrPageNum] = useState<number>(
 		pageNum ? parseInt(pageNum) : 1,
 	)
-
-	let dispatch = useAppDispatch()
-
-	console.log('currpage:', currPageNum)
-	console.log('serachVal:', searchInput)
+	const dispatch = useAppDispatch()
+	// Get first number to display for pagination buttons
 
 	const increasePagPages = () => {
-		setPagPageNums(pagPageNums.map((curr: number) => curr + 4))
+		setPageNums(pageNums.map((curr: number) => curr + 4))
 	}
 	const decreasePagPages = () => {
-		setPagPageNums(pagPageNums.map((curr: number) => curr - 4))
+		setPageNums(pageNums.map((curr: number) => curr - 4))
 	}
 	useEffect(() => {
 		if (searchInput) {
@@ -47,37 +57,37 @@ const PaginationBtns = () => {
 					className='btn'
 					onClick={() => {
 						if (currPageNum === 1) return
-						if (currPageNum === pagPageNums[0]) decreasePagPages()
+						if (currPageNum === pageNums[0]) decreasePagPages()
 						setCurrPageNum(currPageNum - 1)
 					}}
 				>
 					«
 				</button>
 				<button
-					className={currPageNum === pagPageNums[0] ? 'btn btn-active' : 'btn'}
+					className={currPageNum === pageNums[0] ? 'btn btn-active' : 'btn'}
 				>
-					{pagPageNums[0]}
+					{pageNums[0]}
 				</button>
 				<button
-					className={currPageNum === pagPageNums[1] ? 'btn btn-active' : 'btn'}
+					className={currPageNum === pageNums[1] ? 'btn btn-active' : 'btn'}
 				>
-					{pagPageNums[1]}
+					{pageNums[1]}
 				</button>
 				<button
-					className={currPageNum === pagPageNums[2] ? 'btn btn-active' : 'btn'}
+					className={currPageNum === pageNums[2] ? 'btn btn-active' : 'btn'}
 				>
-					{pagPageNums[2]}
+					{pageNums[2]}
 				</button>
 				<button
-					className={currPageNum === pagPageNums[3] ? 'btn btn-active' : 'btn'}
+					className={currPageNum === pageNums[3] ? 'btn btn-active' : 'btn'}
 				>
-					{pagPageNums[3]}
+					{pageNums[3]}
 				</button>
 				<button
 					className='btn'
 					onClick={() => {
 						if (movies.length !== 10) return
-						if (currPageNum === pagPageNums[pagPageNums.length - 1])
+						if (currPageNum === pageNums[pageNums.length - 1])
 							increasePagPages()
 						setCurrPageNum(currPageNum + 1)
 						console.log('curr page num:', currPageNum)
