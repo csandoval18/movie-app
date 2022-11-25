@@ -62,6 +62,8 @@ export const NavbarContainer = styled.nav`
 		.handle-searchbar-display,
 		.menu-options {
 			display: flex;
+		}
+		.menu-options {
 			justify-content: right;
 		}
 		.handle-mobile-menu-display,
