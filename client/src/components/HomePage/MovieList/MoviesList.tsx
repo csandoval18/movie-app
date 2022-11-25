@@ -21,7 +21,7 @@ const MovieList: React.FC = () => {
 				pageNum: parseInt(pageNum as string),
 			}),
 		)
-	}, [searchInput, pageNum])
+	}, [searchInput])
 	const movies = useAppSelector(selectMovies)
 	console.log('movies movielist:', movies)
 	return (

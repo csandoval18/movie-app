@@ -17,13 +17,22 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const dispatch = useAppDispatch()
 	const [isFavorite, setIsFavorite] = useState(false)
 	const isLoggedIn = useIsAuth()
+	const token = sessionStorage.getItem('token') as string
 
 	const handleAddToFavorites = async () => {
 		const movieDetails = await dispatch(
 			fetchMovieDetailsThunk({ searchVal: data.imdbID }),
 		)
 		console.log(movieDetails.payload)
-		await axios.post('http://localhost:4000/api/user/')
+		await axios.post(
+			'http://localhost:4000/api/user/favorite',
+			{
+				movieData: movieDetails.payload,
+			},
+			{
+				headers: { Authorization: `${token}` },
+			},
+		)
 	}
 	return (
 		<MovieCardStyle className='card card-compact bg-base-100 shadow-xl'>

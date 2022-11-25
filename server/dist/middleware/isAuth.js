@@ -4,18 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const verifyToken = (req, res) => {
+const isAuth = (req, res) => {
     const token = req.headers['authorization'];
+    console.log('token:', token);
     if (!token)
         return res.status(401).send('Server Access Denied');
     try {
         const payload = jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET);
         req.user = payload;
-        return res.status(200).send(req.user);
+        return req.user;
     }
     catch (err) {
-        return res.send(false);
+        return false;
     }
 };
-exports.default = verifyToken;
-//# sourceMappingURL=verifyToken.js.map
+exports.default = isAuth;
+//# sourceMappingURL=isAuth.js.map

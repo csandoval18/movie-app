@@ -2,7 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import mongoConn from './mongoConn'
 import authRoute from './routes/user'
-import favoriteRoute from './routes/favorites'
+import favoriteRoute from './routes/favorite'
 require('dotenv').config()
 
 const main = async () => {
