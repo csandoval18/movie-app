@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
 import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
 import { MoviesSearchData } from '../../../../types'
+import { useIsAuth } from '../../../../utils/api/isAuth'
 import { MovieCardStyle } from './MovieCard.elements'
 
 interface MovieCardProps {
@@ -15,6 +16,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [isFavorite, setIsFavorite] = useState(false)
+	const isLoggedIn = useIsAuth()
 
 	const handleAddToFavorites = async () => {
 		const movieDetails = await dispatch(
@@ -41,19 +43,23 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 					>
 						Details
 					</button>
-					<button
-						className='btn btn-outline btn-primary'
-						onClick={() => {
-							setIsFavorite(!isFavorite)
-							handleAddToFavorites()
-						}}
-					>
-						{isFavorite ? (
-							<IoMdHeart style={{ fontSize: 25 }} />
-						) : (
-							<IoMdHeartEmpty style={{ fontSize: 25 }} />
-						)}
-					</button>
+					{isLoggedIn ? (
+						<button
+							className='btn btn-outline btn-primary'
+							onClick={() => {
+								setIsFavorite(!isFavorite)
+								handleAddToFavorites()
+							}}
+						>
+							{isFavorite ? (
+								<IoMdHeart style={{ fontSize: 25 }} />
+							) : (
+								<IoMdHeartEmpty style={{ fontSize: 25 }} />
+							)}
+						</button>
+					) : (
+						<></>
+					)}
 				</div>
 			</span>
 		</MovieCardStyle>

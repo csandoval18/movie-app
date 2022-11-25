@@ -68,7 +68,7 @@ const Login: React.FC = () => {
 								onChange={(e) => setPass(e.target.value)}
 							/>
 							<span className='card-actions justify-end'>
-								<button className='btn '>Login</button>
+								<button className='btn btn-outline btn-primary'>Login</button>
 							</span>
 						</form>
 					</div>

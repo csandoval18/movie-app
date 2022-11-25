@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { IoLogoAmplify } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { Link, Router } from 'react-router-dom'
 import { useIsAuth } from '../../utils/api/isAuth'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
@@ -51,13 +51,13 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 								</DropDownAnchor>
 							</li>
 							<li>
-								<DropDownAnchor href='/'>Settings</DropDownAnchor>
+								<DropDownAnchor href='/settings'>Settings</DropDownAnchor>
 							</li>
 							<li>
 								<DropDownAnchor
-									href='/'
 									onClick={() => {
 										sessionStorage.clear()
+										window.location.reload()
 									}}
 								>
 									Logout

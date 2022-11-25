@@ -6,6 +6,7 @@ import {
 	selectMovies,
 } from '../../../features/movie/movieSlice'
 import { Header } from '../../../styles/GlobalStyles.elements'
+import NotFound from '../../NotFound/NotFound'
 import MovieCard from './MovieCard/MovieCard'
 import { MovieResults, MoviesListContainer } from './MoviesList.elements'
 import PaginationBtns from './PaginationBtns/PaginationBtns'
@@ -37,7 +38,7 @@ const MovieList: React.FC = () => {
 					{/* {movies.length !== 0 ? <PaginationBtns /> : <div></div>} */}
 				</MoviesListContainer>
 			) : (
-				<div></div>
+				<NotFound />
 			)}
 		</>
 	)
