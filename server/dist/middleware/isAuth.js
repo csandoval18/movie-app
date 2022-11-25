@@ -15,7 +15,7 @@ const isAuth = (req, res) => {
         return req.user;
     }
     catch (err) {
-        return false;
+        return null;
     }
 };
 exports.default = isAuth;

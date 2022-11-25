@@ -1,9 +1,10 @@
-import { Request, Response } from 'express'
+import argon2 from 'argon2'
+import { NextFunction, Request, Response } from 'express'
+import jwt from 'jsonwebtoken'
+import { ExtendedRequest } from 'src/types'
+import isAuth from '../middleware/isAuth'
 import { UserModel } from '../model/User'
 import { loginValidation, registerValidation } from '../utils/validation'
-import argon2, { verify } from 'argon2'
-import jwt, { Secret } from 'jsonwebtoken'
-import { ExtendedRequest } from 'src/types'
 import verifyToken from '../utils/verifyToken'
 require('dotenv').config()
 const router = require('express').Router()
@@ -73,5 +74,28 @@ router.post('/login', async (req: ExtendedRequest, res: Response) => {
 router.post('/auth', async (req: ExtendedRequest, res: Response) => {
 	verifyToken(req, res)
 })
+
+router.post(
+	'/favorite',
+	async (req: ExtendedRequest, res: Response, next: NextFunction) => {
+		const movieData = req.body.movieData
+		// const movie = new MovieModel(movieData)
+		// await movie.save()
+		try {
+			let payload = isAuth(req, res)
+			if (payload) {
+				const user = await UserModel.findOne({ username: payload.username })
+				await UserModel.findOneAndUpdate(
+					{ username: user?.username },
+					{ $push: { favorites: movieData } },
+				)
+				console.log('user:', user)
+			}
+			return res.status(200)
+		} catch (err) {
+			return res.status(400).send(err)
+		}
+	},
+)
 
 export default router

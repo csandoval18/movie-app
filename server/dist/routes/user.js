@@ -12,10 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const User_1 = require("../model/User");
-const validation_1 = require("../utils/validation");
 const argon2_1 = __importDefault(require("argon2"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const isAuth_1 = __importDefault(require("../middleware/isAuth"));
+const User_1 = require("../model/User");
+const validation_1 = require("../utils/validation");
 const verifyToken_1 = __importDefault(require("../utils/verifyToken"));
 require('dotenv').config();
 const router = require('express').Router();
@@ -66,6 +67,21 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
 }));
 router.post('/auth', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     (0, verifyToken_1.default)(req, res);
+}));
+router.post('/favorite', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const movieData = req.body.movieData;
+    try {
+        let payload = (0, isAuth_1.default)(req, res);
+        if (payload) {
+            const user = yield User_1.UserModel.findOne({ username: payload.username });
+            yield User_1.UserModel.findOneAndUpdate({ username: user === null || user === void 0 ? void 0 : user.username }, { $push: { favorites: movieData } });
+            console.log('user:', user);
+        }
+        return res.status(200);
+    }
+    catch (err) {
+        return res.status(400).send(err);
+    }
 }));
 exports.default = router;
 //# sourceMappingURL=user.js.map

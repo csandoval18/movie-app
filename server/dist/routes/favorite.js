@@ -26,13 +26,13 @@ router.post('/favorite', (req, res, next) => __awaiter(void 0, void 0, void 0, f
         console.log('result:', payload);
         if (payload !== false) {
             const user = yield User_1.UserModel.findOne({ username: payload.username });
-            yield User_1.UserModel.findOneAndUpdate({ username: payload.username }, { $push: { favorites: movieData } });
+            yield User_1.UserModel.findOneAndUpdate({ username: user === null || user === void 0 ? void 0 : user.username }, { $push: { favorites: movieData } });
             console.log('user:', user);
         }
         return res.status(200);
     }
     catch (err) {
-        return res.status(400).send('error lol');
+        return res.status(400).send(err);
     }
 }));
 exports.default = router;

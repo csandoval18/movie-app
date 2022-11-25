@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { TokenPayload } from '../../types'
 
 // Checks if user is authenticated. If true returns Token payload data
-export const useIsAuth = (): TokenPayload | boolean => {
-	const [userData, setUserData] = useState<TokenPayload | boolean>(false)
+export const useIsAuth = (): TokenPayload | null => {
+	const [userData, setUserData] = useState<TokenPayload | null>(null)
 	const [token, setToken] = useState<string>(
 		sessionStorage.getItem('token') as string,
 	)

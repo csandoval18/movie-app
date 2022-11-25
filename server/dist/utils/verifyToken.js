@@ -14,7 +14,7 @@ const verifyToken = (req, res) => {
         return res.status(200).send(req.user);
     }
     catch (err) {
-        return res.send(false);
+        return res.send(null);
     }
 };
 exports.default = verifyToken;

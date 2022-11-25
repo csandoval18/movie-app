@@ -11,7 +11,7 @@ const verifyToken = (req: ExtendedRequest, res: Response) => {
 		req.user = payload
 		return res.status(200).send(req.user)
 	} catch (err) {
-		return res.send(false)
+		return res.send(null)
 	}
 }
 

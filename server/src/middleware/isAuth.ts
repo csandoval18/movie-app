@@ -12,7 +12,7 @@ const isAuth = (req: ExtendedRequest, res: Response) => {
 		req.user = payload
 		return req.user
 	} catch (err) {
-		return false
+		return null
 	}
 }
 
