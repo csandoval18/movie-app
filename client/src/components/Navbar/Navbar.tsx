@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { IoIosSearch } from 'react-icons/io'
 import { IoLogoAmplify } from 'react-icons/io5'
-import { Link, Router } from 'react-router-dom'
-import { useIsAuth } from '../../utils/api/isAuth'
+import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
 	selectToggleSearchbar,
@@ -13,7 +12,7 @@ import {
 	HomeBtn,
 	PrimaryButton,
 } from '../../styles/GlobalStyles.elements'
-import { TokenPayload } from '../../types'
+import { useIsAuth } from '../../utils/api/isAuth'
 import { DropDown, DropDownAnchor, NavbarContainer } from './Navbar.elements'
 import SearchBar from './SearchBar/SearchBar'
 

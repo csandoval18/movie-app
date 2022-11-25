@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { IoIosSearch } from 'react-icons/io'
 import { redirect, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import {
@@ -8,6 +9,7 @@ import {
 	setSearchVal,
 } from '../../../features/movie/movieSlice'
 import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
+import { PrimaryButton } from '../../../styles/GlobalStyles.elements'
 import {
 	ReturnBtn,
 	SearchBarContainer,
@@ -53,6 +55,9 @@ const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 								setSearchBarInput(e.target.value)
 							}}
 						/>
+						<button className='btn btn-square btn-primary submit-search-btn'>
+							<IoIosSearch className='icon'></IoIosSearch>
+						</button>
 					</form>
 				</div>
 			</div>

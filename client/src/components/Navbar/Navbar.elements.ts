@@ -91,6 +91,13 @@ export const SearchBarContainer = styled.div`
 	}
 	.form-control {
 		width: 100%;
+		form {
+			display: flex;
+		}
+	}
+	.submit-search-btn {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
 	}
 	@media (${device.laptop}) {
 		.form-control {
@@ -104,6 +111,11 @@ export const SearchBarContainer = styled.div`
 export const SearchBarInput = styled.input`
 	max-width: 500px;
 	width: 100%;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	&:focus {
+		outline: none;
+	}
 	@media (${device.tablet}) {
 		& {
 			min-width: 400px;
