@@ -11,7 +11,6 @@ export const NavbarContainer = styled.nav`
 	font-weight: 500;
 	min-height: 4rem;
 	justify-content: space-between;
-	/* padding: 0 1rem; */
 	position: sticky;
 	top: 0;
 	width: 100%;
