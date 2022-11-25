@@ -56,7 +56,7 @@ router.post('/login', async (req: ExtendedRequest, res: Response) => {
 		return res
 			.status(400)
 			.send({ field: 'username', msg: 'Username or password is incorrect' })
-	//Unsuccessful login
+
 	const valid = await argon2.verify(user.password, req.body.password)
 	//Unsuccessful login
 	if (!valid)

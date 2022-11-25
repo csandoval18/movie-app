@@ -5,7 +5,8 @@ export const NavbarContainer = styled.nav`
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.08);
 	backdrop-filter: blur(24px);
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	font-size: 16;
 	font-weight: 500;
 	min-height: 4rem;
@@ -46,14 +47,16 @@ export const NavbarContainer = styled.nav`
 		display: none;
 	}
 	.handle-mobile-menu-display {
+		justify-content: right;
 	}
-	@media (${device.tablet}) {
+	@media (${device.laptop}) {
 		& {
-			/* padding: 0 4rem; */
+			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.handle-searchbar-display,
 		.menu-options {
 			display: flex;
+			justify-content: right;
 		}
 		.handle-mobile-menu-display,
 		.search-return-btn {
@@ -82,7 +85,7 @@ export const SearchBarContainer = styled.div`
 	.form-control {
 		width: 100%;
 	}
-	@media (${device.tablet}) {
+	@media (${device.laptop}) {
 		.form-control {
 			width: auto;
 		}
@@ -101,7 +104,6 @@ export const SearchBarInput = styled.input`
 	}
 	@media (${device.laptop}) {
 		& {
-			margin-left: 6%;
 			min-width: 500px;
 		}
 	}
