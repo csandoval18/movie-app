@@ -83,7 +83,14 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 		)
 	}
 	return (
-		<NavbarContainer className='Navbar px-responsive'>
+		// Need to make a util to detect viewport width to remove search-mode class in desktop mode
+		<NavbarContainer
+			className={
+				toggleSearchBar
+					? 'Navbar px-responsive search-mode'
+					: 'Navbar px-responsive'
+			}
+		>
 			<Link to='/'>
 				<HomeBtn className={toggleSearchBar ? 'handle-searchbar-display' : ''}>
 					<IoLogoAmplify />
@@ -105,7 +112,10 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 				>
 					<IoIosSearch className='icon'></IoIosSearch>
 				</PrimaryButton>
-				<label htmlFor='my-drawer-3' className='btn btn-square btn-ghost'>
+				<label
+					htmlFor='my-drawer-3'
+					className='btn btn-square btn-ghost hamburger'
+				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'

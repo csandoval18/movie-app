@@ -16,12 +16,15 @@ export const NavbarContainer = styled.nav`
 	top: 0;
 	width: 100%;
 	z-index: 10000;
+	.hamburger:hover {
+		background-color: rgba(41, 67, 122, 0.2);
+	}
 	.nav-menu {
 		gap: 1.3rem;
 	}
 	.search-btn,
 	.mobile-search-btn {
-		font-size: 1.5em !important;
+		font-size: 1.5em;
 		position: relative;
 	}
 	.search-btn {
@@ -49,8 +52,12 @@ export const NavbarContainer = styled.nav`
 	.handle-mobile-menu-display {
 		justify-content: right;
 	}
+	&.search-mode {
+		grid-template-columns: 1fr;
+	}
 	@media (${device.laptop}) {
-		& {
+		&,
+		&.search-mode {
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.handle-searchbar-display,
@@ -67,16 +74,15 @@ export const NavbarContainer = styled.nav`
 export const SearchBarContainer = styled.div`
 	align-items: center;
 	display: flex;
-	justify-content: left;
 	gap: 1rem;
+	justify-content: center;
 	width: 100%;
 	.searchbar-container {
 		padding: 0;
 	}
 	.searchbar-layout {
 		display: flex;
-		flex: 1;
-		justify-content: left;
+		justify-content: center;
 		gap: 0.5rem;
 	}
 	.options-container {
@@ -115,9 +121,10 @@ export const ReturnBtn = styled.button`
 	display: flex;
 	height: 3rem;
 	justify-content: center;
-	width: 3rem;
+	width: 3.3rem;
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.2);
+		/* background-color: rgba(0, 0, 0, 0.2); */
+		background-color: rgba(41, 67, 122, 0.2);
 	}
 	.icon {
 		font-size: 1.7rem;

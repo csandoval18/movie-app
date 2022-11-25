@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 		useAppSelector(selectMovieSearchInput),
 	)
 	return (
-		<SearchBarContainer className={`searchbar-container ${className}`}>
+		<SearchBarContainer className={`Searchbar ${className}`}>
 			<div className='searchbar-layout'>
 				<ReturnBtn
 					className='search-return-btn'
