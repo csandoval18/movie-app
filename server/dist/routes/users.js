@@ -68,7 +68,7 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
 router.post('/auth', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     (0, verifyToken_1.default)(req, res);
 }));
-router.post('/favorite', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const movieData = req.body.movieData;
     try {
         let payload = (0, isAuth_1.default)(req, res);
@@ -83,8 +83,9 @@ router.post('/favorite', (req, res) => __awaiter(void 0, void 0, void 0, functio
         return res.status(400).send(err);
     }
 }));
-router.delete('/favorite/:movieID', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.send('Request to remove movie received');
 }));
+router.get('/favorites');
 exports.default = router;
 //# sourceMappingURL=users.js.map

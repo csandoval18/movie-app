@@ -19,13 +19,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 	const isLoggedIn = useIsAuth()
 	const token = sessionStorage.getItem('token') as string
 
-	const handleAddToFavorites = async () => {
+	const addToFavorites = async () => {
 		const movieDetails = await dispatch(
 			fetchMovieDetailsThunk({ searchVal: data.imdbID }),
 		)
 		console.log(movieDetails.payload)
 		await axios.post(
-			'http://localhost:4000/api/users/favorite',
+			'http://localhost:4000/api/user/favorites/',
 			{
 				movieData: movieDetails.payload,
 			},
@@ -57,7 +57,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 							className='btn btn-outline btn-primary'
 							onClick={() => {
 								setIsFavorite(!isFavorite)
-								handleAddToFavorites()
+								addToFavorites()
 							}}
 						>
 							{isFavorite ? (

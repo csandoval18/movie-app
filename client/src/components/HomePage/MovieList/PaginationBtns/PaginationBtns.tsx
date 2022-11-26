@@ -73,6 +73,12 @@ const PaginationBtns = () => {
 				<button
 					className='btn'
 					onClick={() => {
+						/* Pagination next button disable does not work if last page with results = 10 and next page has 0. 
+              I would need to call and extra movie to see if there is more results, 
+              but omdb does not allow to fetch more than 10 movies. I can either switch 
+              to displaying max 9 movies per page and using the 10th as a check for the 
+              next page, or I can fetch the next 10 results and check the length
+            */
 						if (movies.length !== 10) return
 						if (currPageNum === pageNums[pageNums.length - 1])
 							increasePagPages()

@@ -75,10 +75,11 @@ router.post('/auth', async (req: ExtendedRequest, res: Response) => {
 	verifyToken(req, res)
 })
 
-router.post('/favorite', async (req: ExtendedRequest, res: Response) => {
-	const movieData = req.body.movieData
+router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
+	// Save movie to Movie collection
 	// const movie = new MovieModel(movieData)
 	// await movie.save()
+	const movieData = req.body.movieData
 	try {
 		let payload = isAuth(req, res)
 		if (payload) {
@@ -95,11 +96,10 @@ router.post('/favorite', async (req: ExtendedRequest, res: Response) => {
 	}
 })
 
-router.delete(
-	'/favorite/:movieID',
-	async (req: ExtendedRequest, res: Response) => {
-		return res.send('Request to remove movie received')
-	},
-)
+router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
+	return res.send('Request to remove movie received')
+})
+
+router.get('/favorites')
 
 export default router
