@@ -25,7 +25,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 		)
 		console.log(movieDetails.payload)
 		await axios.post(
-			'http://localhost:4000/api/user/favorite',
+			'http://localhost:4000/api/users/favorite',
 			{
 				movieData: movieDetails.payload,
 			},

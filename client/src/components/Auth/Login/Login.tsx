@@ -20,7 +20,7 @@ const Login: React.FC = () => {
 
 	const handleLogin = async () => {
 		await axios
-			.post('http://localhost:4000/api/user/login', {
+			.post('http://localhost:4000/api/users/login', {
 				username: username,
 				password: password,
 			})

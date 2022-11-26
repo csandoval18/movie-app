@@ -11,7 +11,7 @@ export const useIsAuth = (): TokenPayload | boolean => {
 	useEffect(() => {
 		axios
 			.post(
-				'http://localhost:4000/api/user/auth',
+				'http://localhost:4000/api/users/auth',
 				{},
 				{
 					headers: { Authorization: `${token}` },
