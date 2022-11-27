@@ -62,7 +62,7 @@ const Login: React.FC = () => {
 							<label htmlFor='password'>Password</label>
 							<input
 								name='password'
-								type='text'
+								type='password'
 								placeholder='password'
 								className='input input-bordered input-primary w-full max-w'
 								onChange={(e) => setPass(e.target.value)}
