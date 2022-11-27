@@ -86,7 +86,7 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 			const user = await UserModel.findOne({ username: payload.username })
 			await UserModel.findOneAndUpdate(
 				{ username: user?.username },
-				{ $push: { favorites: movieData } },
+				{ $addToSet: { favorites: movieData } },
 			)
 			console.log('user:', user)
 		}
