@@ -6,6 +6,7 @@ import {
 	selectMovieDetails,
 } from '../../features/movie/movieSlice'
 import { Header } from '../../styles/GlobalStyles.elements'
+import { RatingsFields } from '../../utils/types'
 import {
 	MovieDetailsCard,
 	MovieDetailsContainer,
@@ -122,13 +123,15 @@ const MovieDetails = () => {
 										<td>
 											<ul>
 												{movieDetails?.Ratings.length !== 0
-													? movieDetails?.Ratings.map((rating) => (
-															<li key={movieDetails.imdbID + rating.Source}>
-																{rating.Source === 'Internet Movie Database'
-																	? 'IMDB: ' + rating.Value
-																	: `${rating.Source}: ${rating.Value}`}
-															</li>
-													  ))
+													? movieDetails?.Ratings.map(
+															(rating: RatingsFields) => (
+																<li key={movieDetails.imdbID + rating.Source}>
+																	{rating.Source === 'Internet Movie Database'
+																		? 'IMDB: ' + rating.Value
+																		: `${rating.Source}: ${rating.Value}`}
+																</li>
+															),
+													  )
 													: 'N/A'}
 											</ul>
 										</td>

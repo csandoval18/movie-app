@@ -1,4 +1,4 @@
-import { MoviesSearchData } from '../types'
+import { MoviesSearchData } from './types'
 
 export const useSortByYear = (
 	movies: MoviesSearchData[],

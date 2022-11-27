@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector } from '../app/hooks'
 import { selectMovieSearchInput } from '../features/movie/movieSlice'
-import { MoviesSearchData } from '../types'
+import { MoviesSearchData } from './types'
 
 export const useSearchMovies = async (
 	pageNumber = 1,

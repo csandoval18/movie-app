@@ -77,7 +77,7 @@ router.post('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, functi
             yield User_1.UserModel.findOneAndUpdate({ username: user === null || user === void 0 ? void 0 : user.username }, { $push: { favorites: movieData } });
             console.log('user:', user);
         }
-        return res.status(200);
+        return res.status(200).send('Added movie to favorites');
     }
     catch (err) {
         return res.status(400).send(err);
@@ -86,6 +86,19 @@ router.post('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, functi
 router.delete('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.send('Request to remove movie received');
 }));
-router.get('/favorites');
+router.get('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let payload = (0, isAuth_1.default)(req, res);
+        if (payload) {
+            const user = yield User_1.UserModel.findOne({ username: payload.username });
+            console.log('user favorites:', user === null || user === void 0 ? void 0 : user.favorites);
+            return res.status(200).send(user === null || user === void 0 ? void 0 : user.favorites);
+        }
+        return res.send(payload);
+    }
+    catch (err) {
+        return res.send(err);
+    }
+}));
 exports.default = router;
 //# sourceMappingURL=users.js.map

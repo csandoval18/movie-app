@@ -4,7 +4,7 @@ import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
 import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
-import { MoviesSearchData } from '../../../../types'
+import { MoviesSearchData } from '../../../../utils/types'
 import { useIsAuth } from '../../../../utils/api/isAuth'
 import { MovieCardStyle } from './MovieCard.elements'
 
@@ -25,7 +25,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 		)
 		console.log(movieDetails.payload)
 		await axios.post(
-			'http://localhost:4000/api/user/favorites/',
+			'http://localhost:4000/api/users/favorites/',
 			{
 				movieData: movieDetails.payload,
 			},

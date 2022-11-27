@@ -90,7 +90,7 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 			)
 			console.log('user:', user)
 		}
-		return res.status(200)
+		return res.status(200).send('Added movie to favorites')
 	} catch (err) {
 		return res.status(400).send(err)
 	}
@@ -100,6 +100,18 @@ router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
 	return res.send('Request to remove movie received')
 })
 
-router.get('/favorites')
+router.get('/favorites', async (req: ExtendedRequest, res: Response) => {
+	try {
+		let payload = isAuth(req, res)
+		if (payload) {
+			const user = await UserModel.findOne({ username: payload.username })
+			console.log('user favorites:', user?.favorites)
+			return res.status(200).send(user?.favorites)
+		}
+		return res.send(payload)
+	} catch (err) {
+		return res.send(err)
+	}
+})
 
 export default router
