@@ -25,6 +25,7 @@ function App() {
 							path='/search=:searchInput&page=:pageNum'
 							element={<MovieList />}
 						/>
+						<Route path='/favorites' element={<Favorites />} />
 						<Route path='*' element={<NotFound />} />
 					</Routes>
 				</div>

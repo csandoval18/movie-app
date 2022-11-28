@@ -1,6 +1,7 @@
 import argon2 from 'argon2'
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
+import { MovieModel } from '../model/Movie'
 import { ExtendedRequest } from 'src/types'
 import isAuth from '../middleware/isAuth'
 import { UserModel } from '../model/User'
@@ -76,28 +77,40 @@ router.post('/auth', async (req: ExtendedRequest, res: Response) => {
 })
 
 router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
-	// Save movie to Movie collection
-	// const movie = new MovieModel(movieData)
-	// await movie.save()
 	const movieData = req.body.movieData
+	// Save movie to Movie collection
+	console.log('favorites route')
 	try {
 		let payload = isAuth(req, res)
 		if (payload) {
+			// const movie = new MovieModel(movieData)
+			// await movie.save()
 			const user = await UserModel.findOne({ username: payload.username })
+			console.log('user.fav:', user?.favorites)
 			await UserModel.findOneAndUpdate(
 				{ username: user?.username },
-				{ $push: { favorites: movieData } },
+				{ $addToSet: { favorites: movieData } },
 			)
 			console.log('user:', user)
 		}
-		return res.status(200)
+		return res.status(200).send('Added movie to favorites')
 	} catch (err) {
 		return res.status(400).send(err)
 	}
 })
 
 router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
-	return res.send('Request to remove movie received')
+	try {
+		let payload = isAuth(req, res)
+		if (payload) {
+			const user = await UserModel.findOne({ username: payload.username })
+			console.log('user favorites:', user?.favorites)
+			return res.status(200).send(user?.favorites)
+		}
+		return res.send(payload)
+	} catch (err) {
+		return res.send(err)
+	}
 })
 
 router.get('/favorites', async (req: ExtendedRequest, res: Response) => {
@@ -105,9 +118,18 @@ router.get('/favorites', async (req: ExtendedRequest, res: Response) => {
 		let payload = isAuth(req, res)
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
+<<<<<<< HEAD
 		}
 	} catch (err) {
 		return res.status(400).send(err)
+=======
+			console.log('user favorites:', user?.favorites)
+			return res.status(200).send(user?.favorites)
+		}
+		return res.send(payload)
+	} catch (err) {
+		return res.send(err)
+>>>>>>> 1ca69b8e16e4e9b486184a0994a9ff53b75539d4
 	}
 })
 

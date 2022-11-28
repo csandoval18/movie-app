@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { RootState } from '../../app/store'
-import { MovieDetails, MoviesSearchData } from '../../types'
+import { MovieDetailsFields, MoviesSearchData } from '../../utils/types'
 import { useSortByYear } from '../../utils/useSortByYear'
 
 export interface SearchMovieState {
 	searchVal: String
 	movies: MoviesSearchData[]
-	movieDetails: MovieDetails | undefined
+	movieDetails: MovieDetailsFields | undefined
 	loading: Boolean
 }
 

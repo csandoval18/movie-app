@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { TokenPayload } from '../../types'
+import { TokenPayload } from '../types'
 
 // Checks if user is authenticated. If true returns Token payload data
 export const useIsAuth = (): TokenPayload | null => {

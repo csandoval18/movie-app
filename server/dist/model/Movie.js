@@ -44,14 +44,18 @@ const Movie = new mongoose_1.Schema({
     Metascore: String,
     imdbRating: String,
     imdbVotes: String,
-    imdbID: String,
+    imdbID: {
+        type: String,
+        unique: true,
+        required: true,
+    },
     Type: String,
     DVD: String,
     BoxOffice: String,
     Production: String,
     Website: String,
     Response: String,
-});
+}, { _id: false });
 exports.MovieModel = mongoose_1.default.model('Movie', Movie);
 exports.default = Movie;
 //# sourceMappingURL=Movie.js.map

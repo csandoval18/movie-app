@@ -1,5 +1,3 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
 import { Card } from '../../styles/GlobalStyles.elements'
 import { HomePageContainer } from './HomePage.elements'
 

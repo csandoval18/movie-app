@@ -13,7 +13,7 @@ const Register: React.FC = () => {
 
 	const handleLogin = () => {
 		axios
-			.post('http://localhost:4000/api/user/register', {
+			.post('http://localhost:4000/api/users/register', {
 				username: username,
 				password: password,
 				email: email,
@@ -56,7 +56,7 @@ const Register: React.FC = () => {
 							<label htmlFor='password'>Password</label>
 							<input
 								name='password'
-								type='text'
+								type='password'
 								placeholder='password'
 								className='input input-bordered input-primary w-full max-w'
 								onChange={(e) => setPass(e.target.value)}

@@ -6,12 +6,12 @@ export interface MoviesSearchData {
 	imdbID: string
 }
 
-interface RatingsFields {
+export interface RatingsFields {
 	Source: string
 	Value: string
 }
 
-export interface MovieDetails {
+export interface MovieDetailsFields {
 	Title: string
 	Year: string | number
 	Rated: string
