@@ -118,18 +118,12 @@ router.get('/favorites', async (req: ExtendedRequest, res: Response) => {
 		let payload = isAuth(req, res)
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
-<<<<<<< HEAD
-		}
-	} catch (err) {
-		return res.status(400).send(err)
-=======
 			console.log('user favorites:', user?.favorites)
 			return res.status(200).send(user?.favorites)
 		}
 		return res.send(payload)
 	} catch (err) {
 		return res.send(err)
->>>>>>> 1ca69b8e16e4e9b486184a0994a9ff53b75539d4
 	}
 })
 

@@ -5,6 +5,7 @@ import { MovieDetailsFields } from '../../utils/types'
 import MovieCard, {
 	cardVariant,
 } from '../HomePage/MovieList/MovieCard/MovieCard'
+import { FavoritesBlock } from './Favorites.styled'
 
 interface FavoritesProps {}
 
@@ -16,7 +17,7 @@ const Favorites: React.FC<FavoritesProps> = () => {
 
 	const fetchFavoriteMovies = async () => {
 		await axios
-			.get('http://localhost:4000/api/users/favorites/', {
+			.get('http://localhost:4000/api/users/favorites', {
 				headers: { Authorization: `${token}` },
 			})
 			.then((res) => {
@@ -30,7 +31,7 @@ const Favorites: React.FC<FavoritesProps> = () => {
 	}, [])
 
 	return (
-		<div>
+		<FavoritesBlock className='Favorites'>
 			{favorites.map((movie) => (
 				// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
 				<MovieCard
@@ -39,7 +40,7 @@ const Favorites: React.FC<FavoritesProps> = () => {
 					variant={'favorites'}
 				></MovieCard>
 			))}
-		</div>
+		</FavoritesBlock>
 	)
 }
 

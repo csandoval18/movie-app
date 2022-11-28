@@ -112,14 +112,18 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 				>
 					<IoIosSearch className='icon'></IoIosSearch>
 				</PrimaryButton>
-				<PrimaryButton
-					onClick={() => {
-						navigate('./favorites')
-					}}
-				>
-					{/* <IoMdHeart style={{ fontSize: 25 }} /> */}
-					<IoMdHeartEmpty style={{ fontSize: 25 }} />
-				</PrimaryButton>
+				{isLoggedIn ? (
+					<PrimaryButton
+						onClick={() => {
+							navigate('./favorites')
+						}}
+					>
+						{/* <IoMdHeart style={{ fontSize: 25 }} /> */}
+						<IoMdHeartEmpty style={{ fontSize: 25 }} />
+					</PrimaryButton>
+				) : (
+					<></>
+				)}
 				<label
 					htmlFor='my-drawer-3'
 					className='btn btn-square btn-ghost hamburger'

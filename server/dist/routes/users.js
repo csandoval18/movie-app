@@ -104,10 +104,13 @@ router.get('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, functio
         let payload = (0, isAuth_1.default)(req, res);
         if (payload) {
             const user = yield User_1.UserModel.findOne({ username: payload.username });
+            console.log('user favorites:', user === null || user === void 0 ? void 0 : user.favorites);
+            return res.status(200).send(user === null || user === void 0 ? void 0 : user.favorites);
         }
+        return res.send(payload);
     }
     catch (err) {
-        return res.status(400).send(err);
+        return res.send(err);
     }
 }));
 exports.default = router;
