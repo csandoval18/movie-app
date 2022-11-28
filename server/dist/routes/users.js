@@ -86,6 +86,16 @@ router.post('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, functi
 router.delete('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.send('Request to remove movie received');
 }));
-router.get('/favorites');
+router.get('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let payload = (0, isAuth_1.default)(req, res);
+        if (payload) {
+            const user = yield User_1.UserModel.findOne({ username: payload.username });
+        }
+    }
+    catch (err) {
+        return res.status(400).send(err);
+    }
+}));
 exports.default = router;
 //# sourceMappingURL=users.js.map

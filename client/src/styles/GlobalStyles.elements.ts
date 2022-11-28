@@ -46,9 +46,10 @@ export const PrimaryButton = styled.button`
 	color: white;
 	display: flex;
 	justify-content: center;
-	padding: 8px 8px;
+	height: 40px;
 	transform: translateY(0);
 	transition: transform 0.5s ease-in-out;
+	width: 40px;
 	&:hover {
 		background-color: rgba(41, 67, 122, 0.2);
 		transform: translateY(-4px);

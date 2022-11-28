@@ -100,6 +100,15 @@ router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
 	return res.send('Request to remove movie received')
 })
 
-router.get('/favorites')
+router.get('/favorites', async (req: ExtendedRequest, res: Response) => {
+	try {
+		let payload = isAuth(req, res)
+		if (payload) {
+			const user = await UserModel.findOne({ username: payload.username })
+		}
+	} catch (err) {
+		return res.status(400).send(err)
+	}
+})
 
 export default router

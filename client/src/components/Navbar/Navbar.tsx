@@ -1,7 +1,7 @@
 import React from 'react'
-import { IoIosSearch } from 'react-icons/io'
+import { IoIosSearch, IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { IoLogoAmplify } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import {
 	selectToggleSearchbar,
@@ -19,6 +19,7 @@ import SearchBar from './SearchBar/SearchBar'
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = ({}) => {
+	const navigate = useNavigate()
 	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
 	console.log('togglesearchbar', toggleSearchBar)
 	const dispatch = useAppDispatch()
@@ -110,6 +111,14 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 					}}
 				>
 					<IoIosSearch className='icon'></IoIosSearch>
+				</PrimaryButton>
+				<PrimaryButton
+					onClick={() => {
+						navigate('./favorites')
+					}}
+				>
+					{/* <IoMdHeart style={{ fontSize: 25 }} /> */}
+					<IoMdHeartEmpty style={{ fontSize: 25 }} />
 				</PrimaryButton>
 				<label
 					htmlFor='my-drawer-3'

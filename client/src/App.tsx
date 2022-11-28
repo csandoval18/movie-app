@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom'
 import Login from './components/Auth/Login/Login'
 import Register from './components/Auth/Register/Register'
+import Favorites from './components/Favorites/Favorites'
 import HomePage from './components/HomePage/HomePage'
 import MovieList from './components/HomePage/MovieList/MoviesList'
 import MovieDetails from './components/MovieDetails/MovieDetails'
@@ -19,6 +20,7 @@ function App() {
 						<Route path='/register' element={<Register />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/movie-details/:imdbID' element={<MovieDetails />} />
+						<Route path='/favorites' element={<Favorites />} />
 						<Route
 							path='/search=:searchInput&page=:pageNum'
 							element={<MovieList />}
