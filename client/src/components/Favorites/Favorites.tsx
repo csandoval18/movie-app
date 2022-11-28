@@ -5,6 +5,10 @@ import { MovieDetailsFields } from '../../utils/types'
 import MovieCard, {
 	cardVariant,
 } from '../HomePage/MovieList/MovieCard/MovieCard'
+import {
+	MovieResults,
+	MoviesListContainer,
+} from '../HomePage/MovieList/MoviesList.elements'
 import { FavoritesBlock } from './Favorites.styled'
 
 interface FavoritesProps {}
@@ -32,14 +36,18 @@ const Favorites: React.FC<FavoritesProps> = () => {
 
 	return (
 		<FavoritesBlock className='Favorites'>
-			{favorites.map((movie) => (
-				// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
-				<MovieCard
-					key={movie.imdbID}
-					data={movie}
-					variant={'favorites'}
-				></MovieCard>
-			))}
+			<MoviesListContainer className='movielist-container'>
+				<MovieResults>
+					{favorites.map((movie) => (
+						// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
+						<MovieCard
+							key={movie.imdbID}
+							data={movie}
+							variant={'favorites'}
+						></MovieCard>
+					))}
+				</MovieResults>
+			</MoviesListContainer>
 		</FavoritesBlock>
 	)
 }

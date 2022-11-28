@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
+import { IoMdClose, IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
 import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
@@ -40,12 +40,66 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 			},
 		)
 	}
-	let body
-	if (variant === 'favorite') {
-		body = <div>hello</div>
+	let cardActions
+	if (variant === 'favorites') {
+		cardActions = (
+			<>
+				<button
+					className='btn btn-outline btn-accent'
+					onClick={() => {
+						navigate(`/movie-details/${data.imdbID}`)
+					}}
+				>
+					Details
+				</button>
+				<button
+					className='btn btn-outline btn-error'
+					onClick={() => {
+						// navigate(`/movie-details/${data.imdbID}`)
+					}}
+				>
+					<IoMdClose fontSize={32}></IoMdClose>
+				</button>
+			</>
+		)
+	} else {
+		cardActions = (
+			<>
+				<button
+					className='btn btn-outline btn-accent'
+					onClick={() => {
+						navigate(`/movie-details/${data.imdbID}`)
+					}}
+				>
+					Details
+				</button>
+				{isLoggedIn ? (
+					<button
+						className='btn btn-outline btn-primary'
+						onClick={() => {
+							setIsFavorite(!isFavorite)
+							addToFavorites()
+						}}
+					>
+						{isFavorite ? (
+							<IoMdHeart style={{ fontSize: 25 }} />
+						) : (
+							<IoMdHeartEmpty style={{ fontSize: 25 }} />
+						)}
+					</button>
+				) : (
+					<></>
+				)}
+			</>
+		)
 	}
 	return (
 		<MovieCardStyle className='card card-compact bg-base-100 shadow-xl'>
+			{variant === 'favorites' ? (
+				<>hello world this is variant favorites</>
+			) : (
+				<>not variant favorites</>
+			)}
 			<figure>
 				<img src={data.Poster} alt='poster picture' />
 			</figure>
@@ -53,33 +107,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 				<h2 className='card-title'>{data.Title}</h2>
 				<p>{data.Type[0].toUpperCase() + data.Type.substring(1)}</p>
 				<p>{data.Year}</p>
-				<div className='card-actions justify-end'>
-					<button
-						className='btn btn-outline btn-accent'
-						onClick={() => {
-							navigate(`/movie-details/${data.imdbID}`)
-						}}
-					>
-						Details
-					</button>
-					{isLoggedIn ? (
-						<button
-							className='btn btn-outline btn-primary'
-							onClick={() => {
-								setIsFavorite(!isFavorite)
-								addToFavorites()
-							}}
-						>
-							{isFavorite ? (
-								<IoMdHeart style={{ fontSize: 25 }} />
-							) : (
-								<IoMdHeartEmpty style={{ fontSize: 25 }} />
-							)}
-						</button>
-					) : (
-						<></>
-					)}
-				</div>
+				<div className='card-actions justify-end'>{cardActions}</div>
 			</span>
 		</MovieCardStyle>
 	)

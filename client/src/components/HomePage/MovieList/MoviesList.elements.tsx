@@ -11,6 +11,7 @@ export const MovieResults = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 2rem;
+	margin-top: 3rem;
 	@media (${device.tablet}) {
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
@@ -25,7 +26,7 @@ export const PaginationBtnsStyle = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 3rem 0;
+	padding-top: 3rem;
 	button:hover {
 		background-color: rgba(147, 196, 253, 0.158);
 	}
