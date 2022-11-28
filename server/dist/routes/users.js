@@ -70,11 +70,13 @@ router.post('/auth', (req, res) => __awaiter(void 0, void 0, void 0, function* (
 }));
 router.post('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const movieData = req.body.movieData;
+    console.log('favorites route');
     try {
         let payload = (0, isAuth_1.default)(req, res);
         if (payload) {
             const user = yield User_1.UserModel.findOne({ username: payload.username });
-            yield User_1.UserModel.findOneAndUpdate({ username: user === null || user === void 0 ? void 0 : user.username }, { $addToSet: { favorites: movieData.imdbID } });
+            console.log('user.fav:', user === null || user === void 0 ? void 0 : user.favorites);
+            yield User_1.UserModel.findOneAndUpdate({ username: user === null || user === void 0 ? void 0 : user.username }, { $addToSet: { favorites: movieData } });
             console.log('user:', user);
         }
         return res.status(200).send('Added movie to favorites');
