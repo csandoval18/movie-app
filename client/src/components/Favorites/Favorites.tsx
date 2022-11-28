@@ -2,6 +2,9 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useIsAuth } from '../../utils/api/isAuth'
 import { MovieDetailsFields } from '../../utils/types'
+import MovieCard, {
+	cardVariant,
+} from '../HomePage/MovieList/MovieCard/MovieCard'
 
 interface FavoritesProps {}
 
@@ -16,7 +19,10 @@ const Favorites: React.FC<FavoritesProps> = () => {
 			.get('http://localhost:4000/api/users/favorites/', {
 				headers: { Authorization: `${token}` },
 			})
-			.then((res) => setFavorites(res.data))
+			.then((res) => {
+				console.log('res.data:', res.data)
+				setFavorites(res.data)
+			})
 			.catch((err) => console.log(err))
 	}
 	useEffect(() => {
@@ -26,7 +32,12 @@ const Favorites: React.FC<FavoritesProps> = () => {
 	return (
 		<div>
 			{favorites.map((movie) => (
-				<div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
+				// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
+				<MovieCard
+					key={movie.imdbID}
+					data={movie}
+					variant={'favorites'}
+				></MovieCard>
 			))}
 		</div>
 	)

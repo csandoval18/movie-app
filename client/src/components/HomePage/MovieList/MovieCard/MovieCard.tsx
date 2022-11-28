@@ -4,15 +4,21 @@ import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
 import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
-import { MoviesSearchData } from '../../../../utils/types'
+import { MovieDetailsFields, MoviesSearchData } from '../../../../utils/types'
 import { useIsAuth } from '../../../../utils/api/isAuth'
 import { MovieCardStyle } from './MovieCard.elements'
 
-interface MovieCardProps {
-	data: MoviesSearchData
+export const enum cardVariant {
+	default = '',
+	favorites = 'favorites',
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+interface MovieCardProps {
+	data: MoviesSearchData | MovieDetailsFields
+	variant?: string
+}
+
+const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [isFavorite, setIsFavorite] = useState(false)
@@ -33,6 +39,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 				headers: { Authorization: `${token}` },
 			},
 		)
+	}
+	let body
+	if (variant === 'favorite') {
+		body = <div>hello</div>
 	}
 	return (
 		<MovieCardStyle className='card card-compact bg-base-100 shadow-xl'>
