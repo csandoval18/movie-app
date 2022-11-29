@@ -92,7 +92,6 @@ router.delete('/favorites', (req, res) => __awaiter(void 0, void 0, void 0, func
         if (payload) {
             const user = yield User_1.UserModel.findOne({ username: payload.username });
             console.log('user favorites:', user === null || user === void 0 ? void 0 : user.favorites);
-            return res.status(200).send(user === null || user === void 0 ? void 0 : user.favorites);
             yield User_1.UserModel.findOneAndUpdate({ username: user === null || user === void 0 ? void 0 : user.username }, { $addToSet: { favorites: movieID } });
         }
         return res.send(payload);

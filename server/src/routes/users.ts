@@ -106,7 +106,6 @@ router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
 			console.log('user favorites:', user?.favorites)
-			return res.status(200).send(user?.favorites)
 			await UserModel.findOneAndUpdate(
 				{ username: user?.username },
 				{ $addToSet: { favorites: movieID } },
