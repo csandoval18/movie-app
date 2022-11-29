@@ -53,7 +53,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 					Details
 				</button>
 				<button
-					className='btn btn-outline btn-error'
+					className='btn btn-outline btn-square btn-error'
 					onClick={() => {
 						// navigate(`/movie-details/${data.imdbID}`)
 					}}
