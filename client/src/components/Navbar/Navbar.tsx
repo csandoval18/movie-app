@@ -114,12 +114,12 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 				</PrimaryButton>
 				{isLoggedIn ? (
 					<PrimaryButton
+						className='favorites-btn'
 						onClick={() => {
 							navigate('./favorites')
 						}}
 					>
-						{/* <IoMdHeart style={{ fontSize: 25 }} /> */}
-						<IoMdHeartEmpty style={{ fontSize: 25 }} />
+						<IoMdHeartEmpty className='icon' style={{ fontSize: 25 }} />
 					</PrimaryButton>
 				) : (
 					<></>

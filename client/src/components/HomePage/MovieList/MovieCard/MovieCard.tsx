@@ -40,6 +40,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 			},
 		)
 	}
+	const handleRemoveMovie = () => {
+		axios.delete('http://localhost:4000/api/users/favorites')
+	}
 	let cardActions
 	if (variant === 'favorites') {
 		cardActions = (
@@ -55,6 +58,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 				<button
 					className='btn btn-outline btn-square btn-error'
 					onClick={() => {
+						handleRemoveMovie()
 						// navigate(`/movie-details/${data.imdbID}`)
 					}}
 				>
@@ -95,11 +99,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 	}
 	return (
 		<MovieCardStyle className='card card-compact bg-base-100 shadow-xl'>
-			{variant === 'favorites' ? (
-				<>hello world this is variant favorites</>
-			) : (
-				<>not variant favorites</>
-			)}
 			<figure>
 				<img src={data.Poster} alt='poster picture' />
 			</figure>

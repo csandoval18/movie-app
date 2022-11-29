@@ -34,6 +34,11 @@ export const NavbarContainer = styled.nav`
 		height: 40px;
 		width: 40px;
 	}
+	.favorites-btn {
+		display: flex;
+		height: 40px;
+		width: 40px;
+	}
 	.icon {
 		font-size: 1.8rem;
 		position: absolute;
