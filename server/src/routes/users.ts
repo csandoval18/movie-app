@@ -100,12 +100,17 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 })
 
 router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
+	const movieID = req.body.movieId
 	try {
 		let payload = isAuth(req, res)
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
 			console.log('user favorites:', user?.favorites)
 			return res.status(200).send(user?.favorites)
+			await UserModel.findOneAndUpdate(
+				{ username: user?.username },
+				{ $addToSet: { favorites: movieID } },
+			)
 		}
 		return res.send(payload)
 	} catch (err) {
