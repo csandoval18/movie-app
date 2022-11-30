@@ -1,7 +1,6 @@
 import argon2 from 'argon2'
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-import { MovieModel } from '../model/Movie'
 import { ExtendedRequest } from 'src/types'
 import isAuth from '../middleware/isAuth'
 import { UserModel } from '../model/User'
@@ -81,7 +80,7 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 	// Save movie to Movie collection
 	console.log('favorites route')
 	try {
-		let payload = isAuth(req, res)
+		let payload = await isAuth(req, res)
 		if (payload) {
 			// const movie = new MovieModel(movieData)
 			// await movie.save()
@@ -102,7 +101,8 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
 	const movieID = req.body.movieId
 	try {
-		let payload = isAuth(req, res)
+		let payload = await isAuth(req, res)
+		// Payload returns null for unauth users
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
 			console.log('user favorites:', user?.favorites)
@@ -119,7 +119,8 @@ router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
 
 router.get('/favorites', async (req: ExtendedRequest, res: Response) => {
 	try {
-		let payload = isAuth(req, res)
+		let payload = await isAuth(req, res)
+		// console.log('payload:', payload)
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
 			console.log('user favorites:', user?.favorites)
