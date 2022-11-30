@@ -32,20 +32,25 @@ const Favorites: React.FC<FavoritesProps> = () => {
 	}
 	useEffect(() => {
 		fetchFavoriteMovies()
+		console.log('favorites:', favorites)
 	}, [])
 
 	return (
 		<FavoritesBlock className='Favorites'>
 			<MoviesListContainer className='movielist-container'>
 				<MovieResults>
-					{favorites.map((movie) => (
-						// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
-						<MovieCard
-							key={movie.imdbID}
-							data={movie}
-							variant={'favorites'}
-						></MovieCard>
-					))}
+					{favorites.length > 0 ? (
+						favorites.map((movie) => (
+							// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
+							<MovieCard
+								key={movie.imdbID}
+								data={movie}
+								variant={'favorites'}
+							></MovieCard>
+						))
+					) : (
+						<div>Please sign in to see your favorite movies.</div>
+					)}
 				</MovieResults>
 			</MoviesListContainer>
 		</FavoritesBlock>
