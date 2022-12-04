@@ -36,12 +36,15 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 				movieData: movieDetails.payload,
 			},
 			{
-				headers: { Authorization: `${token}` },
+				headers: { Authorization: token },
 			},
 		)
 	}
 	const handleRemoveMovie = () => {
-		axios.delete('http://localhost:4000/api/users/favorites')
+		axios.delete('http://localhost:4000/api/users/favorites', {
+			data: { movieID: data.imdbID },
+			headers: { Authorization: token },
+		})
 	}
 	let cardActions
 	if (variant === 'favorites') {
@@ -59,7 +62,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 					className='btn btn-outline btn-square btn-error'
 					onClick={() => {
 						handleRemoveMovie()
-						// navigate(`/movie-details/${data.imdbID}`)
 					}}
 				>
 					<IoMdClose fontSize={32}></IoMdClose>

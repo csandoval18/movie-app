@@ -103,16 +103,17 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 })
 
 router.delete('/favorites', async (req: ExtendedRequest, res: Response) => {
-	const movieID = req.body.movieId
+	const movieID = req.body.movieID
+	console.log('movieID:', movieID)
 	try {
 		let payload = await isAuth(req, res)
 		// Payload returns null for unauth users
 		if (payload) {
 			const user = await UserModel.findOne({ username: payload.username })
-			console.log('user favorites:', user?.favorites)
+			console.log('user favorites1:', user?.favorites)
 			await UserModel.findOneAndUpdate(
 				{ username: user?.username },
-				{ $addToSet: { favorites: movieID } },
+				{ $pull: { favorites: { imdbID: movieID } } },
 			)
 		}
 		return res.send(payload)
