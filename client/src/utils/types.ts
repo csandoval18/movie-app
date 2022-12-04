@@ -37,6 +37,7 @@ export interface MovieDetailsFields {
 	Production: string
 	Website: string
 	Response: string
+	totalSeasons: string | null
 }
 
 export interface TokenPayload {

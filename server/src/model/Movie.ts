@@ -18,7 +18,7 @@ import { MovieDetails, RatingsFields } from 'src/types'
 const Movie = new Schema<MovieDetails>(
 	{
 		Title: String,
-		Year: Number,
+		Year: String,
 		Rated: String,
 		Released: String,
 		Runtime: String,
@@ -46,6 +46,10 @@ const Movie = new Schema<MovieDetails>(
 		Production: String,
 		Website: String,
 		Response: String,
+		totalSeasons: {
+			type: String,
+			required: false,
+		},
 	},
 	{ _id: false },
 )

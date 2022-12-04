@@ -78,7 +78,7 @@ router.post('/auth', async (req: ExtendedRequest, res: Response) => {
 router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 	const movieData = req.body.movieData
 	// Save movie to Movie collection
-	console.log('favorites route')
+	console.log('favorited movie:', movieData)
 	try {
 		let payload = await isAuth(req, res)
 		if (payload) {
@@ -86,11 +86,15 @@ router.post('/favorites', async (req: ExtendedRequest, res: Response) => {
 			// await movie.save()
 			const user = await UserModel.findOne({ username: payload.username })
 			console.log('user.fav:', user?.favorites)
-			await UserModel.findOneAndUpdate(
-				{ username: user?.username },
-				{ $addToSet: { favorites: movieData } },
-			)
-			console.log('user:', user)
+			try {
+				await UserModel.findOneAndUpdate(
+					{ username: user?.username },
+					{ $addToSet: { favorites: movieData } },
+				)
+			} catch (err) {
+				console.log(err)
+			}
+			// console.log('user:', user)
 		}
 		return res.status(200).send('Added movie to favorites')
 	} catch (err) {

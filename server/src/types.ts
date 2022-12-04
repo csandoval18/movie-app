@@ -51,6 +51,7 @@ export interface MovieDetails {
 	Production: string
 	Website: string
 	Response: string
+	totalSeasons: string | null
 }
 
 export interface JWTError {
