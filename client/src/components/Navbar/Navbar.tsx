@@ -30,19 +30,19 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 	if (isLoggedIn) {
 		body = (
 			<Flex ai='center' jc='right' className='nav-menu'>
+				{isLoggedIn ? (
+					<PrimaryButton
+						className='favorites-btn'
+						onClick={() => {
+							navigate('./favorites')
+						}}
+					>
+						<IoMdHeartEmpty className='icon' style={{ fontSize: 25 }} />
+					</PrimaryButton>
+				) : (
+					<></>
+				)}
 				<div className='flex-none gap-2 text-primary-content'>
-					{isLoggedIn ? (
-						<PrimaryButton
-							className='favorites-btn'
-							onClick={() => {
-								navigate('./favorites')
-							}}
-						>
-							<IoMdHeartEmpty className='icon' style={{ fontSize: 25 }} />
-						</PrimaryButton>
-					) : (
-						<></>
-					)}
 					<div className='dropdown dropdown-end'>
 						<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
 							<div className='w-10 rounded-full'>

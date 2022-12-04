@@ -1,10 +1,20 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { IoMdClose, IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
+import {
+	IoMdClose,
+	IoMdHeart,
+	IoMdHeartEmpty,
+} from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../../../app/hooks'
-import { fetchMovieDetailsThunk } from '../../../../features/movie/movieSlice'
-import { MovieDetailsFields, MoviesSearchData } from '../../../../utils/types'
+import {
+	fetchFavoritesThunk,
+	fetchMovieDetailsThunk,
+} from '../../../../features/movie/movieSlice'
+import {
+	MovieDetailsFields,
+	MoviesSearchData,
+} from '../../../../utils/types'
 import { useIsAuth } from '../../../../utils/api/isAuth'
 import { MovieCardStyle } from './MovieCard.elements'
 
@@ -18,7 +28,10 @@ interface MovieCardProps {
 	variant?: string
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
+const MovieCard: React.FC<MovieCardProps> = ({
+	data,
+	variant,
+}) => {
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
 	const [isFavorite, setIsFavorite] = useState(false)
@@ -40,11 +53,17 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 			},
 		)
 	}
-	const handleRemoveMovie = () => {
-		axios.delete('http://localhost:4000/api/users/favorites', {
-			data: { movieID: data.imdbID },
-			headers: { Authorization: token },
-		})
+	const handleRemoveMovie = async () => {
+		let flag = null
+		flag = await axios.delete(
+			'http://localhost:4000/api/users/favorites',
+			{
+				data: { movieID: data.imdbID },
+				headers: { Authorization: token },
+			},
+		)
+		if (flag) return true
+		else return false
 	}
 	let cardActions
 	if (variant === 'favorites') {
@@ -60,8 +79,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 				</button>
 				<button
 					className='btn btn-outline btn-square btn-error'
-					onClick={() => {
-						handleRemoveMovie()
+					onClick={async () => {
+						await handleRemoveMovie()
+						dispatch(fetchFavoritesThunk())
 					}}
 				>
 					<IoMdClose fontSize={32}></IoMdClose>
@@ -106,9 +126,13 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, variant }) => {
 			</figure>
 			<span className='card-body'>
 				<h2 className='card-title'>{data.Title}</h2>
-				<p>{data.Type[0].toUpperCase() + data.Type.substring(1)}</p>
+				<p>
+					{data.Type[0].toUpperCase() + data.Type.substring(1)}
+				</p>
 				<p>{data.Year}</p>
-				<div className='card-actions justify-end'>{cardActions}</div>
+				<div className='card-actions justify-end'>
+					{cardActions}
+				</div>
 			</span>
 		</MovieCardStyle>
 	)

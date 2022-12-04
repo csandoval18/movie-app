@@ -1,11 +1,12 @@
-import { data } from 'autoprefixer'
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import {
+	fetchFavoritesThunk,
+	selectFavoriteMovies,
+} from '../../features/movie/movieSlice'
 import { useIsAuth } from '../../utils/api/isAuth'
 import { MovieDetailsFields } from '../../utils/types'
-import MovieCard, {
-	cardVariant,
-} from '../HomePage/MovieList/MovieCard/MovieCard'
+import MovieCard from '../HomePage/MovieList/MovieCard/MovieCard'
 import {
 	MovieResults,
 	MoviesListContainer,
@@ -15,11 +16,12 @@ import { FavoritesBlock } from './Favorites.styled'
 interface FavoritesProps {}
 
 const Favorites: React.FC<FavoritesProps> = () => {
-	const [favorites, setFavorites] = useState<MovieDetailsFields[]>([])
 	const isLoggedIn = useIsAuth()
+	const dispatch = useAppDispatch()
+	let favorites = useAppSelector(selectFavoriteMovies)
 
 	useEffect(() => {
-		// fetchFavoriteMovies()
+		dispatch(fetchFavoritesThunk())
 		console.log('favorites:', favorites)
 	}, [])
 
@@ -28,7 +30,6 @@ const Favorites: React.FC<FavoritesProps> = () => {
 		body =
 			favorites.length > 0 ? (
 				favorites.map((movie) => (
-					// <div key={`favorite-${movie.imdbID}`}>{movie.Title}</div>
 					<MovieCard
 						key={movie.imdbID}
 						data={movie}
@@ -39,6 +40,8 @@ const Favorites: React.FC<FavoritesProps> = () => {
 				<div>You have no favorite movies.</div>
 			)
 	} else {
+		/* This still renders first before isloggedin query response is received. 
+    Need to add a loader and flag to dsiplay once isloggedin is detected as done*/
 		body = <div>Please sign in to see your favorite movies.</div>
 	}
 	return (
