@@ -48,6 +48,20 @@ export const fetchMovieDetailsThunk = createAsyncThunk(
 	},
 )
 
+export const fetchFavoritesThunk = createAsyncThunk(
+	'movie/fetchFavoritesThunk',
+	async () => {
+		const url = 'http://localhost:4000/api/users/favorites'
+		const token = sessionStorage.getItem('token') as string
+		await axios
+			.get(url, {
+				headers: { Authorization: token },
+			})
+			.then((res) => res.data)
+			.catch((err) => console.log(err))
+	},
+)
+
 export const movieSlice = createSlice({
 	name: 'MOVIE_SLICE',
 	initialState,
