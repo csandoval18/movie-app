@@ -1,5 +1,9 @@
 import React from 'react'
-import { IoIosSearch, IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
+import {
+	IoIosSearch,
+	IoMdHeart,
+	IoMdHeartEmpty,
+} from 'react-icons/io'
 import { IoLogoAmplify } from 'react-icons/io5'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -13,7 +17,11 @@ import {
 	PrimaryButton,
 } from '../../styles/GlobalStyles.elements'
 import { useIsAuth } from '../../utils/api/isAuth'
-import { DropDown, DropDownAnchor, NavbarContainer } from './Navbar.elements'
+import {
+	DropDown,
+	DropDownAnchor,
+	NavbarContainer,
+} from './Navbar.elements'
 import SearchBar from './SearchBar/SearchBar'
 
 interface NavbarProps {}
@@ -27,72 +35,83 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 	console.log('isloggedin:', isLoggedIn)
 	let body
 
-	if (isLoggedIn) {
-		body = (
-			<Flex ai='center' jc='right' className='nav-menu'>
-				{isLoggedIn ? (
+	if (isLoggedIn.loading === true) return (body = <>loading</>)
+	else {
+		if (isLoggedIn) {
+			body = (
+				<Flex ai='center' jc='right' className='nav-menu'>
+					hello {isLoggedIn.userData?.username}!
 					<PrimaryButton
 						className='favorites-btn'
 						onClick={() => {
 							navigate('./favorites')
 						}}
 					>
-						<IoMdHeartEmpty className='icon' style={{ fontSize: 25 }} />
+						<IoMdHeartEmpty
+							className='icon'
+							style={{ fontSize: 25 }}
+						/>
 					</PrimaryButton>
-				) : (
-					<></>
-				)}
-				<div className='flex-none gap-2 text-primary-content'>
-					<div className='dropdown dropdown-end'>
-						<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
-							<div className='w-10 rounded-full'>
-								<img
-									src='https://placeimg.com/80/80/people'
-									alt='user profile avatar'
-								/>
-							</div>
-						</label>
-						<DropDown
-							tabIndex={0}
-							className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-base-content'
-						>
-							<li className='group-hover:bg-primary'>
-								<DropDownAnchor className='justify-between' href='/'>
-									Profile
-									{/* <span className='badge'>New</span> */}
-								</DropDownAnchor>
-							</li>
-							<li>
-								<DropDownAnchor href='/settings'>Settings</DropDownAnchor>
-							</li>
-							<li>
-								<DropDownAnchor
-									onClick={() => {
-										sessionStorage.clear()
-										window.location.reload()
-									}}
-								>
-									Logout
-								</DropDownAnchor>
-							</li>
-						</DropDown>
+					<div className='flex-none gap-2 text-primary-content'>
+						<div className='dropdown dropdown-end'>
+							<label
+								tabIndex={0}
+								className='btn btn-ghost btn-circle avatar'
+							>
+								<div className='w-10 rounded-full'>
+									<img
+										src='https://placeimg.com/80/80/people'
+										alt='user profile avatar'
+									/>
+								</div>
+							</label>
+							<DropDown
+								tabIndex={0}
+								className='mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-base-content'
+							>
+								<li className='group-hover:bg-primary'>
+									<DropDownAnchor
+										className='justify-between'
+										href='/'
+									>
+										Profile
+										{/* <span className='badge'>New</span> */}
+									</DropDownAnchor>
+								</li>
+								<li>
+									<DropDownAnchor href='/settings'>
+										Settings
+									</DropDownAnchor>
+								</li>
+								<li>
+									<DropDownAnchor
+										onClick={() => {
+											sessionStorage.clear()
+											window.location.reload()
+										}}
+									>
+										Logout
+									</DropDownAnchor>
+								</li>
+							</DropDown>
+						</div>
 					</div>
-				</div>
-			</Flex>
-		)
-	} else {
-		body = (
-			<>
-				<Flex ai='center' jc='right' className='nav-menu'>
-					<Link className='' to='/login'>
-						<PrimaryButton>Login</PrimaryButton>
-					</Link>
-					<Link className='' to='/register'>
-						<PrimaryButton>Register</PrimaryButton>
-					</Link>
 				</Flex>
-			</>
-		)
+			)
+		} else {
+			body = (
+				<>
+					<Flex ai='center' jc='right' className='nav-menu'>
+						<Link className='' to='/login'>
+							<PrimaryButton>Login</PrimaryButton>
+						</Link>
+						<Link className='' to='/register'>
+							<PrimaryButton>Register</PrimaryButton>
+						</Link>
+					</Flex>
+				</>
+			)
+		}
 	}
 	return (
 		// Need to make a util to detect viewport width to remove search-mode class in desktop mode
@@ -104,12 +123,18 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 			}
 		>
 			<Link to='/'>
-				<HomeBtn className={toggleSearchBar ? 'handle-searchbar-display' : ''}>
+				<HomeBtn
+					className={
+						toggleSearchBar ? 'handle-searchbar-display' : ''
+					}
+				>
 					<IoLogoAmplify />
 				</HomeBtn>
 			</Link>
 			<SearchBar
-				className={toggleSearchBar ? '' : 'handle-searchbar-display'}
+				className={
+					toggleSearchBar ? '' : 'handle-searchbar-display'
+				}
 			/>
 			<div
 				className={`handle-mobile-menu-display flex gap-4 items-center ${
@@ -131,7 +156,10 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 							navigate('./favorites')
 						}}
 					>
-						<IoMdHeartEmpty className='icon' style={{ fontSize: 25 }} />
+						<IoMdHeartEmpty
+							className='icon'
+							style={{ fontSize: 25 }}
+						/>
 					</PrimaryButton>
 				) : (
 					<></>
