@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../../app/hooks'
+import {
+	useAppDispatch,
+	useAppSelector,
+} from '../../../app/hooks'
 import {
 	fetchMoviesThunk,
 	selectMovies,
 } from '../../../features/movie/movieSlice'
-import { Header } from '../../../styles/GlobalStyles.elements'
+import { Header } from '../../../styles/GlobalStyles.styled'
 import NotFound from '../../NotFound/NotFound'
 import MovieCard from './MovieCard/MovieCard'
-import { MovieResults, MoviesListContainer } from './MoviesList.elements'
+import {
+	MovieResults,
+	MoviesListContainer,
+} from './MoviesList.styled'
 import PaginationBtns from './PaginationBtns/PaginationBtns'
 
 const MovieList: React.FC = () => {
@@ -29,10 +35,17 @@ const MovieList: React.FC = () => {
 			{movies.length > 0 ? (
 				<MoviesListContainer className='movielist-container'>
 					<Header className='header'>Search Results</Header>
-					{movies.length !== 0 ? <PaginationBtns /> : <div></div>}
+					{movies.length !== 0 ? (
+						<PaginationBtns />
+					) : (
+						<div></div>
+					)}
 					<MovieResults className='movie-results'>
 						{movies?.map((movie) => (
-							<MovieCard key={movie.imdbID} data={movie}></MovieCard>
+							<MovieCard
+								key={movie.imdbID}
+								data={movie}
+							></MovieCard>
 						))}
 					</MovieResults>
 					{/* {movies.length !== 0 ? <PaginationBtns /> : <div></div>} */}

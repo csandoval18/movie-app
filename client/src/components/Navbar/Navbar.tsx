@@ -15,13 +15,13 @@ import {
 	Flex,
 	HomeBtn,
 	PrimaryButton,
-} from '../../styles/GlobalStyles.elements'
+} from '../../styles/GlobalStyles.styled'
 import { useIsAuth } from '../../utils/api/isAuth'
 import {
 	DropDown,
 	DropDownAnchor,
 	NavbarContainer,
-} from './Navbar.elements'
+} from './Navbar.styled'
 import SearchBar from './SearchBar/SearchBar'
 
 interface NavbarProps {}
@@ -31,16 +31,16 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
 	console.log('togglesearchbar', toggleSearchBar)
 	const dispatch = useAppDispatch()
-	const isLoggedIn = useIsAuth()
-	console.log('isloggedin:', isLoggedIn)
+	const user = useIsAuth()
+	console.log('userData:', user)
 	let body
 
-	if (isLoggedIn.loading === true) return (body = <>loading</>)
+	if (user.loading === true) return (body = <>loading</>)
 	else {
-		if (isLoggedIn) {
+		if (user.payload) {
 			body = (
 				<Flex ai='center' jc='right' className='nav-menu'>
-					hello {isLoggedIn.userData?.username}!
+					hello {user.payload?.username}!
 					<PrimaryButton
 						className='favorites-btn'
 						onClick={() => {
@@ -149,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 				>
 					<IoIosSearch className='icon'></IoIosSearch>
 				</PrimaryButton>
-				{isLoggedIn ? (
+				{user ? (
 					<PrimaryButton
 						className='favorites-btn'
 						onClick={() => {

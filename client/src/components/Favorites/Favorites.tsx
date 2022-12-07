@@ -5,12 +5,11 @@ import {
 	selectFavoriteMovies,
 } from '../../features/movie/movieSlice'
 import { useIsAuth } from '../../utils/api/isAuth'
-import { MovieDetailsFields } from '../../utils/types'
 import MovieCard from '../HomePage/MovieList/MovieCard/MovieCard'
 import {
 	MovieResults,
 	MoviesListContainer,
-} from '../HomePage/MovieList/MoviesList.elements'
+} from '../HomePage/MovieList/MoviesList.styled'
 import { FavoritesBlock } from './Favorites.styled'
 
 interface FavoritesProps {}

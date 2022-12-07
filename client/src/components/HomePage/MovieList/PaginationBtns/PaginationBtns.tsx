@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks'
+import {
+	useAppDispatch,
+	useAppSelector,
+} from '../../../../app/hooks'
 import {
 	fetchMoviesThunk,
 	selectMovies,
 } from '../../../../features/movie/movieSlice'
 import { setPagBtnValues } from '../../../../utils/useSetPagBtnRange'
-import { PaginationBtnsStyle } from '../MoviesList.elements'
+import { PaginationBtnsStyle } from '../MoviesList.styled'
 
 const PaginationBtns = () => {
 	const navigate = useNavigate()
@@ -51,22 +54,38 @@ const PaginationBtns = () => {
 					«
 				</button>
 				<button
-					className={currPageNum === pageNums[0] ? 'btn btn-active' : 'btn'}
+					className={
+						currPageNum === pageNums[0]
+							? 'btn btn-active'
+							: 'btn'
+					}
 				>
 					{pageNums[0]}
 				</button>
 				<button
-					className={currPageNum === pageNums[1] ? 'btn btn-active' : 'btn'}
+					className={
+						currPageNum === pageNums[1]
+							? 'btn btn-active'
+							: 'btn'
+					}
 				>
 					{pageNums[1]}
 				</button>
 				<button
-					className={currPageNum === pageNums[2] ? 'btn btn-active' : 'btn'}
+					className={
+						currPageNum === pageNums[2]
+							? 'btn btn-active'
+							: 'btn'
+					}
 				>
 					{pageNums[2]}
 				</button>
 				<button
-					className={currPageNum === pageNums[3] ? 'btn btn-active' : 'btn'}
+					className={
+						currPageNum === pageNums[3]
+							? 'btn btn-active'
+							: 'btn'
+					}
 				>
 					{pageNums[3]}
 				</button>
@@ -84,7 +103,9 @@ const PaginationBtns = () => {
 							increasePagPages()
 						setCurrPageNum(currPageNum + 1)
 						console.log('curr page num:', currPageNum)
-						navigate(`/search=${searchInput}&page=${currPageNum}`)
+						navigate(
+							`/search=${searchInput}&page=${currPageNum}`,
+						)
 					}}
 				>
 					»

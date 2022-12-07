@@ -6,7 +6,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import { GlobalStyle } from './styles/GlobalStyles.elements'
+import { GlobalStyle } from './styles/GlobalStyles.styled'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)

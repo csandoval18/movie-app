@@ -1,4 +1,5 @@
-import { Request } from 'express'
+import { Request, Response } from 'express'
+import { JwtPayload } from 'jsonwebtoken'
 
 export interface UserFields {
 	name: string
@@ -10,6 +11,9 @@ export interface UserFields {
 export interface ExtendedRequest extends Request {
 	user: any
 	session: Express.Request & { userId: number }
+}
+export interface ExtendedResponse extends Response {
+	payload: JwtPayload | null
 }
 
 export interface MoviesSearchData {

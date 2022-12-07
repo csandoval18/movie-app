@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Header } from '../../../styles/GlobalStyles.elements'
+import { Header } from '../../../styles/GlobalStyles.styled'
 import { setUserSession } from '../../../utils/common'
 import { AuthContainer } from '../Login/Login.elements'
 

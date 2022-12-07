@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Header } from '../../../styles/GlobalStyles.elements'
+import { Header } from '../../../styles/GlobalStyles.styled'
 import { setUserSession } from '../../../utils/common'
 import { AuthContainer } from './Login.elements'
 
@@ -68,7 +68,9 @@ const Login: React.FC = () => {
 								onChange={(e) => setPass(e.target.value)}
 							/>
 							<span className='card-actions justify-end'>
-								<button className='btn btn-outline btn-primary'>Login</button>
+								<button className='btn btn-outline btn-primary'>
+									Login
+								</button>
 							</span>
 						</form>
 					</div>

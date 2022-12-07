@@ -16,7 +16,7 @@ import {
 	MoviesSearchData,
 } from '../../../../utils/types'
 import { useIsAuth } from '../../../../utils/api/isAuth'
-import { MovieCardStyle } from './MovieCard.elements'
+import { MovieCardStyle } from './MovieCard.styled'
 
 export const enum cardVariant {
 	default = '',

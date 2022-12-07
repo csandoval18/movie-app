@@ -5,7 +5,7 @@ import {
 	fetchMovieDetailsThunk,
 	selectMovieDetails,
 } from '../../features/movie/movieSlice'
-import { Header } from '../../styles/GlobalStyles.elements'
+import { Header } from '../../styles/GlobalStyles.styled'
 import { RatingsFields } from '../../utils/types'
 import {
 	MovieDetailsCard,
@@ -63,7 +63,9 @@ const MovieDetails = () => {
 									<tr>
 										<td>Box Office</td>
 										<td>
-											{movieDetails?.BoxOffice ? movieDetails.BoxOffice : 'N/A'}
+											{movieDetails?.BoxOffice
+												? movieDetails.BoxOffice
+												: 'N/A'}
 										</td>
 									</tr>
 									<tr>
@@ -100,7 +102,11 @@ const MovieDetails = () => {
 									</tr>
 									<tr>
 										<td>DVD</td>
-										<td>{movieDetails?.DVD ? movieDetails.DVD : 'N/A'}</td>
+										<td>
+											{movieDetails?.DVD
+												? movieDetails.DVD
+												: 'N/A'}
+										</td>
 									</tr>
 									<tr>
 										<td>Production:</td>
@@ -125,8 +131,14 @@ const MovieDetails = () => {
 												{movieDetails?.Ratings.length !== 0
 													? movieDetails?.Ratings.map(
 															(rating: RatingsFields) => (
-																<li key={movieDetails.imdbID + rating.Source}>
-																	{rating.Source === 'Internet Movie Database'
+																<li
+																	key={
+																		movieDetails.imdbID +
+																		rating.Source
+																	}
+																>
+																	{rating.Source ===
+																	'Internet Movie Database'
 																		? 'IMDB: ' + rating.Value
 																		: `${rating.Source}: ${rating.Value}`}
 																</li>

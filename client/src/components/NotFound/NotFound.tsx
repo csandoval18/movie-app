@@ -1,5 +1,5 @@
-import React from 'react';
-import { NotFoundContainer } from './NotFound.elements';
+import React from 'react'
+import { NotFoundContainer } from './NotFound.styled'
 
 interface NotFoundProps {}
 
@@ -11,7 +11,7 @@ const NotFound: React.FC<NotFoundProps> = () => {
 				<p>The URL you are tring to access does not exists.</p>
 			</div>
 		</NotFoundContainer>
-	);
-};
+	)
+}
 
-export default NotFound;
+export default NotFound

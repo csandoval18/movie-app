@@ -2,37 +2,41 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { TokenPayload } from '../types'
 
+interface UserPayload {
+	user: TokenPayload | null
+}
 interface AuthReturnProperties {
-	userData: TokenPayload | null
+	payload: TokenPayload | null
 	loading: boolean
 }
 
 // Checks if user is authenticated. If true returns Token payload data
-export const useIsAuth = (): AuthReturnProperties => {
+export const useIsAuth = (): any => {
 	const [loading, setLoading] = useState(true)
-	const [userData, setUserData] = useState<TokenPayload | null>(
-		null,
+	const [userData, setUserData] = useState<AuthReturnProperties>(
+		{ payload: null, loading: true },
 	)
-	const [token, setToken] = useState<string>(
-		sessionStorage.getItem('token') as string,
-	)
+	const token = sessionStorage.getItem('token') as string
 	useEffect(() => {
-		axios
-			.post(
-				'http://localhost:4000/api/users/auth',
-				{},
-				{
-					headers: { Authorization: `${token}` },
-				},
-			)
-			.then((res) => {
-				setLoading(false)
-				setUserData(res.data)
-			})
-			.catch((err) => {
-				console.log(err.response.data)
-				// setUserData(err)
-			})
+		async function getUser() {
+			axios
+				.post(
+					'http://localhost:4000/api/users/auth',
+					{},
+					{
+						headers: { Authorization: `${token}` },
+					},
+				)
+				.then((res) => {
+					setLoading(false)
+					setUserData(res.data)
+				})
+				.catch((err) => {
+					console.log(err.response.data)
+					// setUserData(err)
+				})
+		}
+		getUser()
 	}, [])
-	return { userData: userData, loading: loading }
+	return { ...userData, loading: loading }
 }
