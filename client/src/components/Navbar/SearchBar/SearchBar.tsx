@@ -60,7 +60,7 @@ const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 								setSearchBarInput(e.target.value)
 							}}
 						/>
-						<button className='btn btn-square btn-primary submit-search-btn'>
+						<button className='btn btn-square btn-primary btn-outline submit-search-btn'>
 							<IoIosSearch className='icon'></IoIosSearch>
 						</button>
 					</form>

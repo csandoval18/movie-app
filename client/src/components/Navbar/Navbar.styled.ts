@@ -103,6 +103,7 @@ export const SearchBarContainer = styled.div`
 	.submit-search-btn {
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
+		/* border-color: hsl(var(--bc) / 0.2); */
 	}
 	@media (${device.laptop}) {
 		.form-control {
