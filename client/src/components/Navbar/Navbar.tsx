@@ -1,41 +1,41 @@
-import React from 'react'
+import React from "react"
 import {
 	IoIosSearch,
 	IoMdHeart,
 	IoMdHeartEmpty,
-} from 'react-icons/io'
-import { IoLogoAmplify } from 'react-icons/io5'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+} from "react-icons/io"
+import { IoLogoAmplify } from "react-icons/io5"
+import { Link, Navigate, useNavigate } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
 	selectToggleSearchbar,
 	setToggleSearchBar,
-} from '../../features/navbar/navbarSlice'
+} from "../../features/navbar/navbarSlice"
 import {
 	Flex,
 	HomeBtn,
 	PrimaryButton,
-} from '../../styles/GlobalStyles.styled'
-import { useIsAuth } from '../../utils/api/isAuth'
+} from "../../styles/GlobalStyles.styled"
+import { useIsAuth } from "../../utils/api/isAuth"
 import {
 	DropDown,
 	DropDownAnchor,
 	NavbarContainer,
-} from './Navbar.styled'
-import SearchBar from './SearchBar/SearchBar'
+} from "./Navbar.styled"
+import SearchBar from "./SearchBar/SearchBar"
 
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = ({}) => {
 	const navigate = useNavigate()
 	const toggleSearchBar = useAppSelector(selectToggleSearchbar)
-	console.log('togglesearchbar', toggleSearchBar)
+	console.log("togglesearchbar", toggleSearchBar)
 	const dispatch = useAppDispatch()
 	const user = useIsAuth()
-	console.log('userData:', user)
+	console.log("userData:", user)
 	let body
 
-	if (user.loading === true) return (body = <>loading</>)
+	if (user.loading === true) return (body = <></>)
 	else {
 		if (user.payload) {
 			body = (
@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 					<PrimaryButton
 						className='favorites-btn'
 						onClick={() => {
-							navigate('./favorites')
+							navigate("./favorites")
 						}}
 					>
 						<IoMdHeartEmpty
@@ -118,14 +118,14 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 		<NavbarContainer
 			className={
 				toggleSearchBar
-					? 'Navbar px-responsive search-mode'
-					: 'Navbar px-responsive'
+					? "Navbar px-responsive search-mode"
+					: "Navbar px-responsive"
 			}
 		>
 			<Link to='/'>
 				<HomeBtn
 					className={
-						toggleSearchBar ? 'handle-searchbar-display' : ''
+						toggleSearchBar ? "handle-searchbar-display" : ""
 					}
 				>
 					<IoLogoAmplify />
@@ -133,12 +133,12 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 			</Link>
 			<SearchBar
 				className={
-					toggleSearchBar ? '' : 'handle-searchbar-display'
+					toggleSearchBar ? "" : "handle-searchbar-display"
 				}
 			/>
 			<div
 				className={`handle-mobile-menu-display flex gap-4 items-center ${
-					toggleSearchBar ? 'handle-searchbar-display' : ''
+					toggleSearchBar ? "handle-searchbar-display" : ""
 				}`}
 			>
 				<PrimaryButton
@@ -153,7 +153,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 					<PrimaryButton
 						className='favorites-btn'
 						onClick={() => {
-							navigate('./favorites')
+							navigate("./favorites")
 						}}
 					>
 						<IoMdHeartEmpty
