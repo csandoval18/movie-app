@@ -1,11 +1,8 @@
 import React from "react"
-import {
-	IoIosSearch,
-	IoMdHeart,
-	IoMdHeartEmpty,
-} from "react-icons/io"
+import { IoIosSearch, IoMdHeartEmpty } from "react-icons/io"
 import { IoLogoAmplify } from "react-icons/io5"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Oval } from "react-loader-spinner"
+import { Link, useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
 	selectToggleSearchbar,
@@ -35,7 +32,21 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 	console.log("userData:", user)
 	let body
 
-	if (user.loading === true) return (body = <></>)
+	if (user.loading === true)
+		return (body = (
+			<Oval
+				height={35}
+				width={35}
+				color={"#84a6f0"}
+				wrapperStyle={{}}
+				wrapperClass=''
+				visible={true}
+				ariaLabel='oval-loading'
+				secondaryColor='#84a6f0'
+				strokeWidth={3}
+				strokeWidthSecondary={2}
+			/>
+		))
 	else {
 		if (user.payload) {
 			body = (
@@ -100,16 +111,14 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 			)
 		} else {
 			body = (
-				<>
-					<Flex ai='center' jc='right' className='nav-menu'>
-						<Link className='' to='/login'>
-							<PrimaryButton>Login</PrimaryButton>
-						</Link>
-						<Link className='' to='/register'>
-							<PrimaryButton>Register</PrimaryButton>
-						</Link>
-					</Flex>
-				</>
+				<Flex ai='center' jc='right' className='nav-menu'>
+					<Link className='' to='/login'>
+						<PrimaryButton>Login</PrimaryButton>
+					</Link>
+					<Link className='' to='/register'>
+						<PrimaryButton>Register</PrimaryButton>
+					</Link>
+				</Flex>
 			)
 		}
 	}

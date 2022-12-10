@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { device } from '../../styles/deviceSizes'
+import styled from "styled-components"
+import { device } from "../../styles/deviceSizes"
 
 export const NavbarContainer = styled.nav`
 	align-items: center;

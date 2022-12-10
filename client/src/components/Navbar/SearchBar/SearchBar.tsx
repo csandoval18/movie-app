@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { IoIosSearch } from 'react-icons/io'
-import { redirect, useNavigate } from 'react-router-dom'
+import React, { useState } from "react"
+import { AiOutlineArrowLeft } from "react-icons/ai"
+import { IoIosSearch } from "react-icons/io"
+import { redirect, useNavigate } from "react-router-dom"
 import {
 	useAppDispatch,
 	useAppSelector,
-} from '../../../app/hooks'
+} from "../../../app/hooks"
 import {
 	fetchMoviesThunk,
 	selectMovieSearchInput,
 	setSearchVal,
-} from '../../../features/movie/movieSlice'
-import { setToggleSearchBar } from '../../../features/navbar/navbarSlice'
-import { PrimaryButton } from '../../../styles/GlobalStyles.styled'
+} from "../../../features/movie/movieSlice"
+import { setToggleSearchBar } from "../../../features/navbar/navbarSlice"
+import { PrimaryButton } from "../../../styles/GlobalStyles.styled"
 import {
 	ReturnBtn,
 	SearchBarContainer,
 	SearchBarInput,
-} from '../Navbar.styled'
+} from "../Navbar.styled"
 
 interface SearBarProps {
 	className: string
@@ -71,8 +71,3 @@ const SearchBar: React.FC<SearBarProps> = ({ className }) => {
 }
 
 export default SearchBar
-
-// useEffect(() => {
-// 	// dispatch(setSearchVal(searchInput))
-// 	dispatch(fetchMoviesThunk({ searchVal: searchInput }))
-// }, [searchInput])
