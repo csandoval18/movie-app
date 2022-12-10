@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 	let body
 
 	if (user.loading === true)
-		return (body = (
+		body = (
 			<Oval
 				height={35}
 				width={35}
@@ -46,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 				strokeWidth={3}
 				strokeWidthSecondary={2}
 			/>
-		))
+		)
 	else {
 		if (user.payload) {
 			body = (
