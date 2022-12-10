@@ -1,11 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
-import { RootState } from '../../app/store'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import axios from "axios"
+import { RootState } from "../../app/store"
 import {
 	MovieDetailsFields,
 	MoviesSearchData,
-} from '../../utils/types'
-import { useSortByYear } from '../../utils/useSortByYear'
+} from "../../utils/types"
+import { useSortByYear } from "../../utils/useSortByYear"
 
 export interface MovieSliceState {
 	searchVal: String
@@ -19,17 +19,17 @@ interface fetchMoviesArgs {
 	pageNum?: number
 }
 const initialState: MovieSliceState = {
-	searchVal: '',
+	searchVal: "",
 	movies: [],
 	movieDetails: undefined,
 	favorites: [],
-	loading: false,
+	loading: true,
 }
 export const fetchMoviesThunk = createAsyncThunk(
-	'movie/fetchMoviesThunk',
+	"movie/fetchMoviesThunk",
 	async (
 		fetchMoviesArgs: fetchMoviesArgs = {
-			searchVal: '',
+			searchVal: "",
 			pageNum: 1,
 		},
 	) => {
@@ -43,7 +43,7 @@ export const fetchMoviesThunk = createAsyncThunk(
 	},
 )
 export const fetchMovieDetailsThunk = createAsyncThunk(
-	'movie/fetchMovieDetails',
+	"movie/fetchMovieDetails",
 	async (fetchMoviesArgs: fetchMoviesArgs) => {
 		const url = `http://www.omdbapi.com/?i=${fetchMoviesArgs.searchVal}&apikey=9eaecb1`
 		const movie = await axios
@@ -54,10 +54,10 @@ export const fetchMovieDetailsThunk = createAsyncThunk(
 	},
 )
 export const fetchFavoritesThunk = createAsyncThunk(
-	'movie/fetchFavoritesThunk',
+	"movie/fetchFavoritesThunk",
 	async (): Promise<MovieDetailsFields[]> => {
-		const url = 'http://localhost:4000/api/users/favorites'
-		const token = sessionStorage.getItem('token') as string
+		const url = "http://localhost:4000/api/users/favorites"
+		const token = sessionStorage.getItem("token") as string
 		const result = await axios
 			.get(url, {
 				headers: { Authorization: token },
@@ -68,7 +68,7 @@ export const fetchFavoritesThunk = createAsyncThunk(
 	},
 )
 export const movieSlice = createSlice({
-	name: 'MOVIE_SLICE',
+	name: "MOVIE_SLICE",
 	initialState,
 	reducers: {
 		setSearchVal: (state, action) => {
@@ -137,4 +137,6 @@ export const selectMovieDetails = (state: RootState) =>
 	state.movie.movieDetails
 export const selectFavoriteMovies = (state: RootState) =>
 	state.movie.favorites
+export const selectLoader = (state: RootState) =>
+	state.movie.loading
 export default movieSlice.reducer

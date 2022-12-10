@@ -1,23 +1,34 @@
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react"
+import { Oval } from "react-loader-spinner"
+import { useParams } from "react-router-dom"
 import {
 	useAppDispatch,
 	useAppSelector,
-} from '../../../app/hooks'
+} from "../../../app/hooks"
 import {
 	fetchMoviesThunk,
+	selectLoader,
 	selectMovies,
-} from '../../../features/movie/movieSlice'
-import { Header } from '../../../styles/GlobalStyles.styled'
-import NotFound from '../../NotFound/NotFound'
-import MovieCard from './MovieCard/MovieCard'
+} from "../../../features/movie/movieSlice"
+import {
+	Flex,
+	Header,
+} from "../../../styles/GlobalStyles.styled"
+import {
+	MovieDetailsFields,
+	MoviesSearchData,
+} from "../../../utils/types"
+import NotFound from "../../NotFound/NotFound"
+import MovieCard from "./MovieCard/MovieCard"
 import {
 	MovieResults,
 	MoviesListContainer,
-} from './MoviesList.styled'
-import PaginationBtns from './PaginationBtns/PaginationBtns'
+} from "./MoviesList.styled"
+import PaginationBtns from "./PaginationBtns/PaginationBtns"
 
 const MovieList: React.FC = () => {
+	const [loading, setLoading] = useState<Boolean>(true)
+	const movies = useAppSelector(selectMovies)
 	const { searchInput, pageNum } = useParams()
 	const dispatch = useAppDispatch()
 	useEffect(() => {
@@ -26,13 +37,37 @@ const MovieList: React.FC = () => {
 				searchVal: searchInput,
 				pageNum: parseInt(pageNum as string),
 			}),
-		)
+		).then(() => {
+			setLoading(!loading)
+		})
 	}, [searchInput])
-	const movies = useAppSelector(selectMovies)
-	console.log('movies movielist:', movies)
-	return (
-		<>
-			{movies.length > 0 ? (
+
+	useEffect(() => {
+		console.log("movies:", movies)
+		console.log("loading:", loading)
+	}, [movies])
+
+	let body
+	if (loading === true) {
+		body = (
+			<Flex jc='center' ai='center'>
+				<Oval
+					height={35}
+					width={35}
+					color={"#84a6f0"}
+					wrapperStyle={{}}
+					wrapperClass=''
+					visible={true}
+					ariaLabel='oval-loading'
+					secondaryColor='#84a6f0'
+					strokeWidth={3}
+					strokeWidthSecondary={2}
+				/>
+			</Flex>
+		)
+	} else {
+		if (movies.length > 0) {
+			body = (
 				<MoviesListContainer className='movielist-container'>
 					<Header className='header'>Search Results</Header>
 					{movies.length !== 0 ? (
@@ -50,11 +85,12 @@ const MovieList: React.FC = () => {
 					</MovieResults>
 					{/* {movies.length !== 0 ? <PaginationBtns /> : <div></div>} */}
 				</MoviesListContainer>
-			) : (
-				<NotFound />
-			)}
-		</>
-	)
+			)
+		} else {
+			body = <NotFound></NotFound>
+		}
+	}
+	return <>{body}</>
 }
 
 export default MovieList
