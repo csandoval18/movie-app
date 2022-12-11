@@ -38,14 +38,14 @@ const MovieList: React.FC = () => {
 				pageNum: parseInt(pageNum as string),
 			}),
 		).then(() => {
-			setLoading(!loading)
+			setLoading(false)
 		})
 	}, [searchInput])
 
 	useEffect(() => {
 		console.log("movies:", movies)
 		console.log("loading:", loading)
-	}, [movies])
+	}, [movies, loading])
 
 	let body
 	if (loading === true) {
