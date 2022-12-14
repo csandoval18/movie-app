@@ -1,30 +1,33 @@
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
 	fetchMovieDetailsThunk,
 	selectMovieDetails,
-} from '../../features/movie/movieSlice'
-import { Header } from '../../styles/GlobalStyles.styled'
-import { RatingsFields } from '../../utils/types'
+} from "../../features/movie/movieSlice"
+import { Header } from "../../styles/GlobalStyles.styled"
+import { RatingsFields } from "../../utils/types"
 import {
 	MovieDetailsCard,
 	MovieDetailsContainer,
-} from './MovieDetails.elements'
+} from "./MovieDetails.elements"
 
 const MovieDetails = () => {
 	// Get imdbID from url through useParams hook from react router
+	const [loading, setLoading] = useState<Boolean>(true)
 	const { imdbID } = useParams()
 	const dispatch = useAppDispatch()
 	useEffect(() => {
-		dispatch(fetchMovieDetailsThunk({ searchVal: imdbID }))
-	}, [imdbID])
+		dispatch(fetchMovieDetailsThunk({ searchVal: imdbID })).then(
+			() => setLoading(false),
+		)
+	}, [])
 	const movieDetails = useAppSelector(selectMovieDetails)
 	return (
 		<MovieDetailsContainer className='movie-details-container'>
 			<MovieDetailsCard className='details-card'>
 				<Header className='header'>Movie Details</Header>
-				{movieDetails ? (
+				{!loading ? (
 					<>
 						<div className='overflow-x-auto'>
 							<table className='content-table'>
@@ -44,8 +47,8 @@ const MovieDetails = () => {
 									<tr>
 										<td>Type:</td>
 										<td>
-											{movieDetails?.Type[0].toUpperCase() +
-												movieDetails?.Type.substring(1)}
+											{/* {movieDetails?.Type[0].toUpperCase() +
+												movieDetails?.Type.substring(1)} */}
 										</td>
 									</tr>
 									<tr>
@@ -65,7 +68,7 @@ const MovieDetails = () => {
 										<td>
 											{movieDetails?.BoxOffice
 												? movieDetails.BoxOffice
-												: 'N/A'}
+												: "N/A"}
 										</td>
 									</tr>
 									<tr>
@@ -105,7 +108,7 @@ const MovieDetails = () => {
 										<td>
 											{movieDetails?.DVD
 												? movieDetails.DVD
-												: 'N/A'}
+												: "N/A"}
 										</td>
 									</tr>
 									<tr>
@@ -113,7 +116,7 @@ const MovieDetails = () => {
 										<td>
 											{movieDetails?.Production
 												? movieDetails.Production
-												: 'N/A'}
+												: "N/A"}
 										</td>
 									</tr>
 									<tr>
@@ -138,13 +141,13 @@ const MovieDetails = () => {
 																	}
 																>
 																	{rating.Source ===
-																	'Internet Movie Database'
-																		? 'IMDB: ' + rating.Value
+																	"Internet Movie Database"
+																		? "IMDB: " + rating.Value
 																		: `${rating.Source}: ${rating.Value}`}
 																</li>
 															),
 													  )
-													: 'N/A'}
+													: "N/A"}
 											</ul>
 										</td>
 									</tr>
@@ -162,5 +165,5 @@ const MovieDetails = () => {
 
 export default MovieDetails
 function dispatch(arg0: any) {
-	throw new Error('Function not implemented.')
+	throw new Error("Function not implemented.")
 }
