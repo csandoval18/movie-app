@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
+import { Oval } from "react-loader-spinner"
 import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
 	fetchMovieDetailsThunk,
 	selectMovieDetails,
 } from "../../features/movie/movieSlice"
-import { Header } from "../../styles/GlobalStyles.styled"
+import { Flex, Header } from "../../styles/GlobalStyles.styled"
 import { RatingsFields } from "../../utils/types"
 import {
 	MovieDetailsCard,
@@ -156,7 +157,20 @@ const MovieDetails = () => {
 						</div>
 					</>
 				) : (
-					<div>loading movie data...</div>
+					<Flex jc='center' ai='center'>
+						<Oval
+							height={35}
+							width={35}
+							color={"#84a6f0"}
+							wrapperStyle={{}}
+							wrapperClass=''
+							visible={true}
+							ariaLabel='oval-loading'
+							secondaryColor='#84a6f0'
+							strokeWidth={3}
+							strokeWidthSecondary={2}
+						/>
+					</Flex>
 				)}
 			</MovieDetailsCard>
 		</MovieDetailsContainer>
