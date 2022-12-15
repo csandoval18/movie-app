@@ -25,11 +25,11 @@ const MovieDetails = () => {
 	}, [])
 	const movieDetails = useAppSelector(selectMovieDetails)
 	return (
-		<MovieDetailsContainer className='movie-details-container'>
-			<MovieDetailsCard className='details-card'>
-				<Header className='header'>Movie Details</Header>
-				{!loading ? (
-					<>
+		<>
+			{!loading ? (
+				<MovieDetailsContainer className='movie-details-container'>
+					<MovieDetailsCard className='details-card'>
+						<Header className='header'>Movie Details</Header>
 						<div className='overflow-x-auto'>
 							<table className='content-table'>
 								<thead>
@@ -155,25 +155,25 @@ const MovieDetails = () => {
 								</tbody>
 							</table>
 						</div>
-					</>
-				) : (
-					<Flex jc='center' ai='center'>
-						<Oval
-							height={35}
-							width={35}
-							color={"#84a6f0"}
-							wrapperStyle={{}}
-							wrapperClass=''
-							visible={true}
-							ariaLabel='oval-loading'
-							secondaryColor='#84a6f0'
-							strokeWidth={3}
-							strokeWidthSecondary={2}
-						/>
-					</Flex>
-				)}
-			</MovieDetailsCard>
-		</MovieDetailsContainer>
+					</MovieDetailsCard>
+				</MovieDetailsContainer>
+			) : (
+				<Flex jc='center' ai='center'>
+					<Oval
+						height={35}
+						width={35}
+						color={"#84a6f0"}
+						wrapperStyle={{}}
+						wrapperClass=''
+						visible={true}
+						ariaLabel='oval-loading'
+						secondaryColor='#84a6f0'
+						strokeWidth={3}
+						strokeWidthSecondary={2}
+					/>
+				</Flex>
+			)}
+		</>
 	)
 }
 
