@@ -1,10 +1,7 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { TokenPayload } from '../types'
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { TokenPayload } from "../types"
 
-interface UserPayload {
-	user: TokenPayload | null
-}
 interface AuthReturnProperties {
 	payload: TokenPayload | null
 	loading: boolean
@@ -16,12 +13,12 @@ export const useIsAuth = (): any => {
 	const [userData, setUserData] = useState<AuthReturnProperties>(
 		{ payload: null, loading: true },
 	)
-	const token = sessionStorage.getItem('token') as string
+	const token = sessionStorage.getItem("token") as string
 	useEffect(() => {
 		async function getUser() {
 			axios
 				.post(
-					'http://localhost:4000/api/users/auth',
+					"http://localhost:4000/api/users/auth",
 					{},
 					{
 						headers: { Authorization: `${token}` },
