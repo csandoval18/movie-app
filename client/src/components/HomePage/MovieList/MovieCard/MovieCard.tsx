@@ -1,26 +1,26 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import React, { useEffect, useState } from "react"
 import {
 	IoMdClose,
 	IoMdHeart,
 	IoMdHeartEmpty,
-} from 'react-icons/io'
-import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../../../app/hooks'
+} from "react-icons/io"
+import { useNavigate } from "react-router-dom"
+import { useAppDispatch } from "../../../../app/hooks"
 import {
 	fetchFavoritesThunk,
 	fetchMovieDetailsThunk,
-} from '../../../../features/movie/movieSlice'
+} from "../../../../features/movie/movieSlice"
 import {
 	MovieDetailsFields,
 	MoviesSearchData,
-} from '../../../../utils/types'
-import { useIsAuth } from '../../../../utils/api/isAuth'
-import { MovieCardStyle } from './MovieCard.styled'
+} from "../../../../utils/types"
+import { useIsAuth } from "../../../../utils/api/isAuth"
+import { MovieCardStyle } from "./MovieCard.styled"
 
 export const enum cardVariant {
-	default = '',
-	favorites = 'favorites',
+	default = "",
+	favorites = "favorites",
 }
 
 interface MovieCardProps {
@@ -36,7 +36,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 	const dispatch = useAppDispatch()
 	const [isFavorite, setIsFavorite] = useState(false)
 	const isLoggedIn = useIsAuth()
-	const token = sessionStorage.getItem('token') as string
+	const token = sessionStorage.getItem("token") as string
 
 	const addToFavorites = async () => {
 		const movieDetails = await dispatch(
@@ -44,7 +44,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 		)
 		console.log(movieDetails.payload)
 		await axios.post(
-			'http://localhost:4000/api/users/favorites/',
+			"http://localhost:4000/api/users/favorites/",
 			{
 				movieData: movieDetails.payload,
 			},
@@ -56,7 +56,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 	const handleRemoveMovie = async () => {
 		let flag = null
 		flag = await axios.delete(
-			'http://localhost:4000/api/users/favorites',
+			"http://localhost:4000/api/users/favorites",
 			{
 				data: { movieID: data.imdbID },
 				headers: { Authorization: token },
@@ -66,7 +66,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 		else return false
 	}
 	let cardActions
-	if (variant === 'favorites') {
+	if (variant === "favorites") {
 		cardActions = (
 			<>
 				<button
@@ -89,6 +89,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 			</>
 		)
 	} else {
+		console.log("isLoggedIn:", isLoggedIn)
 		cardActions = (
 			<>
 				<button
@@ -99,7 +100,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 				>
 					Details
 				</button>
-				{isLoggedIn ? (
+				{isLoggedIn.payload ? (
 					<button
 						className='btn btn-outline btn-primary'
 						onClick={() => {
@@ -127,7 +128,8 @@ const MovieCard: React.FC<MovieCardProps> = ({
 			<span className='card-body'>
 				<h2 className='card-title'>{data.Title}</h2>
 				<p>
-					{data.Type[0].toUpperCase() + data.Type.substring(1)}
+					{data.Type[0].toUpperCase() +
+						data.Type.substring(1)}
 				</p>
 				<p>{data.Year}</p>
 				<div className='card-actions justify-end'>

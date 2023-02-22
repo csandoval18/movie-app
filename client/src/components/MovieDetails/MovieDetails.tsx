@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { Oval } from "react-loader-spinner"
 import { useParams } from "react-router-dom"
 import {
 	useAppDispatch,
@@ -60,8 +61,10 @@ const MovieDetails = () => {
 									<tr>
 										<td>Type:</td>
 										<td>
-											{/* {movieDetails?.Type[0].toUpperCase() +
-												movieDetails?.Type.substring(1)} */}
+											{movieDetails
+												? movieDetails.Type[0].toUpperCase() +
+												  movieDetails.Type.substring(1)
+												: ""}
 										</td>
 									</tr>
 									<tr>

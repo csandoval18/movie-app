@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { Oval } from "react-loader-spinner"
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import {
+	useAppDispatch,
+	useAppSelector,
+} from "../../app/hooks"
 import {
 	fetchFavoritesThunk,
 	selectFavoriteMovies,
@@ -23,12 +26,15 @@ const Favorites: React.FC<FavoritesProps> = () => {
 	let favorites = useAppSelector(selectFavoriteMovies)
 
 	useEffect(() => {
-		dispatch(fetchFavoritesThunk()).then(() => setLoading(false))
+		dispatch(fetchFavoritesThunk()).then(() =>
+			setLoading(false),
+		)
 		console.log("favorites:", favorites)
 	}, [])
 
 	let body
-	if (isLoggedIn && !loading) {
+	console.log("isLoggedIn fav:", isLoggedIn)
+	if (!isLoggedIn.payload && !loading) {
 		body =
 			favorites.length > 0 ? (
 				favorites.map((movie) => (
@@ -42,7 +48,9 @@ const Favorites: React.FC<FavoritesProps> = () => {
 				<div>You have no favorite movies.</div>
 			)
 	} else if (!isLoggedIn && !loading) {
-		body = <div>Please sign in to see your favorite movies.</div>
+		body = (
+			<div>Please sign in to see your favorite movies.</div>
+		)
 	} else {
 		body = (
 			<Oval
