@@ -1,19 +1,5 @@
-import mongoose, { Schema } from 'mongoose'
-import { MovieDetails, RatingsFields } from 'src/types'
-
-// export interface IMovie {
-// 	title: String,
-// 	type: String,
-// 	cast: String,[]
-// 	rated: String,
-// 	directors: String,
-// 	plot: String,
-// 	release: String,
-// }
-// const RatingsFieldsSchema = new Schema<RatingsFields>({
-// 	Source: String,
-// 	Value: String,
-// })
+import mongoose, { Schema } from "mongoose"
+import { MovieDetails, RatingsFields } from "src/types"
 
 const Movie = new Schema<MovieDetails>(
 	{
@@ -54,5 +40,5 @@ const Movie = new Schema<MovieDetails>(
 	{ _id: false },
 )
 
-export const MovieModel = mongoose.model('Movie', Movie)
+export const MovieModel = mongoose.model("Movie", Movie)
 export default Movie
