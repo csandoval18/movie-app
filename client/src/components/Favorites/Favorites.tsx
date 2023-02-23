@@ -29,7 +29,6 @@ const Favorites: React.FC<FavoritesProps> = () => {
 		dispatch(fetchFavoritesThunk()).then(() =>
 			setLoading(false),
 		)
-		console.log("favorites:", favorites)
 	}, [])
 
 	let body
