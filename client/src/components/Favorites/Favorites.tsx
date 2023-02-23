@@ -33,7 +33,6 @@ const Favorites: React.FC<FavoritesProps> = () => {
 	}, [])
 
 	let body
-	console.log("isLoggedIn fav:", isLoggedIn)
 	if (!isLoggedIn.payload && !loading) {
 		body =
 			favorites.length > 0 ? (
