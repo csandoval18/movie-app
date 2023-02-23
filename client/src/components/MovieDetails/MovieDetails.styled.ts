@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { device } from '../../styles/deviceSizes'
+import styled from "styled-components"
+import { device } from "../../styles/deviceSizes"
 
 export const MovieDetailsContainer = styled.div`
 	display: flex;
@@ -40,9 +40,6 @@ export const MovieDetailsCard = styled.div`
 		td {
 			padding: 12px 15px;
 		}
-		tbody tr {
-			/* border-bottom: 1px solid #dddddd; */
-		}
 		tbody tr:nth-of-type(even) {
 			background-color: hsl(var(--n));
 		}
@@ -57,7 +54,8 @@ export const MovieDetailsCard = styled.div`
 		}
 		.poster-container img {
 			height: 100%;
-			max-width: 300px;
+			width: 100%;
+			max-width: 350px;
 		}
 	}
 `
