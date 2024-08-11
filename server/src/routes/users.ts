@@ -127,7 +127,7 @@ router.post(
 				} catch (err) {
 					console.log(err)
 				}
-				// console.log('user:', user)
+				console.log('user:', user)
 			}
 			return res
 				.status(200)

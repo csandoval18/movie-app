@@ -24,15 +24,19 @@ const Favorites: React.FC<FavoritesProps> = () => {
 	const isLoggedIn = useIsAuth()
 	const dispatch = useAppDispatch()
 	let favorites = useAppSelector(selectFavoriteMovies)
+	console.log("favorites:", favorites)
 
 	useEffect(() => {
 		dispatch(fetchFavoritesThunk()).then(() =>
 			setLoading(false),
 		)
+		console.log("data loading:", loading)
+		console.log("isloggedIn:", isLoggedIn)
+		
 	}, [])
 
 	let body
-	if (!isLoggedIn.payload && !loading) {
+	if (!isLoggedIn.loading && !loading) {
 		body =
 			favorites.length > 0 ? (
 				favorites.map((movie) => (
@@ -45,7 +49,7 @@ const Favorites: React.FC<FavoritesProps> = () => {
 			) : (
 				<div>You have no favorite movies.</div>
 			)
-	} else if (!isLoggedIn && !loading) {
+	} else if (!isLoggedIn.loading && !loading) {
 		body = (
 			<div>Please sign in to see your favorite movies.</div>
 		)

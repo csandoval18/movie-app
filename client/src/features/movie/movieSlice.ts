@@ -58,6 +58,7 @@ export const fetchFavoritesThunk = createAsyncThunk(
 	async (): Promise<MovieDetailsFields[]> => {
 		const url = "http://localhost:4000/api/users/favorites"
 		const token = sessionStorage.getItem("token") as string
+		console.log("token:", token)
 		const result = await axios
 			.get(url, {
 				headers: { Authorization: token },
